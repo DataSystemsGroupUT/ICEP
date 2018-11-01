@@ -1,7 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="" />
+    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/event/IntervalEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HeterogeneousIntervalElementsCollector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HomogeneousIntervalGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperatorJoinFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/Match.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/condition/AbsoluteCondition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/condition/Condition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/condition/Operand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/condition/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/condition/RelativeCondition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/HomogeneousIntervalElementsCollector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/MyIterativeCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Events/PowerEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureWarning.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Sources/PowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Sources/PowerSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/Sources/TemperatureSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Sources/TemperatureSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/IntervalEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/RawEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/event/RawEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/ElementsCollector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/Match.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ICEP-1.0-SNAPSHOT-launcher.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ICEP-1.0-SNAPSHOT-launcher.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ICEP-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ICEP-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Events/PowerEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Events/TemperatureEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Events/TemperatureWarning.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Sources/PowerSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/Sources/PowerSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/Sources/TemperatureSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/Sources/TemperatureSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/events/IntervalEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/events/RawEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/ElementsCollector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator$Operator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$11.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$12.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$13.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$27.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$28.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$29.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$30.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$31.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$34.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$36.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/IntervalOperator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/Match.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ut/ee/icep/generator/Match.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Events/TemperatureWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Events/TemperatureWarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Sources/TemperatureSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/Sources/TemperatureSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/ElementsCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/ElementsCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/IntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/IntervalGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/IntervalGeneratorHetrogenous.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/src/main/java/ut/ee/icep/generator/IntervalGeneratorHetrogenous.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Events/TemperatureWarning.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Events/TemperatureWarning.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Sources/TemperatureSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/Sources/TemperatureSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/ElementsCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/ElementsCollector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator$Operator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ICEP27-10-2018/ICEP27-10-2018/ICEP/target/classes/ut/ee/icep/generator/IntervalGeneratorHetrogenous.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,68 +170,240 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="313588048">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="15" />
+          <entry key="java" value="33" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="15" />
+          <entry key="JAVA" value="33" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="8266" />
+          <entry key="xml" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="8266" />
+          <entry key="XML" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Sources/PowerSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-52">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Sources/TemperatureSource.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-86">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="238">
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+              <folding>
+                <marker date="1541061603097" expanded="true" signature="9880:10494" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding>
+                <element signature="n#dependencies#0;n#project#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HeterogeneousIntervalGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="179" column="36" selection-start-line="179" selection-start-column="36" selection-end-line="179" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HeterogeneousIntervalElementsCollector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/io/StreamInputProcessor.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="210" selection-start-line="210" selection-end-line="210" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperatorJoinFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/MyIterativeCondition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="969">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/condition/RelativeCondition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>key</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/ut/ee/Events/PowerEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/RawEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureWarning.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/IntervalEvent.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ut/ee/Sources/PowerSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/ut/ee/Sources/TemperatureSource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalGeneratorHetrogenous.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/HomogeneousIntervalElementsCollector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/HeterogeneousIntervalElementsCollector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureWarning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/Main/Main2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/RawEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/HeterogeneousIntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/IntervalEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/Match.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/HomogeneousIntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/event/TemperatureWarning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/event/PowerWarning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/MyIterativeCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/condition/RelativeCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperatorJoinFunction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperator.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1216" />
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ICEP" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ICEP" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ICEP" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ICEP" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="25" />
+    <option name="y" value="25" />
+    <option name="width" value="1350" />
+    <option name="height" value="690" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -149,12 +442,97 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539014540235" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/flink-master/flink-master/tools/maven/checkstyle.xml" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541061631249" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ADWM/flink-training-exercises" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ut.ee.event" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -201,166 +579,375 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1216" extended-state="6" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19530469" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="CheckStyle" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.7643253" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13955638" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.224572" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40483382" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997986" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32930514" />
+      <window_info anchor="bottom" id="CheckStyle" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32930514" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32930514" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.1691843" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" visible="true" weight="0.32967034" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HomogeneousIntervalGenerator.java</url>
+          <line>260</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/MyIterativeCondition.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/MyIterativeCondition.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="w" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>w</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>within</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Events/PowerEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding>
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#406#407#0" expanded="true" />
-            <element signature="e#1078#1079#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="e#378#379#0" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#983#984#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-            <element signature="e#1149#1150#0" expanded="true" />
-            <element signature="e#1195#1196#0" expanded="true" />
-            <element signature="e#1272#1273#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Events/TemperatureWarning.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#1517#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#527#528#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#754#755#0" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#1191#1192#0" expanded="true" />
-            <element signature="e#1250#1251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/events/RawEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Sources/PowerSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/ElementsCollector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Sources/TemperatureSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+        <state relative-caret-position="340">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalGenerator.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.4.1/flink-cep_2.11-1.4.1.jar!/org/apache/flink/cep/pattern/Pattern.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="71" column="35" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="35" />
-          <folding>
-            <element signature="e#16173#16850#0" expanded="true" />
-            <element signature="e#16849#16850#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3383">
+          <caret line="226" column="40" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperator.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/api/windowing/time/Time.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        <state relative-caret-position="34">
+          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-end-line="5" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Main/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="113" column="39" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/condition/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/event/RawEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HomogeneousIntervalElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/Match.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/api/windowing/assigners/TumblingEventTimeWindows.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/api/datastream/KeyedStream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/ElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="106" column="16" lean-forward="true" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/event/IntervalEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="50" column="135" selection-start-line="50" selection-start-column="135" selection-end-line="50" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/io/StreamRecordWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/io/RecordWriterOutput.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/api/operators/AbstractStreamOperator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="510" selection-start-line="510" selection-end-line="510" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.4.1/flink-cep_2.11-1.4.1.jar!/org/apache/flink/cep/operator/SelectCepOperator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.4.1/flink-cep_2.11-1.4.1.jar!/org/apache/flink/cep/operator/AbstractKeyedCEPPatternOperator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/tasks/OneInputStreamTask.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/partitioner/KeyGroupStreamPartitioner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.11/1.4.1/flink-runtime_2.11-1.4.1.jar!/org/apache/flink/runtime/io/network/api/writer/RecordWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/Match.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="78" column="162" selection-start-line="78" selection-start-column="162" selection-end-line="78" selection-end-column="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HomogeneousIntervalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="248" selection-start-line="248" selection-end-line="248" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/condition/RelativeCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/MyIterativeCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.4.1/flink-core-1.4.1.jar!/org/apache/flink/api/common/functions/JoinFunction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.4.1/flink-streaming-java_2.11-1.4.1.jar!/org/apache/flink/streaming/runtime/io/StreamInputProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="210" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/IntervalOperatorJoinFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HeterogeneousIntervalElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/HeterogeneousIntervalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="179" column="36" selection-start-line="179" selection-start-column="36" selection-end-line="179" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="87" column="19" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="19" />
+        <state relative-caret-position="238">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="n#dependencies#0;n#project#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/icep/events/IntervalEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="221">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="54" column="2" lean-forward="true" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Sources/PowerSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ut/ee/Sources/TemperatureSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-86">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="238">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <marker date="1541061603097" expanded="true" signature="9880:10494" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
