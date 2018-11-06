@@ -1,7 +1,7 @@
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
-import ee.ut.cs.dsg.icep.event.IntervalEvent;
-import ee.ut.cs.dsg.icep.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import org.apache.flink.cep.PatternSelectFunction;
 
 import java.util.List;

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
 /**
  * @author MKamel
  */
 
-import ee.ut.cs.dsg.icep.condition.AbsoluteCondition;
-import ee.ut.cs.dsg.icep.condition.Condition;
-import ee.ut.cs.dsg.icep.condition.Operand;
-import ee.ut.cs.dsg.icep.event.IntervalEvent;
-import ee.ut.cs.dsg.icep.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
+import ee.ut.cs.dsg.d2ia.condition.Condition;
+import ee.ut.cs.dsg.d2ia.condition.Operand;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
@@ -28,8 +28,7 @@ import java.io.Serializable;
 
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
-import ut.ee.icep.condition.*;
-import ut.ee.icep.event.*;
+
 
 
 public class HomogeneousIntervalGenerator<S extends RawEvent, W extends IntervalEvent> implements Serializable {

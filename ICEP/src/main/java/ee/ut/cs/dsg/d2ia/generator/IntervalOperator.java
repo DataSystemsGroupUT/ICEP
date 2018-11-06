@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
-import ee.ut.cs.dsg.icep.event.IntervalEvent;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.streaming.api.datastream.DataStream;

@@ -1,9 +1,9 @@
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
-import ee.ut.cs.dsg.icep.condition.AbsoluteCondition;
-import ee.ut.cs.dsg.icep.condition.Condition;
-import ee.ut.cs.dsg.icep.event.IntervalEvent;
-import ee.ut.cs.dsg.icep.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
+import ee.ut.cs.dsg.d2ia.condition.Condition;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
@@ -16,7 +16,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 
 import java.io.Serializable;
 
-import ut.ee.icep.event.*;
+
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

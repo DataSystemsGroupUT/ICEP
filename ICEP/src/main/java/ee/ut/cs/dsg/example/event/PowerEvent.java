@@ -6,7 +6,7 @@
 
 package ee.ut.cs.dsg.example.event;
 
-import ee.ut.cs.dsg.icep.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 
 /**
  *

@@ -6,7 +6,7 @@
 package ee.ut.cs.dsg.example.source;
 
 import ee.ut.cs.dsg.example.event.TemperatureEvent;
-import ut.ee.event.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import org.apache.flink.configuration.Configuration;

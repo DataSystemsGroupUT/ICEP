@@ -1,9 +1,9 @@
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
-import ee.ut.cs.dsg.icep.condition.*;
-import ee.ut.cs.dsg.icep.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.condition.*;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-import ut.ee.icep.condition.*;
+
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

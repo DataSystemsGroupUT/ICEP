@@ -1,4 +1,4 @@
-package ee.ut.cs.dsg.icep.condition;
+package ee.ut.cs.dsg.d2ia.condition;
 
 public class AbsoluteCondition extends Condition {
 

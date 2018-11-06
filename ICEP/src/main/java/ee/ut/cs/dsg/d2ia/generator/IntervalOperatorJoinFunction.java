@@ -1,6 +1,6 @@
-package ee.ut.cs.dsg.icep.generator;
+package ee.ut.cs.dsg.d2ia.generator;
 
-import ee.ut.cs.dsg.icep.event.IntervalEvent;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import org.apache.flink.api.common.functions.JoinFunction;
 
 import java.util.List;

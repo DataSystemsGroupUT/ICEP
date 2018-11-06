@@ -9,14 +9,13 @@ import ee.ut.cs.dsg.example.event.PowerEvent;
 import ee.ut.cs.dsg.example.event.PowerWarning;
 import ee.ut.cs.dsg.example.event.TemperatureEvent;
 import ee.ut.cs.dsg.example.event.TemperatureWarning;
-import ee.ut.cs.dsg.icep.condition.Operand;
-import ee.ut.cs.dsg.icep.condition.Operator;
-import ee.ut.cs.dsg.icep.condition.RelativeCondition;
-import ee.ut.cs.dsg.icep.generator.HomogeneousIntervalGenerator;
-import ee.ut.cs.dsg.icep.generator.IntervalOperator;
-import ee.ut.cs.dsg.icep.generator.Match;
+import ee.ut.cs.dsg.d2ia.condition.Operand;
+import ee.ut.cs.dsg.d2ia.condition.Operator;
+import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
+import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
+import ee.ut.cs.dsg.d2ia.generator.IntervalOperator;
+import ee.ut.cs.dsg.d2ia.generator.Match;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import ee.ut.cs.dsg.icep.event.*;
 
 import java.util.ArrayList;
 
@@ -167,8 +166,8 @@ public class Main {
 
     private static void testHomogeneousIntervals() throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-//        final StreamExecutionEnvironment env = StreamExecutionEnvironment.createRemoteEnvironment("172.17.64.59",
-//                6123);
+//       final StreamExecutionEnvironment env = StreamExecutionEnvironment.createRemoteEnvironment("localhost",
+//                6123, "C:\\Work\\Big Data Lab\\ICEP2\\ICEP\\target\\D2IA-0.1-SNAPSHOT.jar");
 
         env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ee.ut.cs.dsg.icep.event;
+package ee.ut.cs.dsg.d2ia.event;
 
 /**
  *
