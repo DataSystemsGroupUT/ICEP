@@ -17,7 +17,7 @@ public enum Operand {
             case Average: return "avg";
             case Sum: return "sum";
             case Max: return "max";
-            case Min: return ">";
+            case Min: return "min";
             case First: return "first";
             case Last: return "last";
             case Constant: return "constant";

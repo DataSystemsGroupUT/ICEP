@@ -2,6 +2,7 @@ package ee.ut.cs.dsg.d2ia.generator;
 
 import ee.ut.cs.dsg.d2ia.condition.*;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
+import org.apache.commons.math3.analysis.function.Abs;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 
 
@@ -10,32 +11,40 @@ import javax.script.ScriptEngineManager;
 
 public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition<S> {
 
-    public enum ConditionContainer
-    {
+    public enum ConditionContainer {
         Until,
         Where
     }
+
     private ConditionContainer container;
     private static final long serialVersionUID = 2392863109523984059L;
-
+    private boolean intervalEntryMatched = false;
     private Condition condition;
+
     public MyIterativeCondition(Condition cond, ConditionContainer container) {
-        condition = cond; this.container = container;
+        condition = cond;
+        this.container = container;
     }
-    private boolean evaluateCondition(Condition condition, S s) throws Exception {
+
+    private boolean evaluateCondition(AbsoluteCondition condition, S s) throws Exception {
         ScriptEngineManager mgr = new ScriptEngineManager();
         ScriptEngine engine = mgr.getEngineByName("JavaScript");
-        String conditionString = condition.toString();
+        String conditionString = condition.parse(0,0,0,0,0,0,s.getValue());
 
-        if (condition instanceof RelativeCondition) {
-            conditionString = conditionString.split("Relative")[0].trim();
-
-        }
-        conditionString = conditionString.replace("value", Double.toString(s.getValue()));
+//                condition.toString();
+//
+////        if (condition instanceof RelativeCondition) {
+////            conditionString = conditionString.split("Relative")[0].trim();
+////
+////        }
+//        conditionString = conditionString.replace("value", Double.toString(s.getValue()));
         boolean result = (boolean) engine.eval(conditionString);
-        if (container == ConditionContainer.Until)
+        if (result == true) // we can start an interval entry match
+            intervalEntryMatched = true;
+        if (container == ConditionContainer.Until) {
+
             return !result;
-        else
+        } else
             return result;
     }
 
@@ -73,22 +82,33 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
             relativeRHSOperand = (Operand) relativeRHS;
         }
 
-        if ((relativeRHSOperand != null && relativeRHSOperand != Operand.Constant)
-                || (relativeLHSOperand != null && relativeLHSOperand != Operand.Constant)) {
 
-            for (S ss : prevMatches) //Iterables preserve order
-            {
-                sum += ss.getValue();
-                count++;
-                min = Double.min(min, ss.getValue());
-                max = Double.max(max, ss.getValue());
-                if (first == Double.MIN_VALUE)
-                    first = ss.getValue();
+//        if ((relativeRHSOperand != null && relativeRHSOperand != Operand.Constant)
+//                || (relativeLHSOperand != null && relativeLHSOperand != Operand.Constant)) {
 
-                last = ss.getValue();
-            }
+        for (S ss : prevMatches) //Iterables preserve order
+        {
+            sum += ss.getValue();
+            count++;
+            min = Double.min(min, ss.getValue());
+            max = Double.max(max, ss.getValue());
+            if (first == Double.MIN_VALUE)
+                first = ss.getValue();
 
+            last = ss.getValue();
+        }
+        // we have to add the current element
+        sum+=s.getValue();
+        count++;
 
+//        }
+        String lhsConditionString = null;
+        String rhsConditionString = null;
+        if (relativeLHS instanceof AbsoluteCondition) {
+            lhsConditionString = ((AbsoluteCondition) relativeLHS).parse(first, last, min, max, sum, count, s.getValue());
+        }
+        if (relativeRHS instanceof AbsoluteCondition) {
+            rhsConditionString = ((AbsoluteCondition) relativeRHS).parse(first, last, min, max, sum, count, s.getValue());
         }
         // now we can evaluate the condition
         conditionString = "";
@@ -111,7 +131,8 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
                 conditionString += s.getValue();
             }
 
-        }
+        } else
+            conditionString += lhsConditionString;
 
         conditionString += " " + relativeOperator.toString();
 
@@ -134,9 +155,11 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
                 conditionString += s.getValue();
             }
 
-        }
+        } else
+            conditionString += rhsConditionString;
         boolean result = (boolean) engine.eval(conditionString);
-
+        if (result == false)
+            intervalEntryMatched = false;
         if (container == ConditionContainer.Until)
             return !result;
         else
@@ -148,14 +171,20 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
 
 
         if (condition instanceof AbsoluteCondition)
-            return evaluateCondition(condition, s);
+            return evaluateCondition((AbsoluteCondition) condition, s);
         else {
+
             Iterable<S> items = context.getEventsForPattern("1");
             if (!items.iterator().hasNext()) {
-                return evaluateCondition(condition, s);
+                return evaluateCondition(((RelativeCondition) condition).getStartCondition(), s);
             } else // there are previous items
             {
-                return evaluateRelativeCondition((RelativeCondition) condition, items, s);
+                return  evaluateRelativeCondition((RelativeCondition) condition, items, s);
+//                boolean result
+//                if (!intervalEntryMatched && (container == ConditionContainer.Until ? result: !result)) // this breaks a past interval and we need to check if it creates a new one
+//                    return evaluateCondition(((RelativeCondition) condition).getStartCondition(), s);
+//                else
+//                    return result;
             }
         }
 

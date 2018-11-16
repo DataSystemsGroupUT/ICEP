@@ -7,7 +7,15 @@ public enum Operator
     LessThanEqual,
     GreaterThan,
     GreaterThanEqual,
-    NotEqual;
+    NotEqual,
+    Plus,
+    Minus,
+    Multiply,
+    Divide,
+    Not,
+    And,
+    Or,
+    Absolute;
 
     @Override
     public String toString()
@@ -19,6 +27,14 @@ public enum Operator
             case GreaterThan: return ">";
             case GreaterThanEqual: return ">=";
             case NotEqual: return "!=";
+            case Plus: return "+";
+            case Minus: return "-";
+            case Multiply: return "*";
+            case Divide: return  "/";
+            case Not: return "!";
+            case And: return "&&";
+            case Or: return  "||";
+            case Absolute: return "Math.abs($$$)";
             default: throw new IllegalArgumentException();
         }
     }

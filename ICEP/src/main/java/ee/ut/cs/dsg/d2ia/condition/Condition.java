@@ -9,7 +9,7 @@ public abstract class Condition implements Serializable {
 
     protected Operator operator;
 
-    protected abstract Condition LHS(Object operand);
+    public abstract Condition LHS(Object operand);
 
     public abstract Condition RHS(Object operand);
 

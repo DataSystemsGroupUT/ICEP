@@ -6,19 +6,19 @@ public class RelativeCondition extends Condition {
     private Operator relativeOperator;
 
     @Override
-    public Condition LHS(Object operand) {
+    public RelativeCondition LHS(Object operand) {
         this.lhs = operand;
         return this;
     }
 
     @Override
-    public Condition RHS(Object operand) {
+    public RelativeCondition RHS(Object operand) {
         this.rhs = operand;
         return this;
     }
 
     @Override
-    public Condition operator(Operator op) {
+    public RelativeCondition operator(Operator op) {
         this.operator = op;
         return this;
     }
@@ -38,14 +38,14 @@ public class RelativeCondition extends Condition {
 
     public Object getRelativeLHS()
     {
-        if (!(relativeLHS instanceof Operand))
+        if (!(relativeLHS instanceof Operand) && !(relativeLHS instanceof AbsoluteCondition))
             return relativeLHS.toString();
         return relativeLHS;
     }
 
     public Object getRelativeRHS()
     {
-        if (!(relativeRHS instanceof Operand))
+        if (!(relativeRHS instanceof Operand) && !(relativeRHS instanceof AbsoluteCondition))
             return relativeRHS.toString();
         return relativeRHS;
     }
@@ -58,5 +58,11 @@ public class RelativeCondition extends Condition {
     public String toString()
     {
         return super.toString() + " Relative " + relativeLHS.toString()+relativeOperator.toString()+relativeRHS.toString();
+    }
+    public AbsoluteCondition getStartCondition()
+    {
+        AbsoluteCondition absoluteCondition = new AbsoluteCondition();
+        absoluteCondition.LHS(this.lhs).RHS(this.rhs).operator(this.operator);
+        return  absoluteCondition;
     }
 }

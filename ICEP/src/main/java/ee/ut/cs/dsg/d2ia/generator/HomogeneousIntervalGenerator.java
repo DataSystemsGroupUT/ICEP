@@ -16,6 +16,7 @@ import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
+import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
@@ -28,7 +29,6 @@ import java.io.Serializable;
 
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
-
 
 
 public class HomogeneousIntervalGenerator<S extends RawEvent, W extends IntervalEvent> implements Serializable {
@@ -213,28 +213,29 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         // Check that minimum input is provided to generate an interval
         validate();
 
-        Pattern<S, S> interval = Pattern.<S>begin("1").subtype(sourceTypeClass);
-
+        AfterMatchSkipStrategy skipStrategy = AfterMatchSkipStrategy.noSkip();//.skipPastLastEvent();//.skipToLast("1");
+        Pattern<S, S> interval = Pattern.<S>begin("1",skipStrategy).subtype(sourceTypeClass);
+//        Pattern<S, S> interval = Pattern.<S>begin("1").subtype(sourceTypeClass);
         if (minOccurs != Integer.MAX_VALUE && maxOccurs != Integer.MIN_VALUE) // both upper and lower bounds set
         {
             interval = interval.times(minOccurs, maxOccurs);
         } else if (minOccurs != Integer.MAX_VALUE) {
-            interval = interval.timesOrMore(minOccurs);
+            interval = interval.timesOrMore(minOccurs).greedy();
         } else if (maxOccurs != Integer.MIN_VALUE) {
             interval = interval.times(1, maxOccurs);
         } else // we put one or more
         {
-            interval = interval.oneOrMore();
+            interval = interval.oneOrMore().greedy();
         }
 
         if (within != null)
             interval = interval.within(within);
 
         //   if (condition instanceof AbsoluteCondition) {
-        if (condition != null && minOccurs == Integer.MAX_VALUE && maxOccurs == Integer.MIN_VALUE)
+      //  if (condition != null && minOccurs == Integer.MAX_VALUE && maxOccurs == Integer.MIN_VALUE)
             interval = interval.until(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Until));
-        else
-            interval = interval.where(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Where));
+//        else
+//            interval = interval.where(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Where));
 
         PatternStream<S> pattern = CEP.pattern(sourceStream.keyBy(new KeySelector<S, String>() {
             @Override
@@ -263,7 +264,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                 @Override
                 public void apply(String s, TimeWindow timeWindow, Iterable<W> iterable, Collector<W> collector) throws Exception {
                     boolean containerFound;
-             //       System.out.println("TEST");
+                    //       System.out.println("TEST");
                     for (W out : iterable) {
                         containerFound = false;
                         for (W in : iterable) {
@@ -277,7 +278,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                                 containerFound = true;
                         }
                         if (!containerFound) {
-                          //  System.out.println("SELECT "+out);
+                            //  System.out.println("SELECT "+out);
                             collector.collect(out);
                         }
                     }
