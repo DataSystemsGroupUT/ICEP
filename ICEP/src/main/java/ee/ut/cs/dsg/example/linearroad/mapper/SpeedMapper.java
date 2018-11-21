@@ -13,3 +13,4 @@ public class SpeedMapper implements MapFunction<String, SpeedEvent> {
 
     }
 }
+

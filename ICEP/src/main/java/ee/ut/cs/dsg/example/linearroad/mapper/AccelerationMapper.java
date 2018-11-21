@@ -16,3 +16,4 @@ public class AccelerationMapper implements MapFunction<String, AccelerationEvent
 
     }
 }
+
