@@ -48,8 +48,8 @@ public class IntervalEvent {
     @Override
     public String toString()
     {
-        return "IntervalEvent( start: "    + startTimestamp + "   "+    ",end: " + endTimestamp+   "   "+  "Value: "      + getValue()+
-                " Value Description:"+ valueDescriptor+")";
+        return "IntervalEvent(start: "    + startTimestamp + ", end: " + endTimestamp+     ", value: " + getValue()+
+                ", value description: "+ valueDescriptor+", key: "+key+")";
     }
 
     @Override
