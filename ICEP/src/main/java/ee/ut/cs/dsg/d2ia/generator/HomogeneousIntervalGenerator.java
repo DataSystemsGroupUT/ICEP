@@ -19,6 +19,7 @@ import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
@@ -220,12 +221,12 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         {
             interval = interval.times(minOccurs, maxOccurs);
         } else if (minOccurs != Integer.MAX_VALUE) {
-            interval = interval.timesOrMore(minOccurs).greedy();
+            interval = interval.timesOrMore(minOccurs);
         } else if (maxOccurs != Integer.MIN_VALUE) {
             interval = interval.times(1, maxOccurs);
         } else // we put one or more
         {
-            interval = interval.oneOrMore().greedy();
+            interval = interval.oneOrMore();
         }
 
         if (within != null)
@@ -236,15 +237,20 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
             interval = interval.until(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Until));
 //        else
 //            interval = interval.where(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Where));
+        PatternStream<S> pattern;
+        if (!(sourceStream instanceof KeyedStream)) {
+            pattern = CEP.pattern(sourceStream.keyBy(new KeySelector<S, String>() {
+                @Override
+                public String getKey(S value) throws Exception {
 
-        PatternStream<S> pattern = CEP.pattern(sourceStream.keyBy(new KeySelector<S, String>() {
-            @Override
-            public String getKey(S value) throws Exception {
+                    return value.getKey();
 
-                return value.getKey();
+                }
+            }), interval);
+        }
+        else
+            pattern = CEP.pattern(sourceStream, interval);
 
-            }
-        }), interval);
         targetStream = pattern.select(new HomogeneousIntervalElementsCollector<>(targetTypeClass, outputValueOperand), TypeInformation.of(targetTypeClass));
 
 

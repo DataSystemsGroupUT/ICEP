@@ -48,7 +48,7 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
             return result;
     }
 
-    //TODO: Try the until condition
+
     private boolean evaluateRelativeCondition(RelativeCondition condition, Iterable<S> prevMatches, S s) throws Exception {
         ScriptEngineManager mgr = new ScriptEngineManager();
         ScriptEngine engine = mgr.getEngineByName("JavaScript");

@@ -10,8 +10,10 @@ import ee.ut.cs.dsg.example.linearroad.mapper.AccelerationMapper;
 import ee.ut.cs.dsg.example.linearroad.mapper.SpeedMapper;
 import ee.ut.cs.dsg.example.linearroad.source.LinearRoadSource;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
@@ -83,15 +85,23 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy(new KeySelector<SpeedEvent, String>() {
+            @Override
+            public String getKey(SpeedEvent value) throws Exception {
+
+                return value.getKey();
+
+            }
+        });
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
-                .source(speedStream)
+                .source(keyedSpeedStream)
                 .targetType(SpeedThresholdInterval.class)
-                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(30))
+                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(75))
                 .outputValue(Operand.Max);
 
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.run();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+       //thresholdIntervalAbsoluteConditionDataStream.print();
         env.execute("Linear road threshold interval with absolute condition");
     }
 
@@ -113,50 +123,51 @@ public class LinearRoadRunner {
 
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.run();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+      //  thresholdIntervalAbsoluteConditionDataStream.print();
         env.execute("Linear road threshold interval with relative condition");
     }
 
     private static void jobGenerateAggregateIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream) throws Exception {
-        HomogeneousIntervalGenerator<SpeedEvent, SpeedDeltaInterval> deltaIntervalWithRelativeCondition =
+        HomogeneousIntervalGenerator<SpeedEvent, SpeedAggregateInterval> aggregateWithRelativeCondition =
                 new HomogeneousIntervalGenerator<>();
 
-        AbsoluteCondition absoluteCondition = new AbsoluteCondition();
-        absoluteCondition.operator(Operator.Absolute).RHS(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.Minus).RHS(Operand.Min));
 
-        deltaIntervalWithRelativeCondition.sourceType(SpeedEvent.class)
+
+        aggregateWithRelativeCondition.sourceType(SpeedEvent.class)
                 .source(speedStream)
                 .minOccurrences(2)
-                .within(Time.milliseconds(1000))
-                .targetType(SpeedDeltaInterval.class)
-                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(absoluteCondition).relativeOperator(Operator.GreaterThanEqual).relativeRHS(2))
+               // .within(Time.milliseconds(1000))
+                .targetType(SpeedAggregateInterval.class)
+                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(Operand.Average).relativeOperator(Operator.GreaterThanEqual).relativeRHS(75))
                 .outputValue(Operand.Average);
 
 
-        DataStream<SpeedDeltaInterval> deltaIntervalAbsoluteConditionDataStream = deltaIntervalWithRelativeCondition.run();
+        DataStream<SpeedAggregateInterval> aggregateRelativeConditionDataStream = aggregateWithRelativeCondition.run();
 
-        deltaIntervalAbsoluteConditionDataStream.print();
-        env.execute("Linear road delta interval with relative condition");
+        //aggregateRelativeConditionDataStream.print();
+        env.execute("Linear road aggregate interval with relative condition");
     }
 
     private static void jobGenerateDeltaIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream) throws Exception {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedDeltaInterval> deltaIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
+        AbsoluteCondition absoluteCondition = new AbsoluteCondition();
+        absoluteCondition.operator(Operator.Absolute).RHS(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.Minus).RHS(Operand.Min));
 
         deltaIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(speedStream)
                 .minOccurrences(2)
-                .within(Time.milliseconds(1000))
-                .targetType(SpeedAggregateInterval.class)
-                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(Operand.Average).relativeOperator(Operator.GreaterThan).relativeRHS(36))
+             //   .within(Time.milliseconds(1000))
+                .targetType(SpeedDeltaInterval.class)
+                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(absoluteCondition).relativeOperator(Operator.GreaterThanEqual).relativeRHS(30))
                 .outputValue(Operand.Average);
 
 
-        DataStream<SpeedDeltaInterval> aggregateIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.run();
+        DataStream<SpeedDeltaInterval> deltaIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.run();
 
-        aggregateIntervalAbsoluteConditionDataStream.print();
-        env.execute("Linear road aggregate interval with relative condition");
+        //deltaIntervalAbsoluteConditionDataStream.print();
+        env.execute("Linear road delta interval with relative condition");
     }
 }
 
