@@ -13,5 +13,9 @@ A condition can be either absolute, i.e., stateless or relative, i.e., stateful.
 You can run the test class on path ee.ut.cs.dsg.example.linearroad.LinearRoadRunner with the following parameters
 --source [kafka|file] --jobType [ThresholdAbsolute|ThresholdRelative|Delta|Aggregate] --fileName [path to file] --kafka [comma separated list of [ip:port] for the bootstrap servers] --topic [kafka topic to read linear road data from]
 
+This runs a predefined group of interval specifications against the linar road data set.
+
+A data set containing about 24M records of linear road data can be found [here](https://storage.googleapis.com/linear-road-data/linear2.csv)
+
 Parameters description
-1
+1. Source: Identifies the source type, either a path or url to a file
