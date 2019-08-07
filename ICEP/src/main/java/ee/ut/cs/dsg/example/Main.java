@@ -6,19 +6,28 @@
 package ee.ut.cs.dsg.example;
 
 import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
+import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
 import ee.ut.cs.dsg.example.event.*;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
-import ee.ut.cs.dsg.d2ia.generator.IntervalOperator;
-import ee.ut.cs.dsg.d2ia.generator.Match;
 import ee.ut.cs.dsg.example.mapper.ThroughputRecorder;
 import ee.ut.cs.dsg.example.source.TemperatureSource;
+import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
 import org.apache.flink.api.common.JobExecutionResult;
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.api.java.functions.KeySelector;
+import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
+import org.apache.flink.streaming.api.watermark.Watermark;
+import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
+import org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -29,7 +38,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 //import org.uniTartu.cep.interval2.sources.CEPIntervalSource;
 
 
-import java.util.List;
+import javax.annotation.Nullable;
 
 //import static java.util.regex.Pattern.union;
 
@@ -49,8 +58,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        testHomogeneousIntervals();
+//        testHomogeneousIntervals();
 
+        testGlobalWindow();
     }
 
     private static void testHeterogenousIntervals() throws Exception {
@@ -171,6 +181,38 @@ public class Main {
 //                6123, "C:\\Work\\Big Data Lab\\ICEP2\\ICEP\\target\\D2IA-0.1-SNAPSHOT.jar");
 
         env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.getConfig().setAutoWatermarkInterval(200);
+        SingleOutputStreamOperator<Tuple2<Long, String>> counts = env.socketTextStream("localhost", 9999)
+                .map(new MapFunction<String, Tuple2<Long, String>>() {
+                    @Override
+                    public Tuple2<Long, String> map(String s) throws Exception {
+                        String[] vals = s.split(" ");
+                        return new Tuple2<>(Long.parseLong(vals[0]), vals[1]);
+                    }
+                })
+                .assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<Tuple2<Long, String>>() {
+
+                    final long maxLateness = 3500;
+                    long maxTimestampSeen = Long.MIN_VALUE;
+
+                    @Nullable
+                    @Override
+                    public Watermark getCurrentWatermark() {
+                        return new Watermark(maxTimestampSeen - maxLateness);
+                    }
+
+                    @Override
+                    public long extractTimestamp(Tuple2<Long, String> tuple, long l) {
+                        maxTimestampSeen = Math.max(maxTimestampSeen, tuple.f0);
+                        return tuple.f0;
+                    }
+                })
+                .keyBy(1)
+                .window(SlidingEventTimeWindows.of(Time.seconds(10), Time.seconds(2)))
+                .allowedLateness(Time.milliseconds(100))
+                .sum(1);
+        counts.print();
  //       env.setParallelism(1);
 //        env.readFile("F:\TPStream\linear_accel.events\linear_accel.events","F:\TPStream\linear_accel.events\linear_accel.events","F:\TPStream\linear_accel.events\linear_accel.events");
 
@@ -361,5 +403,114 @@ public class Main {
         //Trigger the programme execution by calling execute(), mode of execution (local or cluster).
          JobExecutionResult result =  env.execute("CEP Interval job");
          //result.getAccumulatorResult("throughput");
+    }
+
+    private static void testGlobalWindow() throws Exception
+    {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+//        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new FixedSource());
+        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1,2,18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+            private long maxTimestampSeen = 0;
+            @Nullable
+            @Override
+            public Watermark getCurrentWatermark() {
+                return new Watermark(maxTimestampSeen);
+            }
+
+            @Override
+            public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
+                long ts = temperatureEvent.getTimestamp();
+                maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+                return ts;
+            }
+        });
+        temperatureEventDataStream.keyBy(new KeySelector<TemperatureEvent, String>() {
+            @Override
+            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
+                return temperatureEvent.getKey();
+            }
+        }).window(GlobalWindows.create()).trigger(new GlobalWindowEventTimeTrigger())
+//                .evictor(new WatermarkEvictor())
+
+                /*
+                //Commented on 7th August 2019 to replace with a more generic process function
+                .process(new ProcessWindowFunction<TemperatureEvent, Tuple4<String, Long, Long, Double>, String, GlobalWindow>() {
+            @Override
+            public void process(String o, Context context, Iterable<TemperatureEvent> iterable, Collector<Tuple4<String, Long, Long, Double>> collector) throws Exception {
+                ArrayList<TemperatureEvent> sorted = new ArrayList();
+
+                for ( TemperatureEvent e: iterable) {
+                    //Enforce watermark rule
+//                    if (e.getTimestamp() <= context.currentWatermark())
+                        sorted.add(e);
+
+                }
+                Collections.sort(sorted, new Comparator<TemperatureEvent>(){
+
+                    @Override
+                    public int compare(TemperatureEvent o1, TemperatureEvent o2) {
+                        if (o1.getTimestamp() < o2.getTimestamp()) return -1;
+                        if (o1.getTimestamp() > o2.getTimestamp()) return 1;
+                        return 0;
+                    }
+                });
+
+                //let's say we output threshold intervals with condition temperature <= 21
+                long start=0, end=0;
+                double value=0;
+                int i =0;
+                TemperatureEvent event=null;
+                boolean brokenFromLoop=false;
+                for (; i < sorted.size();i++)
+                {
+
+                    event = sorted.get(i);
+//                    if (event.getTimestamp() > context.currentWatermark() && event.getValue() <= 20.0)
+//                        return; // no need to process next elements and shouldn't emit an incomplete window
+                    if (event.getTimestamp() > context.currentWatermark()) {
+                        brokenFromLoop=true;
+                        break; // no need to process the rest of the elements but we can emit the current complete window, if any
+                    }
+                    if (event.getValue() <= 20.0)
+                    {
+                        if (start==0) // we start a new interval
+                            start = event.getTimestamp();
+                        end = event.getTimestamp();
+                        value+= event.getValue();
+                    }
+                    else
+                    {
+                        if (start !=0) {
+                            collector.collect(new Tuple4<>(o, start, end, value));
+                            start = 0;
+                            end = 0;
+                            value = 0;
+                        }
+                    }
+                }
+                long keepuntilTs=context.currentWatermark();
+                if (start !=0 && !brokenFromLoop) // we processed all elements normally
+                    collector.collect(new Tuple4<>(o,start,end,value));
+                else if (start != 0 && brokenFromLoop && event.getValue() > 20.0) // we received an item with future timestamp (greater than watermark) but its value is breaking the theta condition
+                    collector.collect(new Tuple4<>(o,start,end,value));
+                else if (start!=0 && brokenFromLoop && event.getValue() <= 20.0)
+                    keepuntilTs = start;
+                // ugly but necessary, to clean here not in the evictor, actually, I will drop the evictor
+                for (Iterator<TemperatureEvent> iterator = iterable.iterator(); iterator.hasNext();){
+                    TemperatureEvent v =  iterator.next();
+                    if (v.getTimestamp() < keepuntilTs)
+                    {
+                        iterator.remove();
+                    }
+
+                }
+            }
+
+        })*/
+        .process(new D2IAHomogeneousIntervalProcessorFunction<TemperatureEvent,ThresholdInterval>(0,0, null, null, Operand.Max), TypeInformation.of(ThresholdInterval.class))
+        .print();
+        env.execute("Interval generator via global windows");
+
     }
 }

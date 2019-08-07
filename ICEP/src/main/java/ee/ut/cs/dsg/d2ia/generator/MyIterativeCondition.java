@@ -18,29 +18,20 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
 
     private ConditionContainer container;
     private static final long serialVersionUID = 2392863109523984059L;
-    private boolean intervalEntryMatched = false;
+    //private boolean intervalEntryMatched = false;
     private Condition condition;
-
+    private ConditionEvaluator<S> conditionEvaluator;
     public MyIterativeCondition(Condition cond, ConditionContainer container) {
+        conditionEvaluator = new ConditionEvaluator<>();
         condition = cond;
         this.container = container;
     }
 
     private boolean evaluateCondition(AbsoluteCondition condition, S s) throws Exception {
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine engine = mgr.getEngineByName("JavaScript");
-        String conditionString = condition.parse(0,0,0,0,0,0,s.getValue());
 
-//                condition.toString();
-//
-////        if (condition instanceof RelativeCondition) {
-////            conditionString = conditionString.split("Relative")[0].trim();
-////
-////        }
-//        conditionString = conditionString.replace("value", Double.toString(s.getValue()));
-        boolean result = (boolean) engine.eval(conditionString);
-        if (result == true) // we can start an interval entry match
-            intervalEntryMatched = true;
+        boolean result = conditionEvaluator.evaluateCondition(condition, s);
+//        if (result == true) // we can start an interval entry match
+//            intervalEntryMatched = true;
         if (container == ConditionContainer.Until) {
 
             return !result;
@@ -50,116 +41,10 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
 
 
     private boolean evaluateRelativeCondition(RelativeCondition condition, Iterable<S> prevMatches, S s) throws Exception {
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine engine = mgr.getEngineByName("JavaScript");
-        String conditionString;// = condition.toString().split("Relative")[1].trim();
 
-        Object relativeLHS = condition.getRelativeLHS();
-        Object relativeRHS = condition.getRelativeRHS();
-        Operator relativeOperator = condition.getRelativeOperator();
-        double relativeLHSDouble = Double.MIN_VALUE, relativeRHSDouble = Double.MIN_VALUE;
-        Operand relativeLHSOperand = null, relativeRHSOperand = null;
-        double sum = 0;
-        int count = 0;
-        double min = Double.MAX_VALUE;
-        double max = Double.MIN_VALUE;
-        double first = Double.MIN_VALUE;
-        double last = -1;
-
-        if (relativeLHS instanceof String) {
-            relativeLHSDouble = Double.parseDouble(((String) relativeLHS));
-        }
-
-        if (relativeRHS instanceof String) {
-            relativeRHSDouble = Double.parseDouble(((String) relativeRHS));
-        }
-
-        if (relativeLHS instanceof Operand) {
-            relativeLHSOperand = (Operand) relativeLHS;
-        }
-
-        if (relativeRHS instanceof Operand) {
-            relativeRHSOperand = (Operand) relativeRHS;
-        }
-
-
-//        if ((relativeRHSOperand != null && relativeRHSOperand != Operand.Constant)
-//                || (relativeLHSOperand != null && relativeLHSOperand != Operand.Constant)) {
-
-        for (S ss : prevMatches) //Iterables preserve order
-        {
-            sum += ss.getValue();
-            count++;
-            min = Double.min(min, ss.getValue());
-            max = Double.max(max, ss.getValue());
-            if (first == Double.MIN_VALUE)
-                first = ss.getValue();
-
-            last = ss.getValue();
-        }
-        // we have to add the current element
-        sum+=s.getValue();
-        count++;
-
-//        }
-        String lhsConditionString = null;
-        String rhsConditionString = null;
-        if (relativeLHS instanceof AbsoluteCondition) {
-            lhsConditionString = ((AbsoluteCondition) relativeLHS).parse(first, last, min, max, sum, count, s.getValue());
-        }
-        if (relativeRHS instanceof AbsoluteCondition) {
-            rhsConditionString = ((AbsoluteCondition) relativeRHS).parse(first, last, min, max, sum, count, s.getValue());
-        }
-        // now we can evaluate the condition
-        conditionString = "";
-        if (relativeLHSDouble != Double.MIN_VALUE) {
-            conditionString += relativeLHSDouble;
-        } else if (relativeLHSOperand != null) {
-            if (relativeLHSOperand == Operand.Average) {
-                conditionString += (sum / count);
-            } else if (relativeLHSOperand == Operand.Sum) {
-                conditionString += sum;
-            } else if (relativeLHSOperand == Operand.First) {
-                conditionString += first;
-            } else if (relativeLHSOperand == Operand.Last) {
-                conditionString += last;
-            } else if (relativeLHSOperand == Operand.Max) {
-                conditionString += max;
-            } else if (relativeLHSOperand == Operand.Min) {
-                conditionString += min;
-            } else if (relativeLHSOperand == Operand.Value) {
-                conditionString += s.getValue();
-            }
-
-        } else
-            conditionString += lhsConditionString;
-
-        conditionString += " " + relativeOperator.toString();
-
-        if (relativeRHSDouble != Double.MIN_VALUE) {
-            conditionString += relativeRHSDouble;
-        } else if (relativeRHSOperand != null) {
-            if (relativeRHSOperand == Operand.Average) {
-                conditionString += (sum / count);
-            } else if (relativeRHSOperand == Operand.Sum) {
-                conditionString += sum;
-            } else if (relativeRHSOperand == Operand.First) {
-                conditionString += first;
-            } else if (relativeRHSOperand == Operand.Last) {
-                conditionString += last;
-            } else if (relativeRHSOperand == Operand.Max) {
-                conditionString += max;
-            } else if (relativeRHSOperand == Operand.Min) {
-                conditionString += min;
-            } else if (relativeRHSOperand == Operand.Value) {
-                conditionString += s.getValue();
-            }
-
-        } else
-            conditionString += rhsConditionString;
-        boolean result = (boolean) engine.eval(conditionString);
-        if (result == false)
-            intervalEntryMatched = false;
+        boolean result = conditionEvaluator.evaluateRelativeCondition(condition,prevMatches, s);
+//        if (result == false)
+//            intervalEntryMatched = false;
         if (container == ConditionContainer.Until)
             return !result;
         else

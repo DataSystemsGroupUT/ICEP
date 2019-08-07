@@ -6,12 +6,14 @@
 
 package ee.ut.cs.dsg.d2ia.event;
 
+import java.io.Serializable;
+
 /**
  *
  * @author MKamel
  */
 
-public class IntervalEvent {
+public class IntervalEvent implements Serializable {
 
     protected long startTimestamp;
     protected long endTimestamp;

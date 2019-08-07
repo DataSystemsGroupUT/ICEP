@@ -6,11 +6,13 @@
 
 package ee.ut.cs.dsg.d2ia.event;
 
+import java.io.Serializable;
+
 /**
  *
  * @author MKamel
  */
-public abstract class RawEvent {
+public abstract class RawEvent implements Serializable {
 
     protected long timestamp;
     protected double value;
@@ -40,4 +42,12 @@ public abstract class RawEvent {
     }
 
     public String getKey(){ return key;}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof RawEvent)) return false;
+        RawEvent other = (RawEvent) obj;
+
+        return other.getTimestamp() == this.getTimestamp() && other.getValue() == this.getValue() && other.getKey().equals(this.getKey());
+    }
 }
