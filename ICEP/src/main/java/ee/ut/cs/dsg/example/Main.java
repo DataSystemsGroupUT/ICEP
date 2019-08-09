@@ -13,6 +13,7 @@ import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
 import ee.ut.cs.dsg.example.mapper.ThroughputRecorder;
+import ee.ut.cs.dsg.example.source.FixedSource;
 import ee.ut.cs.dsg.example.source.TemperatureSource;
 import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
 import org.apache.flink.api.common.JobExecutionResult;
@@ -20,6 +21,7 @@ import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.watermark.Watermark;
@@ -60,7 +62,7 @@ public class Main {
 
 //        testHomogeneousIntervals();
 
-        testGlobalWindow();
+        testGlobalWindowWithFixedDataSet();
     }
 
     private static void testHeterogenousIntervals() throws Exception {
@@ -117,7 +119,7 @@ public class Main {
                 .outputValue(Operand.Max)
                 .produceOnlyMaximalIntervals(true);
 
-        DataStream<TemperatureWarning> warning1 = newInterval.run();
+        DataStream<TemperatureWarning> warning1 = newInterval.runWithCEP();
 
 //        newInterval.source(inputEventStream)
 //               .sourceType(TemperatureEvent.class)
@@ -125,14 +127,14 @@ public class Main {
 //               .targetType(TemperatureWarning.class)
 //               .outvalue(HomogeneousIntervalGenerator.Operator.Average)
 //                .conditionType("R");
-//               DataStream<TemperatureWarning> warning1= newInterval.run();
+//               DataStream<TemperatureWarning> warning1= newInterval.runWithCEP();
 //        DataStream<TemperatureWarning> warning2   = newInterval.run_loop_generator(6);
 
 //
 //        newInterval.source(lineardata)
 //                .condition(1, 4, HomogeneousIntervalGenerator.Operator.GreaterThanEqual, TEMPERATURE_THRESHOLD, Time.minutes(1))
 //                .targetType(TemperatureWarning.class);
-//        DataStream<TemperatureWarning> warning11= newInterval.run();
+//        DataStream<TemperatureWarning> warning11= newInterval.runWithCEP();
 //        DataStream<TemperatureWarning> warning22   = newInterval.run_loop_generator(4);
 //
 
@@ -150,7 +152,7 @@ public class Main {
 //                .outvalue(HomogeneousIntervalGenerator.Operator.Last)
 //                .conditionType("R");
 //              //  .outvalue(HomogeneousIntervalGenerator.Operator.Average);
-//                DataStream<TemperatureWarning> power1 = newInterval2.run();
+//                DataStream<TemperatureWarning> power1 = newInterval2.runWithCEP();
 //        DataStream<TemperatureWarning> power2 = newInterval2.run_loop_generator(4);
 ////        power1.print();
 ////        power2.print();
@@ -281,7 +283,7 @@ public class Main {
 //                .outputValue(Operand.Max)
 //                .produceOnlyMaximalIntervals(true);
 //
-//        DataStream<TemperatureWarning> warning1 = newInterval.run();
+//        DataStream<TemperatureWarning> warning1 = newInterval.runWithCEP();
 
 
 //        Threshold
@@ -294,7 +296,7 @@ public class Main {
  //               .minOccurrences(2)
                 .outputValue(Operand.Average)
                 .produceOnlyMaximalIntervals(true);
-        DataStream<ThresholdInterval> thresholdWarning = threshold.run();
+        DataStream<ThresholdInterval> thresholdWarning = threshold.runWithCEP();
 //        System.out.println("Threshold");
         thresholdWarning.print();
 //
@@ -314,7 +316,7 @@ public class Main {
                 .outputValue(Operand.Max)
                 .produceOnlyMaximalIntervals(true);
 
-        DataStream<DeltaInterval> deltaWarning = delta.run();
+        DataStream<DeltaInterval> deltaWarning = delta.runWithCEP();
 //        System.out.println("Delta");
         deltaWarning.print();
 
@@ -331,7 +333,7 @@ public class Main {
                 .outputValue(Operand.Average)
                 .produceOnlyMaximalIntervals(true);
 
-        DataStream<AggregateInterval> aggregateWarning = aggregate.run();
+        DataStream<AggregateInterval> aggregateWarning = aggregate.runWithCEP();
 //        System.out.println("Aggregate");
         aggregateWarning.print();
 //        newInterval2.source(inputEventStream2)
@@ -342,9 +344,9 @@ public class Main {
 //                .outputValue(Operand.Average)
 //                .produceOnlyMaximalIntervals(true);
 //
-//        //               DataStream<TemperatureWarning> warning1= newInterval.run();
+//        //               DataStream<TemperatureWarning> warning1= newInterval.runWithCEP();
 //
-//        DataStream<PowerWarning> warning2 = newInterval2.run();
+//        DataStream<PowerWarning> warning2 = newInterval2.runWithCEP();
 
 //
 
@@ -368,7 +370,7 @@ public class Main {
 //                .filterForMatchType(Match.MatchType.Finishes)
 //                .filterForMatchType(Match.MatchType.FinishedBy);
 //
-//        DataStream<Match> matches = matchOperator.run();
+//        DataStream<Match> matches = matchOperator.runWithCEP();
 //
 //        matches.print();
 
@@ -379,7 +381,7 @@ public class Main {
 //                .outvalue(HomogeneousIntervalGenerator.Operator.Last)
 //                .conditionType("R");
 //              //  .outvalue(HomogeneousIntervalGenerator.Operator.Average);
-//                DataStream<TemperatureWarning> power1 = newInterval2.run();
+//                DataStream<TemperatureWarning> power1 = newInterval2.runWithCEP();
 //        DataStream<TemperatureWarning> power2 = newInterval2.run_loop_generator(4);
 ////        power1.print();
 ////        power2.print();
@@ -405,6 +407,76 @@ public class Main {
          //result.getAccumulatorResult("throughput");
     }
 
+    private static void testGlobalWindowWithFixedDataSet() throws Exception
+    {
+
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.getConfig().setAutoWatermarkInterval(10);
+
+        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
+
+        myTemps.add(new TemperatureEvent("1", 1, 20));
+        myTemps.add(new TemperatureEvent("1", 2, 20));
+        myTemps.add(new TemperatureEvent("1", 3, 20));
+        myTemps.add(new TemperatureEvent("1", 4, 21));
+        myTemps.add(new TemperatureEvent("W", 4, 21));
+        myTemps.add(new TemperatureEvent("1", 5, 20));
+        myTemps.add(new TemperatureEvent("1", 6, 20));
+        myTemps.add(new TemperatureEvent("1", 7, 20));
+        myTemps.add(new TemperatureEvent("1", 8, 20));
+        myTemps.add(new TemperatureEvent("1", 9, 20));
+        myTemps.add(new TemperatureEvent("W", 9, 21));
+        myTemps.add(new TemperatureEvent("1", 10, 20));
+        myTemps.add(new TemperatureEvent("1", 11, 20));
+        myTemps.add(new TemperatureEvent("1", 12, 20));
+        myTemps.add(new TemperatureEvent("1", 13, 20));
+        myTemps.add(new TemperatureEvent("W", 14, 21));
+
+
+        DataStream<TemperatureEvent> inputEventStream = env.addSource(new FixedSource());
+//        DataStream<TemperatureEvent> inputEventStream = env.fromCollection(myTemps).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+//            private long maxTimestampSeen = 0;
+//            @Nullable
+//            @Override
+//            public Watermark getCurrentWatermark() {
+//                return new Watermark(maxTimestampSeen);
+//            }
+//
+//            @Override
+//            public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
+//                long ts = temperatureEvent.getTimestamp();
+//                if (temperatureEvent.getKey().equals("W"))
+//                    maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+//                return ts;
+//            }
+//        });
+
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy(new KeySelector<TemperatureEvent, String>() {
+            @Override
+            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
+                return temperatureEvent.getKey();
+            }
+        });
+
+        HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
+        testGenerator.source(keyedTemperatureStream)
+                .sourceType(TemperatureEvent.class)
+                .targetType(TemperatureWarning.class)
+                .minOccurrences(-1)
+                .maxOccurrences(-1)
+                .outputValue(Operand.Last)
+                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(19))
+         //       .produceOnlyMaximalIntervals(true)
+                .within(Time.milliseconds(10));
+
+        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
+        warningsIntervalStream.print();
+        env.execute("Interval generator via global windows");
+    }
+
     private static void testGlobalWindow() throws Exception
     {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -425,12 +497,14 @@ public class Main {
                 return ts;
             }
         });
-        temperatureEventDataStream.keyBy(new KeySelector<TemperatureEvent, String>() {
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy(new KeySelector<TemperatureEvent, String>() {
             @Override
             public String getKey(TemperatureEvent temperatureEvent) throws Exception {
                 return temperatureEvent.getKey();
             }
-        }).window(GlobalWindows.create()).trigger(new GlobalWindowEventTimeTrigger())
+        });
+
+     //   keyedTemperatureStream.window(GlobalWindows.create()).trigger(new GlobalWindowEventTimeTrigger())
 //                .evictor(new WatermarkEvictor())
 
                 /*
@@ -508,8 +582,22 @@ public class Main {
             }
 
         })*/
-        .process(new D2IAHomogeneousIntervalProcessorFunction<TemperatureEvent,ThresholdInterval>(0,0, null, null, Operand.Max), TypeInformation.of(ThresholdInterval.class))
-        .print();
+//        .process(new D2IAHomogeneousIntervalProcessorFunction<TemperatureEvent,ThresholdInterval>(0,0, null, null, Operand.Max), TypeInformation.of(ThresholdInterval.class))
+//        .print();
+
+        HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
+        testGenerator.source(keyedTemperatureStream)
+                .sourceType(TemperatureEvent.class)
+                .targetType(TemperatureWarning.class)
+                .minOccurrences(5)
+             //   .maxOccurrences(5)
+                .outputValue(Operand.Last)
+                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
+                .produceOnlyMaximalIntervals(true)
+                .within(Time.milliseconds(10));
+
+        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
+        warningsIntervalStream.print();
         env.execute("Interval generator via global windows");
 
     }

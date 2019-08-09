@@ -15,8 +15,9 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
     private int minOccurs, maxOccurs;
     private Condition condition;
     private ConditionEvaluator<E> conditionEvaluator;
-    private Time within;
+    private long within;
     private Operand outputValueCalculator;
+    private boolean generateMaximalInterval=false;
 //    private int count;
 //    private double sum;
     //TODO: Let's check working with states later on to handle incomplete windows (frames)
@@ -28,17 +29,27 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
         this.maxOccurs = maxOccurs <= 0? Integer.MAX_VALUE: maxOccurs;
         this.condition = cnd;
         this.conditionEvaluator = new ConditionEvaluator<>();
-        this.within = within==null? Time.milliseconds(0): within;
+        this.within = within==null? 0: within.toMilliseconds();
         this.outputValueCalculator = outputValue== null? Operand.Average: outputValue;
-//        count = 0;
-//        sum=0;
+
     }
 
-    private boolean isOccurrencesConditionEffective()
+    public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, boolean generateMaximalInterval, Operand outputValue)
     {
-        return !(minOccurs==Integer.MIN_VALUE && maxOccurs==Integer.MAX_VALUE);
-
+        this.minOccurs = minOccurs <= 0 || minOccurs == Integer.MAX_VALUE? Integer.MIN_VALUE: minOccurs;
+        this.maxOccurs = maxOccurs <= 0 || maxOccurs == Integer.MIN_VALUE? Integer.MAX_VALUE: maxOccurs;
+        this.condition = cnd;
+        this.conditionEvaluator = new ConditionEvaluator<>();
+        this.within = within==null? 0: within.toMilliseconds();
+        this.outputValueCalculator = outputValue== null? Operand.Average: outputValue;
+        this.generateMaximalInterval = generateMaximalInterval;
     }
+
+//    private boolean isOccurrencesConditionEffective()
+//    {
+//        return !(minOccurs==Integer.MIN_VALUE && maxOccurs==Integer.MAX_VALUE);
+//
+//    }
     private boolean evaluateOccurrencesCondition(int frameSize)
     {
         if (minOccurs==Integer.MIN_VALUE && maxOccurs == Integer.MAX_VALUE)
@@ -59,6 +70,8 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
     private void emitInterval(String s, ArrayList<E> elements, Collector<I> collector)
     {
 
+        if (elements.size() == 0 )
+            return;
 
         double outputValue = 0;
         String rid = elements.get(0).getKey();
@@ -112,12 +125,11 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
         });
 
         //let's say we output threshold intervals with condition temperature <= 21
-        long start=0, end=0;
-     //   double value=0;
+
         int i =0;
-        E event=null;
+        E event;
         E previousEvent=null;
-        boolean brokenFromLoop=false;
+//        boolean brokenFromLoop=false;
 
         // loop over elements and start constructing frames
         // first check the condition
@@ -130,14 +142,14 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
         {
             boolean conditionPassed=false;
             boolean withinIntervalCheckPassed=true;
-            boolean occurrencesPassed=false;
+
             event = sorted.get(i);
 
 
-            if (event.getTimestamp() > context.currentWatermark()) {
-                brokenFromLoop=true;
-                break; // no need to process the rest of the elements but we can emit the current complete window, if any
-            }
+//            if (event.getTimestamp() > context.currentWatermark()) {
+////                brokenFromLoop=true;
+//                break; // no need to process the rest of the elements but we can emit the current complete window, if any
+//            }
 
             if (condition instanceof AbsoluteCondition) {
                 conditionPassed =conditionEvaluator.evaluateCondition((AbsoluteCondition) condition, event);
@@ -151,7 +163,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             }
             if (previousEvent != null)
             {
-                withinIntervalCheckPassed = event.getTimestamp() - previousEvent.getTimestamp() <= this.within.toMilliseconds();
+                withinIntervalCheckPassed = this.within == 0? true: event.getTimestamp() - previousEvent.getTimestamp() <= this.within;
             }
 
             //
@@ -160,7 +172,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             {
                 if (withinIntervalCheckPassed) {
                     currentFrame.add(event);
-                    if(evaluateOccurrencesCondition(currentFrame.size()))
+                    if(evaluateOccurrencesCondition(currentFrame.size()) && !generateMaximalInterval)
                         emitInterval(s, currentFrame, collector);
                 }
                 else
@@ -170,7 +182,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
                 }
 
             }
-            else // interval is broken based on values
+            else  // interval is broken based on values
             {
                 if(evaluateOccurrencesCondition(currentFrame.size()))
                     emitInterval(s, currentFrame, collector);
@@ -217,6 +229,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             if (toBeEvicted.contains(v))
             {
                 iterator.remove();
+//                System.out.println("Removing "+v.toString()+" from the buffer");
             }
 
         }

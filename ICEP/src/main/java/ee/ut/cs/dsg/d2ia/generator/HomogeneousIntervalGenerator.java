@@ -14,6 +14,10 @@ import ee.ut.cs.dsg.d2ia.condition.Condition;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
+import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
+import ee.ut.cs.dsg.example.event.TemperatureEvent;
+import ee.ut.cs.dsg.example.event.ThresholdInterval;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
@@ -21,13 +25,16 @@ import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
+import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
 
 import java.io.Serializable;
 
+import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
@@ -209,7 +216,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
 
-    public DataStream<W> run() throws Exception {
+    public DataStream<W> runWithCEP() throws Exception {
 
         // Check that minimum input is provided to generate an interval
         validate();
@@ -254,9 +261,13 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         targetStream = pattern.select(new HomogeneousIntervalElementsCollector<>(targetTypeClass, outputValueOperand), TypeInformation.of(targetTypeClass));
 
 
-        /** Following part commented by Ahmed */
+//        return targetStream;
 
 
+        return applyMaximalInterval();
+    }
+
+    private DataStream<W> applyMaximalInterval() {
         if (!onlyMaximalIntervals)
             return targetStream;
         else {
@@ -266,7 +277,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                 public String getKey(W w) throws Exception {
                     return w.getKey();
                 }
-            }).window(TumblingEventTimeWindows.of(within)).apply(new WindowFunction<W, W, String, TimeWindow>() {
+            }).window(TumblingProcessingTimeWindows.of(within)).apply(new WindowFunction<W, W, String, TimeWindow>() {
                 @Override
                 public void apply(String s, TimeWindow timeWindow, Iterable<W> iterable, Collector<W> collector) throws Exception {
                     boolean containerFound;
@@ -280,7 +291,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 //                            System.out.println(mt.toString());
                             if (mt == Match.MatchType.Equals)
                                 continue;
-                            if (mt == Match.MatchType.Starts || mt == Match.MatchType.During || mt == Match.MatchType.Finishes)
+                            if (mt == Match.MatchType.Starts || mt == Match.MatchType.During || mt == Match.MatchType.Finishes )
                                 containerFound = true;
                         }
                         if (!containerFound) {
@@ -295,4 +306,21 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
 
+    public DataStream<W> runWithGlobalWindow(){
+
+        if (sourceStream instanceof KeyedStream) {
+           targetStream = ((KeyedStream)sourceStream).window(GlobalWindows.create())
+                    .trigger(new GlobalWindowEventTimeTrigger())
+                    .process(new D2IAHomogeneousIntervalProcessorFunction<S,W>(minOccurs,maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand), TypeInformation.of(targetTypeClass));
+        }
+//        else
+//        {
+//            targetStream = sourceStream.windowAll(GlobalWindows.create())
+//                    .trigger(new GlobalWindowEventTimeTrigger())
+//                    .process(new D2IAHomogeneousIntervalProcessorFunction<TemperatureEvent,ThresholdInterval>(0,0, null, null, Operand.Max), TypeInformation.of(targetTypeClass));
+//        }
+
+        return targetStream;
+//        return applyMaximalInterval();
+    }
 }

@@ -38,7 +38,7 @@ public class TemperatureWarning extends IntervalEvent {
     public boolean equals(Object obj) {
         if (obj instanceof TemperatureWarning) {
             TemperatureWarning other = (TemperatureWarning) obj;
-            return value == other.getValue() && this.startTimestamp == other.getStartTimestamp() && this.endTimestamp == other.getEndTimestamp();
+            return value == other.getValue() && this.startTimestamp == other.getStartTimestamp() && this.endTimestamp == other.getEndTimestamp() && this.key.equals(other.getKey());
         } else {
             return false;
         }
