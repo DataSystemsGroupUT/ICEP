@@ -1,7 +1,6 @@
 package ee.ut.cs.dsg.d2ia.condition;
 
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
-import ee.ut.cs.dsg.d2ia.generator.MyIterativeCondition;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -38,16 +37,18 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         sum = 0d;
         min = Double.MAX_VALUE;
         max = Double.MIN_VALUE;
-        first = -1d;
+        first = Double.MIN_VALUE;
         last = -1d;
     }
     public boolean evaluateRelativeCondition(RelativeCondition condition, Iterable<S> prevMatches, S s) throws Exception {
 
+  //      System.out.println("Current event "+s.toString());
         // update intermediate results
-        if (prevMatches != null) {
+        if (prevMatches != null && prevMatches.iterator().hasNext() ) {
             resetStats();
             for (S ss : prevMatches) //Iterables preserve order
             {
+ //               System.out.println("Previous item "+ss.toString() + " of current event "+s.toString());
                 sum += ss.getValue();
                 count++;
                 min = Double.min(min, ss.getValue());
@@ -62,7 +63,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         }
         else
         {
-            if (first == -1) {
+            if (first == Double.MIN_VALUE) {
                 first = s.getValue();
                 last = s.getValue();
                 min = s.getValue();
@@ -138,7 +139,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         } else
             conditionString += lhsConditionString;
 
-        conditionString += " " + relativeOperator.toString();
+        conditionString += " " + relativeOperator.toString() +"(";
 
         if (relativeRHSDouble != Double.MIN_VALUE) {
             conditionString += relativeRHSDouble;
@@ -161,6 +162,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
 
         } else
             conditionString += rhsConditionString;
+        conditionString+=")";
         boolean result = (boolean) engine.eval(conditionString);
 
         min = Math.min(min, s.getValue());

@@ -10,6 +10,7 @@ public class GlobalWindowEventTimeTrigger extends Trigger<Object, GlobalWindow> 
     @Override
     public TriggerResult onElement(Object o, long l, GlobalWindow globalWindow, TriggerContext triggerContext) throws Exception {
 
+//        return TriggerResult.FIRE;
         if (lastWatermark >= triggerContext.getCurrentWatermark())
             return TriggerResult.CONTINUE;
         else

@@ -9,7 +9,7 @@ import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition<S> {
+public class RelativeIterativeCondition<S extends RawEvent> extends IterativeCondition<S> {
 
     public enum ConditionContainer {
         Until,
@@ -21,7 +21,7 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
     //private boolean intervalEntryMatched = false;
     private Condition condition;
     private ConditionEvaluator<S> conditionEvaluator;
-    public MyIterativeCondition(Condition cond, ConditionContainer container) {
+    public RelativeIterativeCondition(Condition cond, ConditionContainer container) {
         conditionEvaluator = new ConditionEvaluator<>();
         condition = cond;
         this.container = container;
@@ -32,6 +32,7 @@ public class MyIterativeCondition<S extends RawEvent> extends IterativeCondition
         boolean result = conditionEvaluator.evaluateCondition(condition, s);
 //        if (result == true) // we can start an interval entry match
 //            intervalEntryMatched = true;
+
         if (container == ConditionContainer.Until) {
 
             return !result;

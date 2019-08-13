@@ -115,7 +115,7 @@ public class Main {
                 //  .minOccurrences(2)
                 .targetType(TemperatureWarning.class)
                 //       .maxOccurrences(3)
-                //   .within(Time.milliseconds(100))
+                .within(Time.milliseconds(5))
                 .outputValue(Operand.Max)
                 .produceOnlyMaximalIntervals(true);
 
@@ -416,24 +416,24 @@ public class Main {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.getConfig().setAutoWatermarkInterval(10);
 
-        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
-
-        myTemps.add(new TemperatureEvent("1", 1, 20));
-        myTemps.add(new TemperatureEvent("1", 2, 20));
-        myTemps.add(new TemperatureEvent("1", 3, 20));
-        myTemps.add(new TemperatureEvent("1", 4, 21));
-        myTemps.add(new TemperatureEvent("W", 4, 21));
-        myTemps.add(new TemperatureEvent("1", 5, 20));
-        myTemps.add(new TemperatureEvent("1", 6, 20));
-        myTemps.add(new TemperatureEvent("1", 7, 20));
-        myTemps.add(new TemperatureEvent("1", 8, 20));
-        myTemps.add(new TemperatureEvent("1", 9, 20));
-        myTemps.add(new TemperatureEvent("W", 9, 21));
-        myTemps.add(new TemperatureEvent("1", 10, 20));
-        myTemps.add(new TemperatureEvent("1", 11, 20));
-        myTemps.add(new TemperatureEvent("1", 12, 20));
-        myTemps.add(new TemperatureEvent("1", 13, 20));
-        myTemps.add(new TemperatureEvent("W", 14, 21));
+//        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
+//
+//        myTemps.add(new TemperatureEvent("1", 1, 20));
+//        myTemps.add(new TemperatureEvent("1", 2, 20));
+//        myTemps.add(new TemperatureEvent("1", 3, 20));
+//        myTemps.add(new TemperatureEvent("1", 4, 21));
+//        myTemps.add(new TemperatureEvent("W", 4, 21));
+//        myTemps.add(new TemperatureEvent("1", 5, 20));
+//        myTemps.add(new TemperatureEvent("1", 6, 20));
+//        myTemps.add(new TemperatureEvent("1", 7, 20));
+//        myTemps.add(new TemperatureEvent("1", 8, 20));
+//        myTemps.add(new TemperatureEvent("1", 9, 20));
+//        myTemps.add(new TemperatureEvent("W", 9, 21));
+//        myTemps.add(new TemperatureEvent("1", 10, 20));
+//        myTemps.add(new TemperatureEvent("1", 11, 20));
+//        myTemps.add(new TemperatureEvent("1", 12, 20));
+//        myTemps.add(new TemperatureEvent("1", 13, 20));
+//        myTemps.add(new TemperatureEvent("W", 14, 21));
 
 
         DataStream<TemperatureEvent> inputEventStream = env.addSource(new FixedSource());
@@ -465,12 +465,12 @@ public class Main {
         testGenerator.source(keyedTemperatureStream)
                 .sourceType(TemperatureEvent.class)
                 .targetType(TemperatureWarning.class)
-                .minOccurrences(-1)
+                .minOccurrences(2)
                 .maxOccurrences(-1)
                 .outputValue(Operand.Last)
-                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(19))
-         //       .produceOnlyMaximalIntervals(true)
-                .within(Time.milliseconds(10));
+                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
+          //      .produceOnlyMaximalIntervals(true)
+                .within(Time.milliseconds(5));
 
         DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
         warningsIntervalStream.print();

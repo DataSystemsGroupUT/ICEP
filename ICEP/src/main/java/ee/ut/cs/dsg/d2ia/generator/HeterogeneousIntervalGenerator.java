@@ -128,7 +128,7 @@ public class HeterogeneousIntervalGenerator<S extends RawEvent, E extends RawEve
         if (forbiddenStream != null) {
             pattern = pattern.notFollowedBy("forbidden").subtype(forbiddenTypeClass);
         }
-        pattern = pattern.followedBy("end").where(new MyIterativeCondition<>(endStreamCondition, MyIterativeCondition.ConditionContainer.Where)).subtype(endTypeClass);
+        pattern = pattern.followedBy("end").where(new RelativeIterativeCondition<>(endStreamCondition, RelativeIterativeCondition.ConditionContainer.Where)).subtype(endTypeClass);
 
         if (within != null) {
             pattern = pattern.within(within);

@@ -16,8 +16,6 @@ import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
 import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
-import ee.ut.cs.dsg.example.event.TemperatureEvent;
-import ee.ut.cs.dsg.example.event.ThresholdInterval;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
@@ -26,7 +24,6 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
-import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -34,7 +31,7 @@ import org.apache.flink.api.java.functions.KeySelector;
 
 import java.io.Serializable;
 
-import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
+
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
@@ -221,7 +218,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         // Check that minimum input is provided to generate an interval
         validate();
 
-        AfterMatchSkipStrategy skipStrategy = AfterMatchSkipStrategy.noSkip();//.skipPastLastEvent();//.skipToLast("1");
+        AfterMatchSkipStrategy skipStrategy = AfterMatchSkipStrategy.skipPastLastEvent();//.noSkip();//.skipToLast("1");
         Pattern<S, S> interval = Pattern.<S>begin("1",skipStrategy).subtype(sourceTypeClass);
 //        Pattern<S, S> interval = Pattern.<S>begin("1").subtype(sourceTypeClass);
         if (minOccurs != Integer.MAX_VALUE && maxOccurs != Integer.MIN_VALUE) // both upper and lower bounds set
@@ -241,9 +238,9 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         //   if (condition instanceof AbsoluteCondition) {
       //  if (condition != null && minOccurs == Integer.MAX_VALUE && maxOccurs == Integer.MIN_VALUE)
-            interval = interval.until(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Until));
+            interval = interval.until(new RelativeIterativeCondition<>(condition, RelativeIterativeCondition.ConditionContainer.Until));
 //        else
-//            interval = interval.where(new MyIterativeCondition<>(condition, MyIterativeCondition.ConditionContainer.Where));
+//            interval = interval.where(new RelativeIterativeCondition<>(condition, RelativeIterativeCondition.ConditionContainer.Where));
         PatternStream<S> pattern;
         if (!(sourceStream instanceof KeyedStream)) {
             pattern = CEP.pattern(sourceStream.keyBy(new KeySelector<S, String>() {
@@ -311,7 +308,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         if (sourceStream instanceof KeyedStream) {
            targetStream = ((KeyedStream)sourceStream).window(GlobalWindows.create())
                     .trigger(new GlobalWindowEventTimeTrigger())
-                    .process(new D2IAHomogeneousIntervalProcessorFunction<S,W>(minOccurs,maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand), TypeInformation.of(targetTypeClass));
+                    .process(new D2IAHomogeneousIntervalProcessorFunction<S,W>(minOccurs,maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, targetTypeClass), TypeInformation.of(targetTypeClass));
         }
 //        else
 //        {

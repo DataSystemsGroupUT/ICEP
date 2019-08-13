@@ -31,6 +31,7 @@ public class LinearRoadRunner {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.getConfig().setAutoWatermarkInterval(10);
+//        env.setParallelism(1);
 //        ParameterTool parameters = ParameterTool.fromArgs(args);
 //        DataStream<String> stringStream;
 //        String source = parameters.getRequired("source");
@@ -63,7 +64,7 @@ public class LinearRoadRunner {
 //            stringStream = env.addSource(new LinearRoadSource(fileName));
 //        }
        DataStream<String> stringStream = env.addSource(new LinearRoadSource("C:\\Work\\Data\\linear.csv"));
-        DataStream<SpeedEvent> speedStream = stringStream.map(new SpeedMapper());
+        DataStream<SpeedEvent> speedStream = stringStream.map(new SpeedMapper()).setParallelism(1);
         speedStream = speedStream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<SpeedEvent>() {
             private long maxTimestampSeen = 0;
             @Nullable
@@ -79,13 +80,9 @@ public class LinearRoadRunner {
                     maxTimestampSeen = Long.max(maxTimestampSeen,ts);
                 return ts;
             }
-        }).filter(new FilterFunction<SpeedEvent>() {
-            @Override
-            public boolean filter(SpeedEvent speedEvent) throws Exception {
-                return speedEvent.getKey().equals("266");
-            }
-        });
-        speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2", FileSystem.WriteMode.OVERWRITE).setParallelism(1);
+        })
+                .filter((FilterFunction<SpeedEvent>) speedEvent -> speedEvent.getKey().equals("266")).setParallelism(1);
+        //speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2", FileSystem.WriteMode.OVERWRITE).setParallelism(1);
 //        if (jobType.equals("ThresholdAbsolute"))
 //        {
 //            jobGenerateThresholdInterval(env,speedStream, runAs);
@@ -112,8 +109,13 @@ public class LinearRoadRunner {
         // Define Intervals
 
         // Threshold with absolute condition
-        runAs = "globalWindow";
-        jobGenerateThresholdInterval(env, speedStream, runAs);
+        long start = System.currentTimeMillis();
+        runAs = "CEP";
+        //jobGenerateThresholdInterval(env, speedStream, runAs);
+        //jobGenerateThresholdIntervalWithRelativeCondition(env, speedStream, runAs);
+        //jobGenerateAggregateIntervalWithRelativeCondition(env, speedStream, runAs);
+        jobGenerateDeltaIntervalWithRelativeCondition(env, speedStream, runAs);
+        System.out.println("Time taken: "+(System.currentTimeMillis() - start) +" ms");
         //jobGenerateThresholdIntervalWithRelativeCondition(env, speedStream, runAs);
     }
 
@@ -153,12 +155,14 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) value -> value.getKey());
+       // keyedSpeedStream.print().setParallelism(1);
         AbsoluteCondition cond1 = new AbsoluteCondition();
         AbsoluteCondition cond2 = new AbsoluteCondition();
         cond1.LHS(Operand.Last).operator(Operator.Multiply).RHS(0.1);
         cond2.LHS(Operand.Last).operator(Operator.Plus).RHS(cond1);
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
-                .source(speedStream)
+                .source(keyedSpeedStream)
                 .minOccurrences(2)
                 .targetType(SpeedThresholdInterval.class)
                 .condition(new RelativeCondition().LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(30)
@@ -179,14 +183,14 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedAggregateInterval> aggregateWithRelativeCondition =
                 new HomogeneousIntervalGenerator<>();
 
-
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) value -> value.getKey());
 
         aggregateWithRelativeCondition.sourceType(SpeedEvent.class)
-                .source(speedStream)
+                .source(keyedSpeedStream)
                 .minOccurrences(2)
                 // .within(Time.milliseconds(1000))
                 .targetType(SpeedAggregateInterval.class)
-                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(Operand.Average).relativeOperator(Operator.GreaterThanEqual).relativeRHS(75))
+                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(Operand.Average).relativeOperator(Operator.GreaterThanEqual).relativeRHS(67))
                 .outputValue(Operand.Average);
 
 
@@ -204,15 +208,25 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedDeltaInterval> deltaIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy(new KeySelector<SpeedEvent, String>() {
+            @Override
+            public String getKey(SpeedEvent value) throws Exception {
+
+                return value.getKey();
+
+            }
+        });
+
         AbsoluteCondition absoluteCondition = new AbsoluteCondition();
-        absoluteCondition.operator(Operator.Absolute).RHS(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.Minus).RHS(Operand.Min));
+        absoluteCondition.operator(Operator.Absolute).RHS(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.Minus).RHS(Operand.First));
 
         deltaIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
-                .source(speedStream)
-                .minOccurrences(2)
-                //   .within(Time.milliseconds(1000))
+                .source(keyedSpeedStream)
+               .minOccurrences(2)
+//                .produceOnlyMaximalIntervals(true)
+//                .within(Time.milliseconds(10000))
                 .targetType(SpeedDeltaInterval.class)
-                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(absoluteCondition).relativeOperator(Operator.GreaterThanEqual).relativeRHS(30))
+                .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(absoluteCondition).relativeOperator(Operator.GreaterThanEqual).relativeRHS(5))
                 .outputValue(Operand.Average);
 
 

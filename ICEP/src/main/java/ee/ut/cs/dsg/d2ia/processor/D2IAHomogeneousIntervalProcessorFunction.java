@@ -12,12 +12,14 @@ import java.util.*;
 
 public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I extends IntervalEvent> extends ProcessWindowFunction<E ,I , String, GlobalWindow> {
 
+    private Class<I> out;
     private int minOccurs, maxOccurs;
     private Condition condition;
     private ConditionEvaluator<E> conditionEvaluator;
     private long within;
     private Operand outputValueCalculator;
     private boolean generateMaximalInterval=false;
+    private boolean itemAdded=false;
 //    private int count;
 //    private double sum;
     //TODO: Let's check working with states later on to handle incomplete windows (frames)
@@ -45,6 +47,18 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
         this.generateMaximalInterval = generateMaximalInterval;
     }
 
+    public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, boolean generateMaximalInterval, Operand outputValue, Class<I> out)
+    {
+        this.minOccurs = minOccurs <= 0 || minOccurs == Integer.MAX_VALUE? Integer.MIN_VALUE: minOccurs;
+        this.maxOccurs = maxOccurs <= 0 || maxOccurs == Integer.MIN_VALUE? Integer.MAX_VALUE: maxOccurs;
+        this.condition = cnd;
+        this.conditionEvaluator = new ConditionEvaluator<>();
+        this.within = within==null? 0: within.toMilliseconds();
+        this.outputValueCalculator = outputValue== null? Operand.Average: outputValue;
+        this.generateMaximalInterval = generateMaximalInterval;
+        this.out = out;
+    }
+
 //    private boolean isOccurrencesConditionEffective()
 //    {
 //        return !(minOccurs==Integer.MIN_VALUE && maxOccurs==Integer.MAX_VALUE);
@@ -67,10 +81,12 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
     }
 
 
-    private void emitInterval(String s, ArrayList<E> elements, Collector<I> collector)
+    private void emitInterval(String s, ArrayList<E> elements, Collector<I> collector) throws Exception
     {
 
         if (elements.size() == 0 )
+            return;
+        if (!itemAdded && !generateMaximalInterval)
             return;
 
         double outputValue = 0;
@@ -105,7 +121,11 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
         long start, end;
         start = elements.get(0).getTimestamp();
         end = elements.get(elements.size()-1).getTimestamp();
-        I element = (I) new IntervalEvent(start,end, outputValue, outValueDescription, s);
+        I element;
+        if (out != null)
+            element = out.getDeclaredConstructor( long.class, long.class, double.class, String.class, String.class).newInstance(start, end, outputValue, outValueDescription, s);
+        else
+            element = (I) new IntervalEvent(start,end, outputValue, outValueDescription, s);
         collector.collect(element);
     }
     @Override
@@ -144,7 +164,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             boolean withinIntervalCheckPassed=true;
 
             event = sorted.get(i);
-
+            itemAdded=false;
 
 //            if (event.getTimestamp() > context.currentWatermark()) {
 ////                brokenFromLoop=true;
@@ -157,8 +177,14 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
 
             }
             else if (condition instanceof RelativeCondition)
+
             {
-                conditionPassed = conditionEvaluator.evaluateRelativeCondition((RelativeCondition) condition,currentFrame,event);
+                if (currentFrame.size() == 0) // we have to evaluate just the start condition
+                {
+                    conditionPassed = conditionEvaluator.evaluateCondition(((RelativeCondition) condition).getStartCondition(), event);
+                }
+                else
+                    conditionPassed = conditionEvaluator.evaluateRelativeCondition((RelativeCondition) condition,currentFrame,event);
 
             }
             if (previousEvent != null)
@@ -172,11 +198,15 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             {
                 if (withinIntervalCheckPassed) {
                     currentFrame.add(event);
+                    itemAdded=true;
                     if(evaluateOccurrencesCondition(currentFrame.size()) && !generateMaximalInterval)
                         emitInterval(s, currentFrame, collector);
                 }
                 else
                 {
+                    // we can emit in case we satisfy the occurrences condition
+                    if(evaluateOccurrencesCondition(currentFrame.size()))
+                        emitInterval(s, currentFrame, collector);
                     toBeEvicted.addAll(currentFrame);
                     currentFrame.clear();
                 }
@@ -184,32 +214,27 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends  RawEvent, I ext
             }
             else  // interval is broken based on values
             {
+                //There might be a case when the same interval is emitted twice
+                // If this was a relative condition and it was not passed we have to check again for the
                 if(evaluateOccurrencesCondition(currentFrame.size()))
                     emitInterval(s, currentFrame, collector);
                 // Either we are eligible to emit or not we have to clear the buffer as future items should belong to another frame
                 toBeEvicted.addAll(currentFrame);
                 currentFrame.clear();
+
+                if (condition instanceof RelativeCondition) // we have to evaluate the start condition
+                {
+                    conditionPassed = conditionEvaluator.evaluateCondition(((RelativeCondition) condition).getStartCondition(), event);
+                    if (conditionPassed)
+                        currentFrame.add(event);
+                    else
+                        toBeEvicted.add(event);
+                }
+                else
+                    toBeEvicted.add(event);
             }
 
-            //   if (conditionPassed && !withinIntervalCheckPassed & !occurrencesPassed) // we
-            // this was here for testing and shall be completely removed
-//            if (event.getValue() <= 20.0)
-//            {
-//                if (start==0) // we start a new interval
-//                    start = event.getTimestamp();
-//                end = event.getTimestamp();
-//                value+= event.getValue();
-//            }
-//            else
-//            {
-//                if (start !=0) {
-//                    //collector.collect(new Tuple4<>(o, start, end, value));
-//                    collector.collect( (I) new IntervalEvent(start, end, value, outputValueCalculator.toString(), s));
-//                    start = 0;
-//                    end = 0;
-//                    value = 0;
-//                }
-//            }
+
             previousEvent = sorted.get(i);
         }
 //        long keepuntilTs=context.currentWatermark();
