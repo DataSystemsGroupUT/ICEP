@@ -110,7 +110,7 @@ public class LinearRoadRunner {
 
         // Threshold with absolute condition
         long start = System.currentTimeMillis();
-        runAs = "CEP";
+        runAs = "window";
         //jobGenerateThresholdInterval(env, speedStream, runAs);
         //jobGenerateThresholdIntervalWithRelativeCondition(env, speedStream, runAs);
         //jobGenerateAggregateIntervalWithRelativeCondition(env, speedStream, runAs);
@@ -223,7 +223,7 @@ public class LinearRoadRunner {
         deltaIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(keyedSpeedStream)
                .minOccurrences(2)
-//                .produceOnlyMaximalIntervals(true)
+               .produceOnlyMaximalIntervals(true)
 //                .within(Time.milliseconds(10000))
                 .targetType(SpeedDeltaInterval.class)
                 .condition(new RelativeCondition().LHS(true).operator(Operator.Equals).RHS(true).relativeLHS(absoluteCondition).relativeOperator(Operator.GreaterThanEqual).relativeRHS(5))

@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/MyIterativeCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,8 +60,9 @@
     <session id="313588048">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
@@ -73,36 +71,36 @@
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="71" />
-          <entry key="java" value="149" />
-          <entry key="xml" value="5" />
+          <entry key="class" value="74" />
+          <entry key="java" value="151" />
+          <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="71" />
-          <entry key="JAVA" value="149" />
-          <entry key="XML" value="5" />
+          <entry key="CLASS" value="74" />
+          <entry key="JAVA" value="151" />
+          <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="28" />
-          <entry key="java" value="26403" />
-          <entry key="txt" value="308" />
-          <entry key="xml" value="26" />
+          <entry key="java" value="26527" />
+          <entry key="txt" value="392" />
+          <entry key="xml" value="173" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="26403" />
-          <entry key="PLAIN_TEXT" value="336" />
-          <entry key="XML" value="26" />
+          <entry key="JAVA" value="26527" />
+          <entry key="PLAIN_TEXT" value="420" />
+          <entry key="XML" value="173" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -110,15 +108,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="226" column="7" selection-start-line="225" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
-              <folding>
-                <element signature="e#2883#2884#0" expanded="true" />
-                <element signature="e#2953#2954#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -126,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="115" column="53" lean-forward="true" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
+            <state relative-caret-position="-288">
+              <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,18 +130,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/NotCondition.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
+            <state relative-caret-position="782">
               <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -156,10 +141,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="68">
               <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -169,28 +154,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/AndCondition.class">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="58" column="177" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="177" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/NFA.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="378" column="33" selection-start-line="378" selection-start-column="33" selection-end-line="378" selection-end-column="33" />
+            <state relative-caret-position="238">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding>
+                <element signature="n#transformers#0;n#configuration#0;n#execution#0;n#executions#0;n#plugin#1;n#plugins#0;n#build#0;n#project#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,8 +168,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="220" column="86" selection-start-line="220" selection-start-column="86" selection-end-line="220" selection-end-column="86" />
+            <state relative-caret-position="1378">
+              <caret line="267" column="28" selection-start-line="267" selection-start-column="28" selection-end-line="267" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,13 +178,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.8.0/flink-cep_2.11-1.8.0.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
+            <state relative-caret-position="102">
               <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#2596#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -283,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/trigger/EventTimeTrigger.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/trigger/GlobalWindowEventTimeTrigger.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/evictor/WatermarkEvictor.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAProcessorFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" />
@@ -293,10 +259,11 @@
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/MyIterativeCondition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" />
       </list>
     </option>
   </component>
@@ -320,70 +287,30 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="D2IA" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="Run Configurations" type="21c1f71a:MavenProjectsStructure$RunConfigurationsNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="D2IA" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-          <item name="org.apache.flink:flink-cep_2.11:1.6.1" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
         </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="1273" />
+    <option name="width" value="1294" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <showMembers Scope="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ee" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -394,227 +321,33 @@
             <path>
               <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="lib" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="condition" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="event" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="generator" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="processor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="processor" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="D2IAHomogeneousIntervalProcessorFunction" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="d2ia" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="trigger" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="event" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="linearroad" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="linearroad" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="LinearRoadRunner" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="source" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ICEP" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ee" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ut" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="cs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="dsg" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Main" type="1a9f42e2:ClassTreeNode" />
+              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -626,12 +359,12 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565697749819" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565878612064" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../BigDataManagementMapReduce" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Flink-Stream-SQL-Examples" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.508046" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
@@ -654,19 +387,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.LinearRoadRunner">
-    <configuration name="LinearRoadKafkaDataProducer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataProducer" />
-      <module name="ICEP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.datagenerator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
@@ -681,18 +401,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.Main" />
-      <module name="ICEP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ee.ut.cs.dsg.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="D2IA [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="D2IA [compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <configuration name="D2IA [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
@@ -745,19 +502,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.LinearRoadRunner" />
-      <item itemvalue="Application.LinearRoadKafkaDataProducer" />
       <item itemvalue="Maven.ICEP [package]" />
+      <item itemvalue="Maven.D2IA [clean]" />
+      <item itemvalue="Maven.D2IA [compile]" />
       <item itemvalue="Maven.D2IA [install]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.LinearRoadRunner" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Maven.ICEP [package]" />
-        <item itemvalue="Application.LinearRoadKafkaDataProducer" />
         <item itemvalue="Maven.D2IA [install]" />
+        <item itemvalue="Maven.D2IA [clean]" />
+        <item itemvalue="Maven.ICEP [package]" />
+        <item itemvalue="Maven.D2IA [compile]" />
       </list>
     </recent_temporary>
   </component>
@@ -814,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565361268644</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updates to linear road tests and fixes to both CEP and window based D2IA operators">
+      <created>1565698184752</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1565698184752</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -830,17 +594,16 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23688394" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17845787" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.3299532" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.22386895" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995005" weight="0.44305772" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4995005" visible="true" weight="0.44305772" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31591263" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -850,6 +613,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004995" side_tool="true" weight="0.3816717" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.16848674" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.3299532" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -857,7 +621,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" weight="0.21778221" />
+      <window_info anchor="right" id="Maven Projects" order="7" visible="true" weight="0.097774245" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20939597" />
@@ -897,7 +661,8 @@
     <MESSAGE value="Adding linear road example." />
     <MESSAGE value="Adding implementation of the single-buffer (global window) D2IA Homogeneous operator implementation" />
     <MESSAGE value="Changes to linear road example" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to linear road example" />
+    <MESSAGE value="Updates to linear road tests and fixes to both CEP and window based D2IA operators" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates to linear road tests and fixes to both CEP and window based D2IA operators" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -940,7 +705,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java</url>
-          <line>279</line>
+          <line>286</line>
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
@@ -1048,22 +813,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/ComputationState.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/NFAState.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/DeweyNumber.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/compiler/NFAStateNameHandler.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/api/datastream/AllWindowedStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1124,13 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="9" selection-start-line="20" selection-start-column="8" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="21" selection-start-line="92" selection-start-column="12" selection-end-line="108" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1229,9 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-          <folding>
-            <element signature="method#run#0;class#HeterogeneousIntervalGenerator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1302,11 +1041,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1327,41 +1061,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/AndCondition.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/NFA.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="378" column="33" selection-start-line="378" selection-start-column="33" selection-end-line="378" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="699">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/NotCondition.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1372,48 +1075,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="115" column="53" lean-forward="true" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="226" column="7" selection-start-line="225" selection-start-column="7" selection-end-line="226" selection-end-column="7" />
-          <folding>
-            <element signature="e#2883#2884#0" expanded="true" />
-            <element signature="e#2953#2954#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="58" column="177" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="177" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#2596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="220" column="86" selection-start-line="220" selection-start-column="86" selection-end-line="220" selection-end-column="86" />
+        <state relative-caret-position="782">
+          <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1422,11 +1087,107 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="68">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/AndCondition.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/NFA.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5712">
+          <caret line="378" column="33" selection-start-line="378" selection-start-column="33" selection-end-line="378" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/NotCondition.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-288">
+          <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.8.0/flink-cep_2.11-1.8.0.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.11/1.8.0/flink-runtime_2.11-1.8.0.jar!/org/apache/flink/runtime/taskmanager/Task.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="361" selection-start-line="361" selection-end-line="361" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="n#transformers#0;n#configuration#0;n#execution#0;n#executions#0;n#plugin#1;n#plugins#0;n#build#0;n#project#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/Pattern.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1378">
+          <caret line="267" column="28" selection-start-line="267" selection-start-column="28" selection-end-line="267" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1487,6 +1248,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1506,11 +1268,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <last-edited>Maven: com.esotericsoftware.kryo:kryo:2.24.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.508046" />
               </list>
             </option>
           </splitter-proportions>
