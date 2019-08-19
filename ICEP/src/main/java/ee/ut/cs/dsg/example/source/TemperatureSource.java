@@ -63,7 +63,7 @@ public class TemperatureSource implements SourceFunction<TemperatureEvent> {
 //            long randomTimestamp = timestampFrom + (long) (random.nextDouble() * timeRange);
             long timestamp = System.currentTimeMillis();
             temperatureEvent = new TemperatureEvent(id, timestamp, temperature);
-
+       //     System.out.println(temperatureEvent);
             sourceContext.collectWithTimestamp(temperatureEvent, timestamp);
             Thread.sleep(pause);
         }

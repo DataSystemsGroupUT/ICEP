@@ -8,11 +8,13 @@ package ee.ut.cs.dsg.example.event;
 
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 
+import java.io.Serializable;
+
 /**
  * @author MKamel
  */
 
-public class TemperatureWarning extends IntervalEvent {
+public class TemperatureWarning extends IntervalEvent implements Serializable {
 
 
     public TemperatureWarning(long sts, long ets, double value, String valueDescriptor, String key) {

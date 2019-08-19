@@ -6,6 +6,7 @@
 package ee.ut.cs.dsg.example;
 
 import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
+import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
 import ee.ut.cs.dsg.example.event.*;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
@@ -21,6 +22,9 @@ import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.tuple.Tuple3;
+import org.apache.flink.api.java.tuple.Tuple5;
+import org.apache.flink.api.java.typeutils.TupleTypeInfo;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
@@ -29,11 +33,15 @@ import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.table.api.Table;
+import org.apache.flink.table.api.Types;
+import org.apache.flink.table.api.java.StreamTableEnvironment;
 
 //import org.uniTartu.cep.interval2.events.TemperatureEvent;
 //import org.uniTartu.cep.interval2.events.TemperatureWarning;
@@ -62,7 +70,10 @@ public class Main {
 
 //        testHomogeneousIntervals();
 
-        testGlobalWindowWithFixedDataSet();
+    //    testGlobalWindowWithFixedDataSet();
+
+      //  testMatchRecognize();
+         testSQLWithFixedDataSet();
     }
 
     private static void testHeterogenousIntervals() throws Exception {
@@ -477,6 +488,76 @@ public class Main {
         env.execute("Interval generator via global windows");
     }
 
+    private static void testSQLWithFixedDataSet() throws Exception
+    {
+
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.getConfig().setAutoWatermarkInterval(10);
+
+//        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
+//
+//        myTemps.add(new TemperatureEvent("1", 1, 20));
+//        myTemps.add(new TemperatureEvent("1", 2, 20));
+//        myTemps.add(new TemperatureEvent("1", 3, 20));
+//        myTemps.add(new TemperatureEvent("1", 4, 21));
+//        myTemps.add(new TemperatureEvent("W", 4, 21));
+//        myTemps.add(new TemperatureEvent("1", 5, 20));
+//        myTemps.add(new TemperatureEvent("1", 6, 20));
+//        myTemps.add(new TemperatureEvent("1", 7, 20));
+//        myTemps.add(new TemperatureEvent("1", 8, 20));
+//        myTemps.add(new TemperatureEvent("1", 9, 20));
+//        myTemps.add(new TemperatureEvent("W", 9, 21));
+//        myTemps.add(new TemperatureEvent("1", 10, 20));
+//        myTemps.add(new TemperatureEvent("1", 11, 20));
+//        myTemps.add(new TemperatureEvent("1", 12, 20));
+//        myTemps.add(new TemperatureEvent("1", 13, 20));
+//        myTemps.add(new TemperatureEvent("W", 14, 21));
+
+
+        DataStream<TemperatureEvent> inputEventStream = env.addSource(new FixedSource());
+//        DataStream<TemperatureEvent> inputEventStream = env.fromCollection(myTemps).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+//            private long maxTimestampSeen = 0;
+//            @Nullable
+//            @Override
+//            public Watermark getCurrentWatermark() {
+//                return new Watermark(maxTimestampSeen);
+//            }
+//
+//            @Override
+//            public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
+//                long ts = temperatureEvent.getTimestamp();
+//                if (temperatureEvent.getKey().equals("W"))
+//                    maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+//                return ts;
+//            }
+//        });
+
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy(new KeySelector<TemperatureEvent, String>() {
+            @Override
+            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
+                return temperatureEvent.getKey();
+            }
+        });
+
+        HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
+        testGenerator.source(keyedTemperatureStream)
+                .sourceType(TemperatureEvent.class)
+                .targetType(TemperatureWarning.class)
+                .minOccurrences(2)
+     //           .maxOccurrences(-1)
+                .outputValue(Operand.Last)
+                .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
+                //      .produceOnlyMaximalIntervals(true)
+                .within(Time.milliseconds(5));
+
+        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithSQL(env);
+        warningsIntervalStream.print();
+        env.execute("Interval generator via flink sql match recognize");
+    }
+
     private static void testGlobalWindow() throws Exception
     {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -600,5 +681,76 @@ public class Main {
         warningsIntervalStream.print();
         env.execute("Interval generator via global windows");
 
+    }
+
+    private static void testMatchRecognize() throws Exception
+    {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+
+        StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
+
+//        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new FixedSource());
+        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1,2,18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+            private long maxTimestampSeen = 0;
+            @Nullable
+            @Override
+            public Watermark getCurrentWatermark() {
+                return new Watermark(maxTimestampSeen);
+            }
+
+            @Override
+            public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
+                long ts = temperatureEvent.getTimestamp();
+                maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+                return ts;
+            }
+        });
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy((KeySelector<TemperatureEvent, String>) temperatureEvent -> temperatureEvent.getKey());
+
+        TupleTypeInfo<Tuple3<String, Double, Long>> inputTupleInfo = new TupleTypeInfo<>(
+                Types.STRING(),
+                Types.DOUBLE(),
+                Types.LONG()
+        );
+        tableEnv.registerDataStream("RawEvents",
+                keyedTemperatureStream.map((MapFunction<TemperatureEvent, Tuple3<String, Double, Long>>) temperatureEvent -> new Tuple3<>(temperatureEvent.getKey(),temperatureEvent.getValue(),temperatureEvent.getTimestamp())).returns(inputTupleInfo),
+                "ID, val, rowtime.rowtime"
+        );
+
+        Table intervalResult = tableEnv.sqlQuery("Select ID, sts, ets, intervalValue,valueDescription \n" +
+                "From RawEvents\n" +
+                "Match_Recognize(\n" +
+                "PARTITION BY ID\n" +
+                "ORDER BY rowtime\n" +
+                "MEASURES\n" +
+                "A.ID as id,\n" +
+                "FIRST(A.rowtime) AS sts,\n" +
+                "LAST(A.rowtime) AS ets,\n" +
+                "AVG(A.val) as intervalValue,\n" +
+                "'average' AS valueDescription\n" +
+                "PATTERN ( A+ B)\n" +
+                "DEFINE\n" +
+                "A As A.val > 18,\n" +
+                "B As true\n"+
+                ")"
+        );
+
+        intervalResult.printSchema();
+
+        TupleTypeInfo<Tuple5<String, Timestamp, Timestamp, Double, String>> tupleTypeInterval = new TupleTypeInfo<>(
+                Types.STRING(),
+                Types.SQL_TIMESTAMP(),
+                Types.SQL_TIMESTAMP(),
+                Types.DOUBLE(),
+                Types.STRING()
+        );
+
+        DataStream<Tuple5<String, Timestamp, Timestamp, Double, String>> queryResultAsStream = tableEnv.toAppendStream(intervalResult, tupleTypeInterval);
+
+     //   queryResultAsStream.print();
+      queryResultAsStream.map((MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, IntervalEvent>) tuple -> new IntervalEvent(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0 )).print();
+
+        env.execute("D2IA via Match Recognize");
     }
 }
