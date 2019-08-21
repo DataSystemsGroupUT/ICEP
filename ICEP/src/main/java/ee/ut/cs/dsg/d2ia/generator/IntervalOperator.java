@@ -15,6 +15,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author MKamel
@@ -72,29 +73,11 @@ public class IntervalOperator<L extends IntervalEvent, R extends IntervalEvent> 
 //                    return l.getKey();
 //                }
 //            });
-        DataStream<Match> matchStream =
-
-        leftStream.join(rightStream)
-                .where(new KeySelector<L, String>() {
-                    @Override
-                    public String getKey(L l) throws Exception {
-                        return l.getKey();
-                    }
-                })
-                .equalTo(new KeySelector<R, String>() {
-                    @Override
-                    public String getKey(R l) throws Exception {
-                        return l.getKey();
-                    }
-                })
+        return leftStream.join(rightStream)
+                .where((KeySelector<L, String>) IntervalEvent::getKey)
+                .equalTo((KeySelector<R, String>) IntervalEvent::getKey)
                 .window(TumblingEventTimeWindows.of(time))
-                .apply(new IntervalOperatorJoinFunction<>(filterForMatchTypes)).filter(new FilterFunction<Match>() {
-            @Override
-            public boolean filter(Match match) throws Exception {
-                return match != null;
-            }
-        });
-        return matchStream;
+                .apply(new IntervalOperatorJoinFunction<>(filterForMatchTypes)).filter((FilterFunction<Match>) Objects::nonNull);
     }
 
 //    public IntervalEvent rightIntervalStream;

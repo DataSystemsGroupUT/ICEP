@@ -24,7 +24,7 @@ public abstract class RawEvent implements Serializable {
         value = v;
         key = "dummy";
     }
-    public RawEvent(String k, long ts, double v)
+    protected RawEvent(String k, long ts, double v)
     {
         this.key = k;
         timestamp = ts;

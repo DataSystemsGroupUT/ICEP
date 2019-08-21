@@ -34,7 +34,7 @@ public class TemperatureEvent extends RawEvent {
         return 41 * super.hashCode() + Double.hashCode(value);
     }
 
-    public boolean canEquals(Object obj){
+    private boolean canEquals(Object obj){
         return obj instanceof TemperatureEvent;
     }
 

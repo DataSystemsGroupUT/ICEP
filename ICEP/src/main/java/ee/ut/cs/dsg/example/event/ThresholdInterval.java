@@ -52,8 +52,7 @@ public class ThresholdInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","ThresholdInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","ThresholdInterval");
     }
 
 

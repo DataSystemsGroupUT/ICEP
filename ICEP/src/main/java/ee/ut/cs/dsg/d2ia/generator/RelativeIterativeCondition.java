@@ -2,12 +2,7 @@ package ee.ut.cs.dsg.d2ia.generator;
 
 import ee.ut.cs.dsg.d2ia.condition.*;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
-import org.apache.commons.math3.analysis.function.Abs;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
-
-
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 
 public class RelativeIterativeCondition<S extends RawEvent> extends IterativeCondition<S> {
 

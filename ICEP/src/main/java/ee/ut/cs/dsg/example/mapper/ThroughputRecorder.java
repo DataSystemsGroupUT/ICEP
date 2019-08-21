@@ -3,7 +3,6 @@ package ee.ut.cs.dsg.example.mapper;
 import ee.ut.cs.dsg.example.event.TemperatureEvent;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.configuration.Configuration;
-import org.apache.flink.dropwizard.metrics.DropwizardMeterWrapper;
 import org.apache.flink.metrics.Meter;
 import org.apache.flink.metrics.MeterView;
 

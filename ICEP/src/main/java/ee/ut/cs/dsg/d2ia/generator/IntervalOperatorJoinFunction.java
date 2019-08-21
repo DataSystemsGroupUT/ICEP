@@ -5,7 +5,7 @@ import org.apache.flink.api.common.functions.JoinFunction;
 
 import java.util.List;
 
-public class IntervalOperatorJoinFunction<L extends IntervalEvent, R extends IntervalEvent> implements JoinFunction<L,R, Match> {
+class IntervalOperatorJoinFunction<L extends IntervalEvent, R extends IntervalEvent> implements JoinFunction<L,R, Match> {
     private List<Match.MatchType> filterForMatchTypes;
 
     public IntervalOperatorJoinFunction(List<Match.MatchType> keepThose) {

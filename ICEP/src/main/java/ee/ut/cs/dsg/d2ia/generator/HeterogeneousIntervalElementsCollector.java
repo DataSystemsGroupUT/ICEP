@@ -34,8 +34,7 @@ public class HeterogeneousIntervalElementsCollector<W extends IntervalEvent> imp
         start = startEvent.getTimestamp();
         end = endEvent.getTimestamp();
 
-        W element = out.getDeclaredConstructor( long.class, long.class, double.class, String.class, String.class).newInstance(start, end, 0, "", startEvent.getKey());
-        return element;
+        return out.getDeclaredConstructor( long.class, long.class, double.class, String.class, String.class).newInstance(start, end, 0, "", startEvent.getKey());
 
     }
 }

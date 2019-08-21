@@ -52,8 +52,7 @@ public class DeltaInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","DeltaInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","DeltaInterval");
     }
 
 

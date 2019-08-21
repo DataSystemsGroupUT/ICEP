@@ -7,14 +7,7 @@ package ee.ut.cs.dsg.example.source;
 
 import ee.ut.cs.dsg.example.event.TemperatureEvent;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
-import org.apache.flink.configuration.Configuration;
-import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;
-
-
-import java.util.Date;
 import java.util.Random;
 
 import org.apache.flink.streaming.api.functions.source.SourceFunction;

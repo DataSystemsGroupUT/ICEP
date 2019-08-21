@@ -20,7 +20,6 @@ public class SpeedAggregateInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","SpeedAggregateInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","SpeedAggregateInterval");
     }
 }

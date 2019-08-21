@@ -28,10 +28,9 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         String conditionString = condition.parse(0,0,0,0,0,0,s.getValue());
 
 
-        boolean result = (boolean) engine.eval(conditionString);
-        return result;
+        return (boolean) engine.eval(conditionString);
     }
-    public void resetStats()
+    private void resetStats()
     {
         count=0;
         sum = 0d;

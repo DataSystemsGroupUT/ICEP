@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
+    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="Implementing the relative condition part of D2IA homogeneous interval operator using Flink's SQL Match Recognize">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/mapper/TupleToIntervalMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalElementsCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalElementsCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperatorJoinFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperatorJoinFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/mapper/ThroughputRecorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/mapper/ThroughputRecorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/PowerSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/PowerSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/TemperatureSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/TemperatureSource.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,30 +100,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="84" />
-          <entry key="java" value="168" />
+          <entry key="class" value="85" />
+          <entry key="java" value="209" />
           <entry key="xml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="84" />
-          <entry key="JAVA" value="168" />
+          <entry key="CLASS" value="85" />
+          <entry key="JAVA" value="209" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="28" />
-          <entry key="java" value="29719" />
-          <entry key="txt" value="452" />
+          <entry key="java" value="30568" />
+          <entry key="txt" value="604" />
           <entry key="xml" value="178" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="29719" />
-          <entry key="PLAIN_TEXT" value="480" />
+          <entry key="JAVA" value="30568" />
+          <entry key="PLAIN_TEXT" value="632" />
           <entry key="XML" value="178" />
         </counts>
       </usages-collector>
@@ -109,110 +133,110 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="555" column="28" selection-start-line="555" selection-start-column="28" selection-end-line="555" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#23571#23572#0" expanded="true" />
-                <element signature="e#23641#23642#0" expanded="true" />
-                <element signature="e#29909#29910#0" expanded="true" />
-                <element signature="e#29979#29980#0" expanded="true" />
-                <marker date="1566220486714" expanded="true" signature="13034:13648" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="198" column="111" selection-start-line="198" selection-start-column="111" selection-end-line="198" selection-end-column="111" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="214" column="106" selection-start-line="214" selection-start-column="106" selection-end-line="214" selection-end-column="107" />
+            <state relative-caret-position="476">
+              <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="624" selection-start-line="624" selection-end-line="624" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#runWithGlobalWindow#0;class#HomogeneousIntervalGenerator#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-table-planner_2.11/1.8.1/flink-table-planner_2.11-1.8.1.jar!/org/apache/flink/table/api/java/StreamTableEnvironment.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/AbsoluteCondition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            <state relative-caret-position="357">
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/api/datastream/DataStream.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="84" column="13" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/sql/Timestamp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="71" column="43" lean-forward="true" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/Date.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            <state relative-caret-position="374">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
               <folding>
-                <element signature="e#37718#37719#0" expanded="true" />
-                <element signature="e#37754#37755#0" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/jre/lib/rt.jar!/sun/reflect/generics/reflectiveObjects/NotImplementedException.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+            <state relative-caret-position="374">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+              <folding>
+                <element signature="e#731#732#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="58" column="125" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="125" />
+            <state relative-caret-position="153">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+              <folding>
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="579">
+              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+              <folding>
+                <element signature="e#1285#1286#0" expanded="true" />
+                <element signature="e#1369#1370#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -246,15 +270,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/events/IntervalEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/Match.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/HomogeneousIntervalGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/event/TemperatureWarning.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/event/PowerWarning.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/MyIterativeCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/condition/RelativeCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperatorJoinFunction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ut/ee/icep/generator/IntervalOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ut/ee/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/icep/generator/MyIterativeCondition.java" />
@@ -265,38 +280,47 @@
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Condition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Operand.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/AbsoluteCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/mapper/ThroughputRecorder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/AccelerationEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/trigger/EventTimeTrigger.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/trigger/GlobalWindowEventTimeTrigger.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/evictor/WatermarkEvictor.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAProcessorFunction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/MyIterativeCondition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/TemperatureSource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/mapper/TupleToIntervalMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/PowerSource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperatorJoinFunction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalElementsCollector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/AbsoluteCondition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" />
       </list>
     </option>
   </component>
@@ -332,9 +356,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1294" />
-    <option name="height" value="1407" />
+    <option name="x" value="1280" />
+    <option name="width" value="1280" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -383,35 +407,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dsg" type="462c0819:PsiDirectoryNode" />
-              <item name="d2ia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dsg" type="462c0819:PsiDirectoryNode" />
-              <item name="d2ia" type="462c0819:PsiDirectoryNode" />
-              <item name="condition" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dsg" type="462c0819:PsiDirectoryNode" />
-              <item name="d2ia" type="462c0819:PsiDirectoryNode" />
-              <item name="generator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dsg" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -422,7 +417,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dsg" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="Main" type="1a9f42e2:ClassTreeNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -462,12 +457,13 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566220685451" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566394509075" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Flink-Stream-SQL-Examples" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.508046" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
@@ -676,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565879711748</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="A first implementation of D2IA homogeneous interval operator using Flink SQL Match Recognize">
+      <created>1566221827964</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566221827964</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -701,7 +704,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.22386895" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4995005" visible="true" weight="0.44305772" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995005" weight="0.44305772" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31591263" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -711,7 +714,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004995" side_tool="true" weight="0.3816717" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.16848674" />
-      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.3299532" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="12" visible="true" weight="0.3299532" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -761,26 +764,22 @@
     <MESSAGE value="Changes to linear road example" />
     <MESSAGE value="Updates to linear road tests and fixes to both CEP and window based D2IA operators" />
     <MESSAGE value="Upgrading to Flink 1.8.1 to start using SQL match recognize" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrading to Flink 1.8.1 to start using SQL match recognize" />
+    <MESSAGE value="A first implementation of D2IA homogeneous interval operator using Flink SQL Match Recognize" />
+    <MESSAGE value="Implementing the relative condition part of D2IA homogeneous interval operator using Flink's SQL Match Recognize" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing the relative condition part of D2IA homogeneous interval operator using Flink's SQL Match Recognize" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
-          <line>127</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java</url>
-          <line>69</line>
+          <line>64</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java</url>
-          <line>24</line>
+          <line>23</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -791,30 +790,6 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
-          <line>619</line>
-          <properties />
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
-          <line>191</line>
-          <properties />
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java</url>
-          <line>364</line>
-          <properties />
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
-          <line>455</line>
-          <properties />
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java</url>
           <line>29</line>
           <properties />
@@ -822,45 +797,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>144</line>
+          <line>132</line>
           <properties />
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java</url>
-          <line>23</line>
+          <line>20</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>208</line>
+          <line>185</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java</url>
-          <line>67</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>218</line>
+          <line>194</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>201</line>
+          <line>180</line>
           <properties />
           <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java</url>
-          <line>555</line>
-          <properties />
-          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -918,170 +887,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="38" column="47" lean-forward="true" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/api/datastream/WindowedStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="397" column="45" selection-start-line="397" selection-start-column="45" selection-end-line="397" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/api/windowing/time/Time.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/Match.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="70" column="28" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-          <folding>
-            <element signature="method#run#0;class#HeterogeneousIntervalGenerator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.11/1.6.1/flink-runtime_2.11-1.6.1.jar!/org/apache/flink/runtime/concurrent/akka/ActorSystemScheduledExecutorAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/runtime/operators/TimestampsAndPeriodicWatermarksOperator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/api/operators/StreamSource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="562" selection-start-line="562" selection-end-line="562" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#797#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/PatternStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/api/functions/windowing/ProcessWindowFunction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.6.1/flink-streaming-java_2.11-1.6.1.jar!/org/apache/flink/streaming/runtime/operators/windowing/functions/InternalIterableProcessWindowFunction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/AndCondition.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/NFA.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5712">
-          <caret line="378" column="33" selection-start-line="378" selection-start-column="33" selection-end-line="378" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/nfa/aftermatch/AfterMatchSkipStrategy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/pattern/conditions/NotCondition.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-runtime_2.11/1.8.0/flink-runtime_2.11-1.8.0.jar!/org/apache/flink/runtime/taskmanager/Task.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4131">
@@ -1093,26 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="115" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1130,13 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="222" column="44" selection-start-line="222" selection-start-column="44" selection-end-line="222" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1199,41 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/AbsoluteCondition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Operator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Condition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Operand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="58" column="125" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/jre/lib/rt.jar!/sun/reflect/generics/reflectiveObjects/NotImplementedException.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1256,13 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
           <caret line="71" column="43" lean-forward="true" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1290,29 +1026,283 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="555" column="28" selection-start-line="555" selection-start-column="28" selection-end-line="555" selection-end-column="28" />
+        <state relative-caret-position="182">
+          <caret line="228" column="12" lean-forward="true" selection-start-line="228" selection-start-column="12" selection-end-line="228" selection-end-column="12" />
+          <folding>
+            <element signature="e#10065#10066#0" expanded="true" />
+            <element signature="e#10148#10149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Operator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Operand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.8.1/flink-core-1.8.1.jar!/org/apache/flink/api/common/functions/MapFunction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/mapper/TupleToIntervalMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="166" selection-start-line="17" selection-start-column="166" selection-end-line="17" selection-end-column="166" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#23571#23572#0" expanded="true" />
-            <element signature="e#23641#23642#0" expanded="true" />
-            <element signature="e#29909#29910#0" expanded="true" />
-            <element signature="e#29979#29980#0" expanded="true" />
-            <marker date="1566220486714" expanded="true" signature="13034:13648" ph="..." />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="214" column="106" selection-start-line="214" selection-start-column="106" selection-end-line="214" selection-end-column="107" />
+        <state relative-caret-position="464">
+          <caret line="388" column="63" selection-start-line="388" selection-start-column="63" selection-end-line="388" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#runWithGlobalWindow#0;class#HomogeneousIntervalGenerator#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/PowerSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="174" column="14" lean-forward="true" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/Condition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperatorJoinFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/Match.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding>
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/evictor/WatermarkEvictor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding>
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1345#1346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="120" column="20" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/IntervalOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding>
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1339#1340#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding>
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding>
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+          <folding>
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding>
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1369#1370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/AccelerationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/AbsoluteCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="624" selection-start-line="624" selection-end-line="624" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="198" column="111" selection-start-line="198" selection-start-column="111" selection-end-line="198" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
         </state>
       </provider>
     </entry>

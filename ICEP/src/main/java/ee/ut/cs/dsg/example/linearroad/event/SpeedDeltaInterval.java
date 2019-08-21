@@ -20,7 +20,6 @@ public class SpeedDeltaInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","SpeedDeltaInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","SpeedDeltaInterval");
     }
 }

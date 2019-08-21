@@ -4,26 +4,21 @@ import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
 import ee.ut.cs.dsg.example.linearroad.event.*;
 import ee.ut.cs.dsg.example.linearroad.mapper.SpeedMapper;
 import ee.ut.cs.dsg.example.linearroad.source.LinearRoadSource;
 import org.apache.flink.api.common.functions.FilterFunction;
-import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.utils.ParameterTool;
-import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.watermark.Watermark;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 
 import javax.annotation.Nullable;
-import java.util.Properties;
 
 public class LinearRoadRunner {
 
@@ -67,7 +62,7 @@ public class LinearRoadRunner {
         DataStream<SpeedEvent> speedStream = stringStream.map(new SpeedMapper()).setParallelism(1);
         speedStream = speedStream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<SpeedEvent>() {
             private long maxTimestampSeen = 0;
-            @Nullable
+
             @Override
             public Watermark getCurrentWatermark() {
                 return new Watermark(maxTimestampSeen);
@@ -123,14 +118,7 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
-        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy(new KeySelector<SpeedEvent, String>() {
-            @Override
-            public String getKey(SpeedEvent value) throws Exception {
-
-                return value.getKey();
-
-            }
-        });
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) RawEvent::getKey);
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(keyedSpeedStream)
                 .targetType(SpeedThresholdInterval.class)
@@ -155,7 +143,7 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
-        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) value -> value.getKey());
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) RawEvent::getKey);
        // keyedSpeedStream.print().setParallelism(1);
         AbsoluteCondition cond1 = new AbsoluteCondition();
         AbsoluteCondition cond2 = new AbsoluteCondition();
@@ -183,7 +171,7 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedAggregateInterval> aggregateWithRelativeCondition =
                 new HomogeneousIntervalGenerator<>();
 
-        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) value -> value.getKey());
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) RawEvent::getKey);
 
         aggregateWithRelativeCondition.sourceType(SpeedEvent.class)
                 .source(keyedSpeedStream)
@@ -208,14 +196,7 @@ public class LinearRoadRunner {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedDeltaInterval> deltaIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
-        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy(new KeySelector<SpeedEvent, String>() {
-            @Override
-            public String getKey(SpeedEvent value) throws Exception {
-
-                return value.getKey();
-
-            }
-        });
+        KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) RawEvent::getKey);
 
         AbsoluteCondition absoluteCondition = new AbsoluteCondition();
         absoluteCondition.operator(Operator.Absolute).RHS(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.Minus).RHS(Operand.First));

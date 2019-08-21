@@ -26,9 +26,6 @@ public class PowerSource extends RichParallelSourceFunction<PowerEvent> {
     private boolean running = true;
     private final int maxRackId;
     private final long pause;
-    private Random random;
-    private int shard;
-    private int offset;
 
     public PowerSource(int maxRackId, long pause,  double powerStd, double powerMean) {
         this.maxRackId = maxRackId;
@@ -42,10 +39,10 @@ public class PowerSource extends RichParallelSourceFunction<PowerEvent> {
         int numberTasks = getRuntimeContext().getNumberOfParallelSubtasks();
         int index = getRuntimeContext().getIndexOfThisSubtask();
 
-        offset = (int) ((double) maxRackId/ numberTasks * index);
-        shard = (int) ((double) maxRackId/ numberTasks * (index + 1)) - offset;
+        int offset = (int) ((double) maxRackId / numberTasks * index);
+        int shard = (int) ((double) maxRackId / numberTasks * (index + 1)) - offset;
 
-        random = new Random();
+        Random random = new Random();
     }
 
     @Override

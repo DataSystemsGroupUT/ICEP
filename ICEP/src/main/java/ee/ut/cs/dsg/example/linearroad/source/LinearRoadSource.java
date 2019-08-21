@@ -3,7 +3,6 @@ package ee.ut.cs.dsg.example.linearroad.source;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URL;
 
 public class LinearRoadSource implements SourceFunction<String> {
@@ -32,8 +31,8 @@ public class LinearRoadSource implements SourceFunction<String> {
                 reader = new BufferedReader(new FileReader(filePath));
             }
             String line;
-            line = reader.readLine();
             line = reader.readLine();//skip the header line
+            line = reader.readLine();
             while (running && line != null) {
                 sourceContext.collect(line.replace("[","").replace("]",""));
                 line=reader.readLine();

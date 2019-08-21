@@ -5,8 +5,8 @@
  */
 package ee.ut.cs.dsg.d2ia.generator;
 
-/**
- * @author MKamel
+/*
+  @author MKamel
  */
 
 import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
@@ -14,9 +14,9 @@ import ee.ut.cs.dsg.d2ia.condition.Condition;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
+import ee.ut.cs.dsg.d2ia.mapper.TupleToIntervalMapper;
 import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
 import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
-import ee.ut.cs.dsg.example.event.TemperatureEvent;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.api.java.tuple.Tuple5;
@@ -43,8 +43,6 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.Types;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
-import org.apache.flink.util.Collector;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
 public class HomogeneousIntervalGenerator<S extends RawEvent, W extends IntervalEvent> implements Serializable {
@@ -181,11 +179,12 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         // start registering the streams
 
-        KeyedStream<S, String> keyedStream;
+        KeyedStream keyedStream;
         if (!(sourceStream instanceof KeyedStream)) {
-            keyedStream = sourceStream.keyBy((KeySelector<S, String>) value -> value.getKey());
-        } else
+            keyedStream = sourceStream.keyBy((KeySelector<S, String>) RawEvent::getKey);
+        } else {
             keyedStream = (KeyedStream) sourceStream;
+        }
 
 
         // Define the type info to avoid type info vanishing during transformations
@@ -212,7 +211,8 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         DataStream<Tuple5<String, Timestamp, Timestamp, Double, String>> queryResultAsStream = tableEnv.toAppendStream(intervalResult, tupleTypeInterval);
 
-        return queryResultAsStream.map((MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, W>) tuple -> targetTypeClass.getDeclaredConstructor(long.class, long.class, double.class, String.class, String.class).newInstance(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0));
+        //(MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, W>) tuple -> targetTypeClass.getDeclaredConstructor(long.class, long.class, double.class, String.class, String.class).newInstance(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0)
+        return queryResultAsStream.map(new TupleToIntervalMapper<>(targetTypeClass)).returns(targetTypeClass);
 
 
     }
@@ -258,7 +258,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         sqlQuery.append(String.format("'%s' As valueDescription\n", outputValueOperand.toString()));
 
         //Skip strategy
-        sqlQuery.append(skipStrategy + "\n");
+        sqlQuery.append(skipStrategy).append("\n");
         // pattern
         if (minOccurs != Integer.MAX_VALUE && maxOccurs != Integer.MIN_VALUE) // both upper and lower bounds set
         {
@@ -277,8 +277,9 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         // define clause
         sqlQuery.append("DEFINE\n");
+        String conditionString;
         if (condition instanceof AbsoluteCondition) {
-            String conditionString = condition.toString().replace("!", "not")
+            conditionString = condition.toString().replace("!", "not")
                     .replace("==", "=")
                     .replace("!=", "<>")
                     .replace("&&", " AND ")
@@ -290,8 +291,37 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
             sqlQuery.append(String.format("A as A.%s,\n", conditionString));
 
         } else {
-            //TODO: Implement the relative condition part
-            throw new NotImplementedException();
+
+//            throw new NotImplementedException();
+            conditionString = condition.toString();
+            String startCondition;
+            String relativeCondition;
+            startCondition = conditionString.substring(0, conditionString.indexOf(" Relative"));
+            relativeCondition = conditionString.substring(conditionString.indexOf(" Relative ")+10);
+            startCondition = startCondition.replace("!", "not")
+                    .replace("==", "=")
+                    .replace("!=", "<>")
+                    .replace("&&", " AND ")
+                    .replace("||", " OR ")
+                    .replace("Math.abs", "ABS")
+                    .replace("value", "A.val");
+
+            sqlQuery.append(String.format("A as (%s and LAST(A.val,1) IS NULL) OR ", startCondition));
+            relativeCondition = relativeCondition.replace("!", "not")
+                    .replace("==", "=")
+                    .replace("!=", "<>")
+                    .replace("&&", " AND ")
+                    .replace("||", " OR ")
+                    .replace("Math.abs", "ABS")
+                    .replace("value", "A.val")
+                    .replace("last","LAST(A.val,1)")
+                    .replace("first", "FIRST(A.val)")
+                    .replace("avg", "AVG(A.val)")
+                    .replace("sum", "SUM(A.val)")
+                    .replace("min", "MIN(A.val)")
+                    .replace("max", "MAX(A.val)");
+
+            sqlQuery.append(String.format("(%s),\n", relativeCondition));
         }
         sqlQuery.append("B As true\n");
 
@@ -336,7 +366,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 //            interval = interval.where(new RelativeIterativeCondition<>(condition, RelativeIterativeCondition.ConditionContainer.Where));
         PatternStream<S> pattern;
         if (!(sourceStream instanceof KeyedStream)) {
-            pattern = CEP.pattern(sourceStream.keyBy((KeySelector<S, String>) value -> value.getKey()), interval);
+            pattern = CEP.pattern(sourceStream.keyBy((KeySelector<S, String>) RawEvent::getKey), interval);
         } else
             pattern = CEP.pattern(sourceStream, interval);
 
@@ -353,37 +383,27 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         if (!onlyMaximalIntervals)
             return targetStream;
         else {
-            DataStream<W> filteredStream = targetStream.keyBy(new KeySelector<W, String>() {
-
-                @Override
-                public String getKey(W w) throws Exception {
-                    return w.getKey();
-                }
-            }).window(TumblingProcessingTimeWindows.of(within)).apply(new WindowFunction<W, W, String, TimeWindow>() {
-                @Override
-                public void apply(String s, TimeWindow timeWindow, Iterable<W> iterable, Collector<W> collector) throws Exception {
-                    boolean containerFound;
-                    //       System.out.println("TEST");
-                    for (W out : iterable) {
-                        containerFound = false;
-                        for (W in : iterable) {
-                            Match.MatchType mt = Match.getMatchType(out, in);
+            return targetStream.keyBy((KeySelector<W, String>) IntervalEvent::getKey).window(TumblingProcessingTimeWindows.of(within)).apply((WindowFunction<W, W, String, TimeWindow>) (s, timeWindow, iterable, collector) -> {
+                boolean containerFound;
+                //       System.out.println("TEST");
+                for (W out : iterable) {
+                    containerFound = false;
+                    for (W in : iterable) {
+                        Match.MatchType mt = Match.getMatchType(out, in);
 //                            System.out.println(out.toString());
 //                            System.out.println(in.toString());
 //                            System.out.println(mt.toString());
-                            if (mt == Match.MatchType.Equals)
-                                continue;
-                            if (mt == Match.MatchType.Starts || mt == Match.MatchType.During || mt == Match.MatchType.Finishes)
-                                containerFound = true;
-                        }
-                        if (!containerFound) {
-                            //  System.out.println("SELECT "+out);
-                            collector.collect(out);
-                        }
+                        if (mt == Match.MatchType.Equals)
+                            continue;
+                        if (mt == Match.MatchType.Starts || mt == Match.MatchType.During || mt == Match.MatchType.Finishes)
+                            containerFound = true;
+                    }
+                    if (!containerFound) {
+                        //  System.out.println("SELECT "+out);
+                        collector.collect(out);
                     }
                 }
             });
-            return filteredStream;
         }
     }
 
@@ -393,11 +413,11 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         if (sourceStream instanceof KeyedStream) {
             targetStream = ((KeyedStream) sourceStream).window(GlobalWindows.create())
                     .trigger(new GlobalWindowEventTimeTrigger())
-                    .process(new D2IAHomogeneousIntervalProcessorFunction<S, W>(minOccurs, maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, targetTypeClass), TypeInformation.of(targetTypeClass));
+                    .process(new D2IAHomogeneousIntervalProcessorFunction<>(minOccurs, maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, targetTypeClass), TypeInformation.of(targetTypeClass));
         } else {
-            targetStream = sourceStream.keyBy((KeySelector<S, String>) value -> value.getKey()).window(GlobalWindows.create())
+            targetStream = sourceStream.keyBy((KeySelector<S, String>) RawEvent::getKey).window(GlobalWindows.create())
                     .trigger(new GlobalWindowEventTimeTrigger())
-                    .process(new D2IAHomogeneousIntervalProcessorFunction<S, W>(minOccurs, maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, targetTypeClass), TypeInformation.of(targetTypeClass));
+                    .process(new D2IAHomogeneousIntervalProcessorFunction<>(minOccurs, maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, targetTypeClass), TypeInformation.of(targetTypeClass));
         }
 
         return targetStream;

@@ -9,10 +9,9 @@ import org.apache.flink.cep.PatternSelectFunction;
 import java.util.List;
 import java.util.Map;
 
-public class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends IntervalEvent> implements PatternSelectFunction<S, W> {
+class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends IntervalEvent> implements PatternSelectFunction<S, W> {
 
     private Class<W> out;
-    private String outValueDescription;
     private Operand outValueOperand;
 
     public HomogeneousIntervalElementsCollector(Class<W> out, Operand outputValueOperand) {
@@ -25,7 +24,7 @@ public class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends 
         List<S> matchingEvents = map.get("1");
         double outputValue = 0;
         String rid = matchingEvents.get(0).getKey();
-        outValueDescription = outValueOperand.toString();
+        String outValueDescription = outValueOperand.toString();
         if (outValueOperand == Operand.First) {
             outputValue = matchingEvents.get(0).getValue();
 
@@ -56,8 +55,7 @@ public class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends 
         start = matchingEvents.get(0).getTimestamp();
         end = matchingEvents.get(matchingEvents.size()-1).getTimestamp();
 
-        W element = out.getDeclaredConstructor( long.class, long.class, double.class, String.class, String.class).newInstance(start, end, outputValue, outValueDescription, rid);
-        return element;
+        return out.getDeclaredConstructor( long.class, long.class, double.class, String.class, String.class).newInstance(start, end, outputValue, outValueDescription, rid);
 
     }
 }

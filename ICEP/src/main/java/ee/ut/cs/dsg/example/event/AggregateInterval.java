@@ -52,8 +52,7 @@ public class AggregateInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","AggregateInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","AggregateInterval");
     }
 
 

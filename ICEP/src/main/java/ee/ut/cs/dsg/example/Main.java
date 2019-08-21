@@ -7,7 +7,7 @@ package ee.ut.cs.dsg.example;
 
 import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
-import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
+import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.example.event.*;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.condition.Operator;
@@ -16,10 +16,8 @@ import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
 import ee.ut.cs.dsg.example.mapper.ThroughputRecorder;
 import ee.ut.cs.dsg.example.source.FixedSource;
 import ee.ut.cs.dsg.example.source.TemperatureSource;
-import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
@@ -29,7 +27,6 @@ import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.watermark.Watermark;
-import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
 import org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
@@ -69,11 +66,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
 //        testHomogeneousIntervals();
-
-    //    testGlobalWindowWithFixedDataSet();
-
-      //  testMatchRecognize();
-         testSQLWithFixedDataSet();
+//
+//        testGlobalWindowWithFixedDataSet();
+//
+//        testMatchRecognize();
+//        testSQLWithFixedDataSet();
+        testSQLForRelativeConditionWithFixedDataSet();
     }
 
     private static void testHeterogenousIntervals() throws Exception {
@@ -82,7 +80,7 @@ public class Main {
         env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
 
 
-        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
+        List<TemperatureEvent> myTemps = new ArrayList<>();
 
         myTemps.add(new TemperatureEvent("1", 1, 30));
         myTemps.add(new TemperatureEvent("1", 2, 35));
@@ -197,19 +195,16 @@ public class Main {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.getConfig().setAutoWatermarkInterval(200);
         SingleOutputStreamOperator<Tuple2<Long, String>> counts = env.socketTextStream("localhost", 9999)
-                .map(new MapFunction<String, Tuple2<Long, String>>() {
-                    @Override
-                    public Tuple2<Long, String> map(String s) throws Exception {
-                        String[] vals = s.split(" ");
-                        return new Tuple2<>(Long.parseLong(vals[0]), vals[1]);
-                    }
+                .map((MapFunction<String, Tuple2<Long, String>>) s -> {
+                    String[] vals = s.split(" ");
+                    return new Tuple2<>(Long.parseLong(vals[0]), vals[1]);
                 })
                 .assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<Tuple2<Long, String>>() {
 
                     final long maxLateness = 3500;
                     long maxTimestampSeen = Long.MIN_VALUE;
 
-                    @Nullable
+
                     @Override
                     public Watermark getCurrentWatermark() {
                         return new Watermark(maxTimestampSeen - maxLateness);
@@ -226,13 +221,13 @@ public class Main {
                 .allowedLateness(Time.milliseconds(100))
                 .sum(1);
         counts.print();
- //       env.setParallelism(1);
+        //       env.setParallelism(1);
 //        env.readFile("F:\TPStream\linear_accel.events\linear_accel.events","F:\TPStream\linear_accel.events\linear_accel.events","F:\TPStream\linear_accel.events\linear_accel.events");
 
 //        DataSet<Tuple2<String, String>> rawdata =
 //                env.readCsvFile("E:\\CrimeReport.csv").includeFields("0000011").ignoreFirstLine()
 
-        List<TemperatureEvent> myTemps = new ArrayList<TemperatureEvent>();
+        List<TemperatureEvent> myTemps = new ArrayList<>();
 
         myTemps.add(new TemperatureEvent("1", 1, 31));
         myTemps.add(new TemperatureEvent("1", 2, 30));
@@ -243,7 +238,7 @@ public class Main {
                 .fromCollection(myTemps);
 
 //Random Stream
-        DataStream<TemperatureEvent> randomStream = env.addSource(new TemperatureSource(1,1,35));
+        DataStream<TemperatureEvent> randomStream = env.addSource(new TemperatureSource(1, 1, 35));
         randomStream = randomStream.map(new ThroughputRecorder());
 
         List<PowerEvent> myPowers = new ArrayList<>();
@@ -304,7 +299,7 @@ public class Main {
                 .targetType(ThresholdInterval.class)
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(31))
                 .within(Time.milliseconds((10)))
- //               .minOccurrences(2)
+                //               .minOccurrences(2)
                 .outputValue(Operand.Average)
                 .produceOnlyMaximalIntervals(true);
         DataStream<ThresholdInterval> thresholdWarning = threshold.runWithCEP();
@@ -414,12 +409,11 @@ public class Main {
 
         //Step No 5
         //Trigger the programme execution by calling execute(), mode of execution (local or cluster).
-         JobExecutionResult result =  env.execute("CEP Interval job");
-         //result.getAccumulatorResult("throughput");
+        JobExecutionResult result = env.execute("CEP Interval job");
+        //result.getAccumulatorResult("throughput");
     }
 
-    private static void testGlobalWindowWithFixedDataSet() throws Exception
-    {
+    private static void testGlobalWindowWithFixedDataSet() throws Exception {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
@@ -465,12 +459,7 @@ public class Main {
 //            }
 //        });
 
-        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy(new KeySelector<TemperatureEvent, String>() {
-            @Override
-            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
-                return temperatureEvent.getKey();
-            }
-        });
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy((KeySelector<TemperatureEvent, String>) RawEvent::getKey);
 
         HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
         testGenerator.source(keyedTemperatureStream)
@@ -480,7 +469,7 @@ public class Main {
                 .maxOccurrences(-1)
                 .outputValue(Operand.Last)
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
-          //      .produceOnlyMaximalIntervals(true)
+                //      .produceOnlyMaximalIntervals(true)
                 .within(Time.milliseconds(5));
 
         DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
@@ -488,8 +477,38 @@ public class Main {
         env.execute("Interval generator via global windows");
     }
 
-    private static void testSQLWithFixedDataSet() throws Exception
-    {
+    private static void testSQLForRelativeConditionWithFixedDataSet() throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+        env.getConfig().setAutoWatermarkInterval(10);
+
+        DataStream<TemperatureEvent> inputEventStream = env.addSource(new FixedSource());
+
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy((KeySelector<TemperatureEvent, String>) RawEvent::getKey);
+
+        HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> thresholdIntervalWithAbsoluteCondition =
+                new HomogeneousIntervalGenerator<>();
+
+        AbsoluteCondition cond1 = new AbsoluteCondition();
+        AbsoluteCondition cond2 = new AbsoluteCondition();
+        cond1.LHS(Operand.Last).operator(Operator.Multiply).RHS(0.1);
+        cond2.LHS(Operand.Last).operator(Operator.Plus).RHS(cond1);
+        thresholdIntervalWithAbsoluteCondition.sourceType(TemperatureEvent.class)
+                .source(keyedTemperatureStream)
+                .minOccurrences(2)
+                .targetType(TemperatureWarning.class)
+                .condition(new RelativeCondition().LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(30)
+                        .relativeLHS(Operand.Value).relativeOperator(Operator.GreaterThan).relativeRHS(cond2))
+                .outputValue(Operand.Max);
+
+        DataStream<TemperatureWarning> warningsIntervalStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
+
+        warningsIntervalStream.print();
+    }
+
+    private static void testSQLWithFixedDataSet() throws Exception {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
@@ -535,19 +554,14 @@ public class Main {
 //            }
 //        });
 
-        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy(new KeySelector<TemperatureEvent, String>() {
-            @Override
-            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
-                return temperatureEvent.getKey();
-            }
-        });
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = inputEventStream.keyBy((KeySelector<TemperatureEvent, String>) RawEvent::getKey);
 
         HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
         testGenerator.source(keyedTemperatureStream)
                 .sourceType(TemperatureEvent.class)
                 .targetType(TemperatureWarning.class)
                 .minOccurrences(2)
-     //           .maxOccurrences(-1)
+                //           .maxOccurrences(-1)
                 .outputValue(Operand.Last)
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
                 //      .produceOnlyMaximalIntervals(true)
@@ -558,14 +572,14 @@ public class Main {
         env.execute("Interval generator via flink sql match recognize");
     }
 
-    private static void testGlobalWindow() throws Exception
-    {
+    private static void testGlobalWindow() throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 //        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new FixedSource());
-        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1,2,18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1, 2, 18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
             private long maxTimestampSeen = 0;
-            @Nullable
+
+
             @Override
             public Watermark getCurrentWatermark() {
                 return new Watermark(maxTimestampSeen);
@@ -574,104 +588,19 @@ public class Main {
             @Override
             public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
                 long ts = temperatureEvent.getTimestamp();
-                maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+                maxTimestampSeen = Long.max(maxTimestampSeen, ts);
                 return ts;
             }
         });
-        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy(new KeySelector<TemperatureEvent, String>() {
-            @Override
-            public String getKey(TemperatureEvent temperatureEvent) throws Exception {
-                return temperatureEvent.getKey();
-            }
-        });
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy((KeySelector<TemperatureEvent, String>) RawEvent::getKey);
 
-     //   keyedTemperatureStream.window(GlobalWindows.create()).trigger(new GlobalWindowEventTimeTrigger())
-//                .evictor(new WatermarkEvictor())
-
-                /*
-                //Commented on 7th August 2019 to replace with a more generic process function
-                .process(new ProcessWindowFunction<TemperatureEvent, Tuple4<String, Long, Long, Double>, String, GlobalWindow>() {
-            @Override
-            public void process(String o, Context context, Iterable<TemperatureEvent> iterable, Collector<Tuple4<String, Long, Long, Double>> collector) throws Exception {
-                ArrayList<TemperatureEvent> sorted = new ArrayList();
-
-                for ( TemperatureEvent e: iterable) {
-                    //Enforce watermark rule
-//                    if (e.getTimestamp() <= context.currentWatermark())
-                        sorted.add(e);
-
-                }
-                Collections.sort(sorted, new Comparator<TemperatureEvent>(){
-
-                    @Override
-                    public int compare(TemperatureEvent o1, TemperatureEvent o2) {
-                        if (o1.getTimestamp() < o2.getTimestamp()) return -1;
-                        if (o1.getTimestamp() > o2.getTimestamp()) return 1;
-                        return 0;
-                    }
-                });
-
-                //let's say we output threshold intervals with condition temperature <= 21
-                long start=0, end=0;
-                double value=0;
-                int i =0;
-                TemperatureEvent event=null;
-                boolean brokenFromLoop=false;
-                for (; i < sorted.size();i++)
-                {
-
-                    event = sorted.get(i);
-//                    if (event.getTimestamp() > context.currentWatermark() && event.getValue() <= 20.0)
-//                        return; // no need to process next elements and shouldn't emit an incomplete window
-                    if (event.getTimestamp() > context.currentWatermark()) {
-                        brokenFromLoop=true;
-                        break; // no need to process the rest of the elements but we can emit the current complete window, if any
-                    }
-                    if (event.getValue() <= 20.0)
-                    {
-                        if (start==0) // we start a new interval
-                            start = event.getTimestamp();
-                        end = event.getTimestamp();
-                        value+= event.getValue();
-                    }
-                    else
-                    {
-                        if (start !=0) {
-                            collector.collect(new Tuple4<>(o, start, end, value));
-                            start = 0;
-                            end = 0;
-                            value = 0;
-                        }
-                    }
-                }
-                long keepuntilTs=context.currentWatermark();
-                if (start !=0 && !brokenFromLoop) // we processed all elements normally
-                    collector.collect(new Tuple4<>(o,start,end,value));
-                else if (start != 0 && brokenFromLoop && event.getValue() > 20.0) // we received an item with future timestamp (greater than watermark) but its value is breaking the theta condition
-                    collector.collect(new Tuple4<>(o,start,end,value));
-                else if (start!=0 && brokenFromLoop && event.getValue() <= 20.0)
-                    keepuntilTs = start;
-                // ugly but necessary, to clean here not in the evictor, actually, I will drop the evictor
-                for (Iterator<TemperatureEvent> iterator = iterable.iterator(); iterator.hasNext();){
-                    TemperatureEvent v =  iterator.next();
-                    if (v.getTimestamp() < keepuntilTs)
-                    {
-                        iterator.remove();
-                    }
-
-                }
-            }
-
-        })*/
-//        .process(new D2IAHomogeneousIntervalProcessorFunction<TemperatureEvent,ThresholdInterval>(0,0, null, null, Operand.Max), TypeInformation.of(ThresholdInterval.class))
-//        .print();
 
         HomogeneousIntervalGenerator<TemperatureEvent, TemperatureWarning> testGenerator = new HomogeneousIntervalGenerator<>();
         testGenerator.source(keyedTemperatureStream)
                 .sourceType(TemperatureEvent.class)
                 .targetType(TemperatureWarning.class)
                 .minOccurrences(5)
-             //   .maxOccurrences(5)
+                //   .maxOccurrences(5)
                 .outputValue(Operand.Last)
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
                 .produceOnlyMaximalIntervals(true)
@@ -683,17 +612,17 @@ public class Main {
 
     }
 
-    private static void testMatchRecognize() throws Exception
-    {
+    private static void testMatchRecognize() throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
         StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
 
 //        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new FixedSource());
-        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1,2,18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
+        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1, 2, 18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {
             private long maxTimestampSeen = 0;
-            @Nullable
+
+
             @Override
             public Watermark getCurrentWatermark() {
                 return new Watermark(maxTimestampSeen);
@@ -702,11 +631,11 @@ public class Main {
             @Override
             public long extractTimestamp(TemperatureEvent temperatureEvent, long l) {
                 long ts = temperatureEvent.getTimestamp();
-                maxTimestampSeen = Long.max(maxTimestampSeen,ts);
+                maxTimestampSeen = Long.max(maxTimestampSeen, ts);
                 return ts;
             }
         });
-        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy((KeySelector<TemperatureEvent, String>) temperatureEvent -> temperatureEvent.getKey());
+        KeyedStream<TemperatureEvent, String> keyedTemperatureStream = temperatureEventDataStream.keyBy((KeySelector<TemperatureEvent, String>) RawEvent::getKey);
 
         TupleTypeInfo<Tuple3<String, Double, Long>> inputTupleInfo = new TupleTypeInfo<>(
                 Types.STRING(),
@@ -714,7 +643,7 @@ public class Main {
                 Types.LONG()
         );
         tableEnv.registerDataStream("RawEvents",
-                keyedTemperatureStream.map((MapFunction<TemperatureEvent, Tuple3<String, Double, Long>>) temperatureEvent -> new Tuple3<>(temperatureEvent.getKey(),temperatureEvent.getValue(),temperatureEvent.getTimestamp())).returns(inputTupleInfo),
+                keyedTemperatureStream.map((MapFunction<TemperatureEvent, Tuple3<String, Double, Long>>) temperatureEvent -> new Tuple3<>(temperatureEvent.getKey(), temperatureEvent.getValue(), temperatureEvent.getTimestamp())).returns(inputTupleInfo),
                 "ID, val, rowtime.rowtime"
         );
 
@@ -732,7 +661,7 @@ public class Main {
                 "PATTERN ( A+ B)\n" +
                 "DEFINE\n" +
                 "A As A.val > 18,\n" +
-                "B As true\n"+
+                "B As true\n" +
                 ")"
         );
 
@@ -748,8 +677,8 @@ public class Main {
 
         DataStream<Tuple5<String, Timestamp, Timestamp, Double, String>> queryResultAsStream = tableEnv.toAppendStream(intervalResult, tupleTypeInterval);
 
-     //   queryResultAsStream.print();
-      queryResultAsStream.map((MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, IntervalEvent>) tuple -> new IntervalEvent(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0 )).print();
+        //   queryResultAsStream.print();
+        queryResultAsStream.map((MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, IntervalEvent>) tuple -> new IntervalEvent(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0)).print();
 
         env.execute("D2IA via Match Recognize");
     }

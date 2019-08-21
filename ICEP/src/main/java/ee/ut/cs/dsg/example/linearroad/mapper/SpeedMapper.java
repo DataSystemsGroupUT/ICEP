@@ -8,8 +8,7 @@ public class SpeedMapper implements MapFunction<String, SpeedEvent> {
     public SpeedEvent map(String s) throws Exception {
         //Schema of S is VID,SPEED,ACCEL,XWay,Lane,Dir,Seg,Pos,T1,T2
         String[] data = s.split(",");
-        SpeedEvent se = new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim()));
-        return se;
+        return new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim()));
 
     }
 }

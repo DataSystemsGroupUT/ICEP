@@ -54,8 +54,7 @@ public class TemperatureWarning extends IntervalEvent implements Serializable {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","TemperatureWarning");
-        return s;
+        return super.toString().replace("IntervalEvent","TemperatureWarning");
     }
 
 

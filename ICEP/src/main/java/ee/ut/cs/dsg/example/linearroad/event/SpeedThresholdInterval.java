@@ -20,7 +20,6 @@ public class SpeedThresholdInterval extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","SpeedThresholdInterval");
-        return s;
+        return super.toString().replace("IntervalEvent","SpeedThresholdInterval");
     }
 }

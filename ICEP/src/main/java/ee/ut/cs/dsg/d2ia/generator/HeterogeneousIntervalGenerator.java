@@ -118,8 +118,7 @@ public class HeterogeneousIntervalGenerator<S extends RawEvent, E extends RawEve
 
 
                     conditionString = conditionString.replace("value", Double.toString(s.getValue()));
-                    boolean result = (boolean) engine.eval(conditionString);
-                    return result;
+                    return (boolean) engine.eval(conditionString);
                 }
             }
         }).subtype(startTypeClass);
@@ -136,43 +135,13 @@ public class HeterogeneousIntervalGenerator<S extends RawEvent, E extends RawEve
 
 
         // Partition the streams by key and use their RawEvent representation
-        DataStream<RawEvent> startStreamAsRawEvent = startStream.keyBy(new KeySelector<S, String>() {
-            @Override
-            public String getKey(S s) throws Exception {
-                return s.getKey();
-            }
-        }).map(new MapFunction<S, RawEvent>() {
-            @Override
-            public RawEvent map(S s) throws Exception {
-                return s;
-            }
-        });
+        DataStream<RawEvent> startStreamAsRawEvent = startStream.keyBy((KeySelector<S, String>) RawEvent::getKey).map((MapFunction<S, RawEvent>) s -> s);
 
-        DataStream<RawEvent> endStreamAsRawEvent = endStream.keyBy(new KeySelector<E, String>() {
-            @Override
-            public String getKey(E s) throws Exception {
-                return s.getKey();
-            }
-        }).map(new MapFunction<E, RawEvent>() {
-            @Override
-            public RawEvent map(E s) throws Exception {
-                return s;
-            }
-        });
+        DataStream<RawEvent> endStreamAsRawEvent = endStream.keyBy((KeySelector<E, String>) RawEvent::getKey).map((MapFunction<E, RawEvent>) s -> s);
         DataStream<RawEvent> forbiddenStreamAsRawEvent;
         DataStream<RawEvent> all = startStreamAsRawEvent.union(endStreamAsRawEvent);
         if (forbiddenStream != null) {
-            forbiddenStreamAsRawEvent = forbiddenStream.keyBy(new KeySelector<F, String>() {
-                @Override
-                public String getKey(F s) throws Exception {
-                    return s.getKey();
-                }
-            }).map(new MapFunction<F, RawEvent>() {
-                @Override
-                public RawEvent map(F f) throws Exception {
-                    return f;
-                }
-            });
+            forbiddenStreamAsRawEvent = forbiddenStream.keyBy((KeySelector<F, String>) RawEvent::getKey).map((MapFunction<F, RawEvent>) f -> f);
             all = all.union(forbiddenStreamAsRawEvent);
         }
         PatternStream<RawEvent> patternStream = CEP.pattern(all, pattern);

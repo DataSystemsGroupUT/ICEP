@@ -52,8 +52,7 @@ public class PowerWarning extends IntervalEvent {
     @Override
     public String toString()
     {
-        String s = super.toString().replace("IntervalEvent","PowerWarning");
-        return s;
+        return super.toString().replace("IntervalEvent","PowerWarning");
     }
 
 

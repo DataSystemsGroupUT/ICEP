@@ -4,9 +4,6 @@ import ee.ut.cs.dsg.example.event.TemperatureEvent;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.streaming.api.watermark.Watermark;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FixedSource implements SourceFunction<TemperatureEvent> {
     private boolean running = true;
 //    private List<TemperatureEvent> myData;
