@@ -18,27 +18,27 @@ public class FixedSource implements SourceFunction<TemperatureEvent> {
         {
 
 
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 1, 20),1);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 2, 20),2);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 8, 20),8);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 9, 21),9);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 1000, 20),1000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 2000, 19),2000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 8000, 18),8000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 9000, 21),9000);
 //            sourceContext.emitWatermark(new Watermark(4));
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 5, 20),5);
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 6, 20),6);
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 7, 20),7);
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 8, 20),8);
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 9, 20),9);
-            sourceContext.emitWatermark(new Watermark(10));
+            sourceContext.emitWatermark(new Watermark(10000));
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 10,20),10);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 11,20),11);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 12,20),12);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 13,20),13);
-            sourceContext.emitWatermark(new Watermark(Long.MAX_VALUE));
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 11000,20),11000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 16000,17),16000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 17000,16),17000);
+            sourceContext.emitWatermark(new Watermark(20000));
 
-//            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 25, 17),25);
-//            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 24, 17),24);
-//            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 27, 21),27);
-//            sourceContext.emitWatermark(new Watermark(27));
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 25000, 17),25000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 24000, 17),24000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 27000, 21),27000);
+            sourceContext.emitWatermark(new Watermark(27));
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 28, 19),28);
         }
     }

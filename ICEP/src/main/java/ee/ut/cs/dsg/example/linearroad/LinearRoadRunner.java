@@ -26,7 +26,7 @@ public class LinearRoadRunner {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.getConfig().setAutoWatermarkInterval(10);
-//        env.setParallelism(1);
+       // env.setParallelism(1);
 //        ParameterTool parameters = ParameterTool.fromArgs(args);
 //        DataStream<String> stringStream;
 //        String source = parameters.getRequired("source");
@@ -75,7 +75,7 @@ public class LinearRoadRunner {
                     maxTimestampSeen = Long.max(maxTimestampSeen,ts);
                 return ts;
             }
-        })
+        }).setParallelism(1)
                 .filter((FilterFunction<SpeedEvent>) speedEvent -> speedEvent.getKey().equals("266")).setParallelism(1);
         //speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2", FileSystem.WriteMode.OVERWRITE).setParallelism(1);
 //        if (jobType.equals("ThresholdAbsolute"))
@@ -105,7 +105,7 @@ public class LinearRoadRunner {
 
         // Threshold with absolute condition
         long start = System.currentTimeMillis();
-        runAs = "window";
+        runAs = "SQL";
         //jobGenerateThresholdInterval(env, speedStream, runAs);
         //jobGenerateThresholdIntervalWithRelativeCondition(env, speedStream, runAs);
         //jobGenerateAggregateIntervalWithRelativeCondition(env, speedStream, runAs);
@@ -119,6 +119,7 @@ public class LinearRoadRunner {
                 new HomogeneousIntervalGenerator<>();
 
         KeyedStream<SpeedEvent, String> keyedSpeedStream = speedStream.keyBy((KeySelector<SpeedEvent, String>) RawEvent::getKey);
+       // keyedSpeedStream.print();
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(keyedSpeedStream)
                 .targetType(SpeedThresholdInterval.class)
@@ -132,6 +133,8 @@ public class LinearRoadRunner {
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream;
         if (runAs.equals("CEP"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithCEP();
+        else if (runAs.equals("SQL"))
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
 
@@ -160,6 +163,8 @@ public class LinearRoadRunner {
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream;
         if (runAs.equals("CEP"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithCEP();
+        else if (runAs.equals("SQL"))
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
 
@@ -185,6 +190,8 @@ public class LinearRoadRunner {
         DataStream<SpeedAggregateInterval> thresholdIntervalAbsoluteConditionDataStream;
         if (runAs.equals("CEP"))
             thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithCEP();
+        else if (runAs.equals("SQL"))
+            thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithSQL(env);
         else
             thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithGlobalWindow();
 
@@ -214,6 +221,8 @@ public class LinearRoadRunner {
         DataStream<SpeedDeltaInterval> thresholdIntervalAbsoluteConditionDataStream;
         if (runAs.equals("CEP"))
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithCEP();
+        else if (runAs.equals("SQL"))
+            thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithSQL(env);
         else
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithGlobalWindow();
 

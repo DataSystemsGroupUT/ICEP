@@ -46,5 +46,6 @@ public class LinearRoadSource implements SourceFunction<String> {
     @Override
     public void cancel() {
         running = false;
+
     }
 }

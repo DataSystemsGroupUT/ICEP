@@ -12,6 +12,7 @@ package ee.ut.cs.dsg.d2ia.generator;
 import ee.ut.cs.dsg.d2ia.condition.AbsoluteCondition;
 import ee.ut.cs.dsg.d2ia.condition.Condition;
 import ee.ut.cs.dsg.d2ia.condition.Operand;
+import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.d2ia.mapper.TupleToIntervalMapper;
@@ -20,6 +21,7 @@ import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.api.java.tuple.Tuple5;
+import org.apache.flink.api.java.tuple.Tuple6;
 import org.apache.flink.api.java.typeutils.TupleTypeInfo;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
@@ -34,6 +36,8 @@ import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTime
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.functions.KeySelector;
+
+
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -51,6 +55,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     private Class<W> targetTypeClass;
     private DataStream<S> sourceStream;
     private DataStream<W> targetStream;
+    private String runMode="CEP";
     // private KeyedStream<S, String> keyedSourceStream;
 
 
@@ -170,10 +175,15 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         if (outputValueOperand == null) {
             throw new Exception("Output value operand must be defined");
         }
+        if (runMode.equalsIgnoreCase("sql") && this.within != null && this.within.toMilliseconds() < 1000)
+        {
+            throw new Exception("Flink SQL does not support time unit granularity below SECOND");
+        }
 
     }
 
     public DataStream<W> runWithSQL(StreamExecutionEnvironment env) throws Exception {
+        runMode="SQL";
         validate();
         String queryString = buildQueryString();
 
@@ -193,24 +203,40 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                 Types.DOUBLE(),
                 Types.LONG()
         );
+
+//        TupleTypeInfo<Tuple3<String, Double, Timestamp>> outputTupleInfo = new TupleTypeInfo<>(
+//                Types.STRING(),
+//                Types.DOUBLE(),
+//                Types.SQL_TIMESTAMP()
+//        );
+
         StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
         tableEnv.registerDataStream("RawEvents",
                 keyedStream.map((MapFunction<S, Tuple3<String, Double, Long>>) event -> new Tuple3<>(event.getKey(), event.getValue(), event.getTimestamp())).returns(inputTupleInfo),
-                "ID, val, rowtime.rowtime"
+                "ID, val, eventTime.rowtime"
         );
+
+
+
+      //  Table justTellMe = tableEnv.sqlQuery("Select ID, val, rowtime from RawEvents");
+
+//        DataStream<Tuple3<String, Double,Timestamp>> rawStream = tableEnv.toAppendStream(justTellMe, outputTupleInfo);
+//
+//        rawStream.print();
 
         Table intervalResult = tableEnv.sqlQuery(queryString);
 
-        TupleTypeInfo<Tuple5<String, Timestamp, Timestamp, Double, String>> tupleTypeInterval = new TupleTypeInfo<>(
+        TupleTypeInfo<Tuple6<String, Timestamp, Timestamp, Double, String, Integer>> tupleTypeInterval = new TupleTypeInfo<>(
                 Types.STRING(),
                 Types.SQL_TIMESTAMP(),
                 Types.SQL_TIMESTAMP(),
                 Types.DOUBLE(),
-                Types.STRING()
+                Types.STRING(),
+                Types.INT()
         );
 
-        DataStream<Tuple5<String, Timestamp, Timestamp, Double, String>> queryResultAsStream = tableEnv.toAppendStream(intervalResult, tupleTypeInterval);
-
+        DataStream<Tuple6<String, Timestamp, Timestamp, Double, String, Integer>> queryResultAsStream = tableEnv.toAppendStream(intervalResult, tupleTypeInterval);
+      //  queryResultAsStream.print();
         //(MapFunction<Tuple5<String, Timestamp, Timestamp, Double, String>, W>) tuple -> targetTypeClass.getDeclaredConstructor(long.class, long.class, double.class, String.class, String.class).newInstance(tuple.f1.getTime(), tuple.f2.getTime(), tuple.f3, tuple.f4, tuple.f0)
         return queryResultAsStream.map(new TupleToIntervalMapper<>(targetTypeClass)).returns(targetTypeClass);
 
@@ -227,13 +253,13 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         StringBuilder sqlQuery = new StringBuilder();
 
-        sqlQuery.append("Select ID, sts, ets, intervalValue,valueDescription from RawEvents Match_Recognize (\n");
+        sqlQuery.append("Select ID, sts, ets, intervalValue,valueDescription, intvDuration from RawEvents Match_Recognize (\n");
         sqlQuery.append("PARTITION BY ID\n");
-        sqlQuery.append("ORDER BY rowtime\n");
+        sqlQuery.append("ORDER BY eventTime\n");
         sqlQuery.append("MEASURES\n");
         sqlQuery.append("A.ID AS id,\n");
-        sqlQuery.append("FIRST(A.rowtime) As sts,\n");
-        sqlQuery.append("LAST(A.rowtime) As ets,\n");
+        sqlQuery.append("FIRST(A.eventTime) AS sts,\n");
+        sqlQuery.append("LAST(A.eventTime) AS ets,\n");
 
         //get the value
 
@@ -255,7 +281,10 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         sqlQuery.append(",\n");
 
         // value description
-        sqlQuery.append(String.format("'%s' As valueDescription\n", outputValueOperand.toString()));
+        sqlQuery.append(String.format("'%s' AS valueDescription,\n", outputValueOperand.toString()));
+
+        // just for testing purposes
+        sqlQuery.append("TIMESTAMPDIFF(SECOND, FIRST(A.eventTime), LAST(A.eventTime)) AS intvDuration \n");
 
         //Skip strategy
         sqlQuery.append(skipStrategy).append("\n");
@@ -278,7 +307,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         // define clause
         sqlQuery.append("DEFINE\n");
         String conditionString;
-        if (condition instanceof AbsoluteCondition) {
+        if (condition instanceof AbsoluteCondition ) {
             conditionString = condition.toString().replace("!", "not")
                     .replace("==", "=")
                     .replace("!=", "<>")
@@ -287,8 +316,15 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                     .replace("Math.abs", "ABS")
                     .replace("value", "val");
 
+            if (within == null)
 
-            sqlQuery.append(String.format("A as A.%s,\n", conditionString));
+                sqlQuery.append(String.format("A as A.%s,\n", conditionString));
+            else
+            {
+
+                sqlQuery.append(String.format("A as (A.%s and LAST(A.val,1) IS NULL) OR ( A.%s AND TIMESTAMPDIFF(SECOND, LAST(A.eventTime,1), A.eventTime) <= %d),\n", conditionString,conditionString,(long)Math.floor(this.within.toMilliseconds()/1000)));
+            }
+
 
         } else {
 
@@ -297,7 +333,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
             String startCondition;
             String relativeCondition;
             startCondition = conditionString.substring(0, conditionString.indexOf(" Relative"));
-            relativeCondition = conditionString.substring(conditionString.indexOf(" Relative ")+10);
+            relativeCondition = conditionString.substring(conditionString.indexOf(" Relative ") + 10);
             startCondition = startCondition.replace("!", "not")
                     .replace("==", "=")
                     .replace("!=", "<>")
@@ -307,21 +343,75 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                     .replace("value", "A.val");
 
             sqlQuery.append(String.format("A as (%s and LAST(A.val,1) IS NULL) OR ", startCondition));
+
             relativeCondition = relativeCondition.replace("!", "not")
                     .replace("==", "=")
                     .replace("!=", "<>")
                     .replace("&&", " AND ")
                     .replace("||", " OR ")
-                    .replace("Math.abs", "ABS")
+                    .replace("valueMath.abs", "ABS")
                     .replace("value", "A.val")
-                    .replace("last","LAST(A.val,1)")
+                    .replace("last", "LAST(A.val,1)")
                     .replace("first", "FIRST(A.val)")
                     .replace("avg", "AVG(A.val)")
                     .replace("sum", "SUM(A.val)")
                     .replace("min", "MIN(A.val)")
-                    .replace("max", "MAX(A.val)");
+                    .replace("max", "MAX(A.val)")
+                    ;
 
-            sqlQuery.append(String.format("(%s),\n", relativeCondition));
+            RelativeCondition relCondition = (RelativeCondition) condition;
+            String parsedLHSCond="";
+            String parsedRHSCond="";
+            if (relCondition.getRelativeLHS() instanceof AbsoluteCondition)
+            {
+                parsedLHSCond = ((AbsoluteCondition) relCondition.getRelativeLHS()).parse(-1,-2,-3,-4,-5,-6,-7);
+                parsedLHSCond = parsedLHSCond.replace("Math.abs","ABS")
+                        .replace("-7.0", "A.val")
+                        .replace("-1.0","FIRST(A.val)")
+                        .replace("-2.0","LAST(A.val,1)")
+                        .replace("-3.0","MIN(A.val)")
+                        .replace("-4.0","MAX(A.val)")
+                        .replace("-5.0","SUM(A.val)")
+                        .replace("-6.0","COUNT(A.val)");
+
+                //System.out.println(parsedCond);
+            }
+
+            if (relCondition.getRelativeRHS() instanceof AbsoluteCondition)
+            {
+                parsedRHSCond = ((AbsoluteCondition) relCondition.getRelativeRHS()).parse(-1,-2,-3,-4,-5,-6,-7);
+                parsedRHSCond = parsedRHSCond.replace("Math.abs","ABS")
+                        .replace("-7.0", "A.val")
+                        .replace("-1.0","FIRST(A.val)")
+                        .replace("-2.0","LAST(A.val,1)")
+                        .replace("-3.0","MIN(A.val)")
+                        .replace("-4.0","MAX(A.val)")
+                        .replace("-5.0","SUM(A.val)")
+                        .replace("-6.0","COUNT(A.val)");
+
+            }
+            if (parsedLHSCond.length() > 0 && parsedRHSCond.length() > 0)
+            {
+                relativeCondition = parsedLHSCond + " " + relCondition.getRelativeOperator().toString()+ " " + parsedRHSCond;
+            }
+            else if (parsedLHSCond.length() > 0)
+            {
+                relativeCondition = parsedLHSCond + " " + relCondition.getRelativeOperator().toString() + " " + relCondition.getRelativeRHS().toString();
+            }
+            else if (parsedRHSCond.length() > 0 )
+            {
+                relativeCondition = relCondition.getRelativeLHS().toString() + " " + relCondition.getRelativeOperator().toString() + " " + parsedRHSCond;
+            }
+            if (within != null)
+                sqlQuery.append("(");
+
+            sqlQuery.append(String.format("(%s)", relativeCondition));
+
+            if (within != null) {
+                sqlQuery.append(String.format(" AND (TIMESTAMPDIFF(SECOND, LAST(A.eventTime,1), A.eventTime) <= %d)", (long)Math.floor(this.within.toMilliseconds()/1000)));
+
+            }
+            sqlQuery.append(",\n");
         }
         sqlQuery.append("B As true\n");
 
@@ -331,6 +421,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
     public DataStream<W> runWithCEP() throws Exception {
+        runMode = "CEP";
 
         // Check that minimum input is provided to generate an interval
         validate();
@@ -379,6 +470,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         //  return applyMaximalInterval();
     }
 
+    @Deprecated
     private DataStream<W> applyMaximalInterval() {
         if (!onlyMaximalIntervals)
             return targetStream;
@@ -408,8 +500,10 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
 
-    public DataStream<W> runWithGlobalWindow() {
+    public DataStream<W> runWithGlobalWindow() throws Exception {
 
+        runMode="Window";
+        validate();
         if (sourceStream instanceof KeyedStream) {
             targetStream = ((KeyedStream) sourceStream).window(GlobalWindows.create())
                     .trigger(new GlobalWindowEventTimeTrigger())

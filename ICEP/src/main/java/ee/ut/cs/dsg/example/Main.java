@@ -70,8 +70,9 @@ public class Main {
 //        testGlobalWindowWithFixedDataSet();
 //
 //        testMatchRecognize();
-//        testSQLWithFixedDataSet();
-        testSQLForRelativeConditionWithFixedDataSet();
+        testSQLWithFixedDataSet();
+//        testSQLForRelativeConditionWithFixedDataSet();
+
     }
 
     private static void testHeterogenousIntervals() throws Exception {
@@ -563,12 +564,13 @@ public class Main {
                 .minOccurrences(2)
                 //           .maxOccurrences(-1)
                 .outputValue(Operand.Last)
+                .within(Time.seconds(5))
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
                 //      .produceOnlyMaximalIntervals(true)
-                .within(Time.milliseconds(5));
+                ;
 
         DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithSQL(env);
-        warningsIntervalStream.print();
+//        warningsIntervalStream.print();
         env.execute("Interval generator via flink sql match recognize");
     }
 
