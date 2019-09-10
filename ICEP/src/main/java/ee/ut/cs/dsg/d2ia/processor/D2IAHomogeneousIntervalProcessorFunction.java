@@ -3,16 +3,21 @@ package ee.ut.cs.dsg.d2ia.processor;
 import ee.ut.cs.dsg.d2ia.condition.*;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
+import org.apache.flink.api.common.state.ListState;
+import org.apache.flink.api.common.state.ListStateDescriptor;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
 import java.util.*;
 
-public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I extends IntervalEvent> extends ProcessWindowFunction<E, I, String, GlobalWindow> {
+public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I extends IntervalEvent> extends ProcessWindowFunction<E, I, String, TimeWindow> {
 
     private Class<I> out;
+    private Class<E> in;
     private int minOccurs, maxOccurs;
     private Condition condition;
     private ConditionEvaluator<E> conditionEvaluator;
@@ -20,6 +25,8 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
     private Operand outputValueCalculator;
     private boolean generateMaximalInterval = false;
     private boolean itemAdded = false;
+    private boolean endOfStream = false;
+    private ListStateDescriptor<E> windowState;
 //    private int count;
 //    private double sum;
     //TODO: Let's check working with states later on to handle incomplete windows (frames)
@@ -36,49 +43,60 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
     }
 
     public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, boolean generateMaximalInterval, Operand outputValue) {
-        this.minOccurs = minOccurs <= 0 || minOccurs == Integer.MAX_VALUE ? Integer.MIN_VALUE : minOccurs;
-        this.maxOccurs = maxOccurs <= 0 || maxOccurs == Integer.MIN_VALUE ? Integer.MAX_VALUE : maxOccurs;
-        this.condition = cnd;
-        this.conditionEvaluator = new ConditionEvaluator<>();
-        this.within = within == null ? 0 : within.toMilliseconds();
-        this.outputValueCalculator = outputValue == null ? Operand.Average : outputValue;
+
+        this(minOccurs, maxOccurs, cnd, within, outputValue);
         this.generateMaximalInterval = generateMaximalInterval;
     }
 
     public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, boolean generateMaximalInterval, Operand outputValue, Class<I> out) {
-        this.minOccurs = minOccurs <= 0 || minOccurs == Integer.MAX_VALUE ? Integer.MIN_VALUE : minOccurs;
-        this.maxOccurs = maxOccurs <= 0 || maxOccurs == Integer.MIN_VALUE ? Integer.MAX_VALUE : maxOccurs;
-        this.condition = cnd;
-        this.conditionEvaluator = new ConditionEvaluator<>();
-        this.within = within == null ? 0 : within.toMilliseconds();
-        this.outputValueCalculator = outputValue == null ? Operand.Average : outputValue;
-        this.generateMaximalInterval = generateMaximalInterval;
+        this(minOccurs, maxOccurs, cnd, within, generateMaximalInterval, outputValue);
         this.out = out;
     }
 
-    //    private boolean isOccurrencesConditionEffective()
+    public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, boolean generateMaximalInterval, Operand outputValue, Class<E> in, Class<I> out) {
+        this(minOccurs, maxOccurs, cnd, within, generateMaximalInterval, outputValue, out);
+        this.in = in;
+        windowState = new ListStateDescriptor<>("ElementsOfIncompleteIntervals", TypeInformation.of(in));
+    }
+
+//    private boolean isOccurrencesConditionEffective()
 //    {
 //        return !(minOccurs==Integer.MIN_VALUE && maxOccurs==Integer.MAX_VALUE);
 //
 //    }
     private boolean evaluateOccurrencesCondition(int frameSize) {
-        if (minOccurs == Integer.MIN_VALUE && maxOccurs == Integer.MAX_VALUE)
+
+
+        if (minOccurs == 1 && maxOccurs == Integer.MAX_VALUE) // both upper and lower bounds set
             return true;
-        else if (minOccurs == Integer.MIN_VALUE && maxOccurs < frameSize)
+        else if (minOccurs == 1 && maxOccurs < frameSize)
             return false;
         else if (minOccurs > frameSize && maxOccurs == Integer.MAX_VALUE)
             return false;
         else return minOccurs <= frameSize && maxOccurs >= frameSize;
+
+
+//        if (minOccurs == Integer.MIN_VALUE && maxOccurs == Integer.MAX_VALUE)
+//            return true;
+//        else if (minOccurs == Integer.MIN_VALUE && maxOccurs < frameSize)
+//            return false;
+//        else if (minOccurs > frameSize && maxOccurs == Integer.MAX_VALUE)
+//            return false;
+//        else return minOccurs <= frameSize && maxOccurs >= frameSize;
     }
 
 
     private void emitInterval(String s, ArrayList<E> elements, Collector<I> collector) throws Exception {
 
+        if (endOfStream)
+            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
         if (elements.size() == 0)
             return;
-        if (!itemAdded && !generateMaximalInterval)
+        if (!itemAdded && !generateMaximalInterval && !endOfStream)
             return;
 
+        if (endOfStream)
+            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
         double outputValue = 0;
         String rid = elements.get(0).getKey();
         String outValueDescription = outputValueCalculator.toString();
@@ -120,6 +138,10 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
 
     @Override
     public void process(String s, Context context, Iterable<E> iterable, Collector<I> collector) throws Exception {
+
+    //    System.out.println("Processing elemtnts with key: "+s +" for window:"+ context.window().toString());
+
+        ListState<E> elementsFromPreviousFire = context.globalState().getListState(windowState);
         ArrayList<E> sorted = new ArrayList();
 
         for (E e : iterable) {
@@ -128,6 +150,16 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
             sorted.add(e);
 
         }
+
+        for (E e : elementsFromPreviousFire.get()) {
+            //Enforce watermark rule
+//                    if (e.getTimestamp() <= context.currentWatermark())
+            sorted.add(e);
+
+        }
+
+        elementsFromPreviousFire.clear();
+
         sorted.sort(Comparator.comparingLong(RawEvent::getTimestamp));
 
         //let's say we output threshold intervals with condition temperature <= 21
@@ -184,7 +216,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
                     // we can emit in case we satisfy the occurrences condition
                     if (evaluateOccurrencesCondition(currentFrame.size()))
                         emitInterval(s, currentFrame, collector);
-                    toBeEvicted.addAll(currentFrame);
+                    //                   toBeEvicted.addAll(currentFrame);
                     currentFrame.clear();
                 }
 
@@ -194,8 +226,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
                 // If this was a relative condition and it was not passed we have to check again for the
                 if (evaluateOccurrencesCondition(currentFrame.size()))
                     emitInterval(s, currentFrame, collector);
-                // Either we are eligible to emit or not we have to clear the buffer as future items should belong to another frame
-                toBeEvicted.addAll(currentFrame);
+
                 currentFrame.clear();
 
                 if (condition instanceof RelativeCondition) // we have to evaluate the start condition
@@ -203,35 +234,24 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
                     conditionPassed = conditionEvaluator.evaluateCondition(((RelativeCondition) condition).getStartCondition(), event);
                     if (conditionPassed)
                         currentFrame.add(event);
-                    else
-                        toBeEvicted.add(event);
-                } else
-                    toBeEvicted.add(event);
+
+                }
+
             }
 
 
             previousEvent = sorted.get(i);
         }
-//        long keepuntilTs=context.currentWatermark();
-//        if (event != null)
-//            keepuntilTs = event.getTimestamp();
 
-//        if (start !=0 && !brokenFromLoop) // we processed all elements normally
-//            // collector.collect(new Tuple4<>(o,start,end,value));
-//            collector.collect( (I) new IntervalEvent(start, end, value, outputValueCalculator.toString(), s));
-//        else if (start != 0 && brokenFromLoop && event.getValue() > 20.0) // we received an item with future timestamp (greater than watermark) but its value is breaking the theta condition
-//            collector.collect( (I) new IntervalEvent(start, end, value, outputValueCalculator.toString(), s));
-//        else if (start!=0 && brokenFromLoop && event.getValue() <= 20.0)
-//            keepuntilTs = start;
-        // ugly but necessary, to clean here not in the evictor, actually, I will drop the evictor
-        for (Iterator<E> iterator = iterable.iterator(); iterator.hasNext(); ) {
-            E v = iterator.next();
-            if (toBeEvicted.contains(v)) {
-                iterator.remove();
-//                System.out.println("Removing "+v.toString()+" from the buffer");
-            }
 
+        if (context.currentWatermark() == Long.MAX_VALUE) // this is the end of the stream
+        {
+            System.out.println("End of the stream");
+            endOfStream = true;
+            emitInterval(s, currentFrame, collector);
         }
+        else if (currentFrame.size() > 0)
+            elementsFromPreviousFire.addAll(currentFrame);
 
     }
 }

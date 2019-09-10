@@ -67,10 +67,10 @@ public class Main {
 
 //        testHomogeneousIntervals();
 //
-//        testGlobalWindowWithFixedDataSet();
+        testGlobalWindowWithFixedDataSet();
 //
 //        testMatchRecognize();
-        testSQLWithFixedDataSet();
+        //testSQLWithFixedDataSet();
 //        testSQLForRelativeConditionWithFixedDataSet();
 
     }
@@ -468,10 +468,12 @@ public class Main {
                 .targetType(TemperatureWarning.class)
                 .minOccurrences(2)
                 .maxOccurrences(-1)
+                .produceOnlyMaximalIntervals(true)
                 .outputValue(Operand.Last)
                 .condition(new AbsoluteCondition().LHS(Operand.Value).operator(Operator.LessThanEqual).RHS(20))
                 //      .produceOnlyMaximalIntervals(true)
-                .within(Time.milliseconds(5));
+//                .within(Time.milliseconds(5))
+        ;
 
         DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
         warningsIntervalStream.print();

@@ -21,7 +21,7 @@ public class FixedSource implements SourceFunction<TemperatureEvent> {
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 1000, 20),1000);
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 2000, 19),2000);
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 8000, 18),8000);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 9000, 21),9000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 9000, 20),9000);
 //            sourceContext.emitWatermark(new Watermark(4));
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 5, 20),5);
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 6, 20),6);
@@ -32,7 +32,7 @@ public class FixedSource implements SourceFunction<TemperatureEvent> {
 //            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 10,20),10);
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 11000,20),11000);
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 16000,17),16000);
-            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 17000,16),17000);
+            sourceContext.collectWithTimestamp(new TemperatureEvent("1", 17000,21),17000);
             sourceContext.emitWatermark(new Watermark(20000));
 
             sourceContext.collectWithTimestamp(new TemperatureEvent("1", 25000, 17),25000);

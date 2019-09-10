@@ -2,6 +2,7 @@ C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\processor\D2IAHo
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\source\LinearRoadSource.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\DeltaInterval.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\Main.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\mapper\TupleToIntervalMapper.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\LinearRoadRunner.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\generator\IntervalOperatorJoinFunction.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\mapper\AccelerationMapper.java
@@ -15,13 +16,16 @@ C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\Condit
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\PowerEvent.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\generator\IntervalOperator.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\event\SpeedThresholdInterval.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\processor\D2IAHeterogeneousIntervalProcessorFunction.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\generator\RelativeIterativeCondition.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\FlinkMatchRecognizeExample.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\event\IntervalEvent.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\evictor\WatermarkEvictor.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\Operator.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\ThresholdInterval.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\Condition.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\TemperatureEvent.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\exception\NotSupportedYetException.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\datagenerator\LinearRoadKafkaDataProducer.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\source\TemperatureSource.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\event\AccelerationEvent.java
