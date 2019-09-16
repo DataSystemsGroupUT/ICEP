@@ -199,6 +199,8 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
     public DataStream<W> runWithSQL(StreamExecutionEnvironment env) throws Exception {
+
+
         runMode="SQL";
         validate();
         String queryString = buildQueryString();
@@ -220,11 +222,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
                 Types.LONG()
         );
 
-//        TupleTypeInfo<Tuple3<String, Double, Timestamp>> outputTupleInfo = new TupleTypeInfo<>(
-//                Types.STRING(),
-//                Types.DOUBLE(),
-//                Types.SQL_TIMESTAMP()
-//        );
+
 
         StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
         tableEnv.registerDataStream("RawEvents",
@@ -234,11 +232,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
 
 
-      //  Table justTellMe = tableEnv.sqlQuery("Select ID, val, rowtime from RawEvents");
 
-//        DataStream<Tuple3<String, Double,Timestamp>> rawStream = tableEnv.toAppendStream(justTellMe, outputTupleInfo);
-//
-//        rawStream.print();
 
         Table intervalResult = tableEnv.sqlQuery(queryString);
 
@@ -418,6 +412,21 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
             {
                 relativeCondition = relCondition.getRelativeLHS().toString() + " " + relCondition.getRelativeOperator().toString() + " " + parsedRHSCond;
             }
+
+            relativeCondition = relativeCondition.replace("!", "not")
+                    .replace("==", "=")
+                    .replace("!=", "<>")
+                    .replace("&&", " AND ")
+                    .replace("||", " OR ")
+                    .replace("valueMath.abs", "ABS")
+                    .replace("value", "A.val")
+                    .replace("last", "LAST(A.val,1)")
+                    .replace("first", "FIRST(A.val)")
+                    .replace("avg", "AVG(A.val)")
+                    .replace("sum", "SUM(A.val)")
+                    .replace("min", "MIN(A.val)")
+                    .replace("max", "MAX(A.val)")
+            ;
             if (within != null)
                 sqlQuery.append("(");
 

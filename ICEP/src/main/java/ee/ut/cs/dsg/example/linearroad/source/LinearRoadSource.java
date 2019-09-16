@@ -54,10 +54,11 @@ public class LinearRoadSource implements SourceFunction<SpeedEvent> {
                     uniqueKeys.add(data[0].trim());
                 if (recordsEmitted==numRecordsToEmit)
                 {
-                    sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),Long.MAX_VALUE);
-                    for (String key: uniqueKeys)
-                        sourceContext.collectWithTimestamp(new SpeedEvent(key, Long.MAX_VALUE, new Double(-100)), Long.MAX_VALUE);
-                    break;
+//                    sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),Long.MAX_VALUE);
+                    sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),ts);
+//                    for (String key: uniqueKeys)
+//                        sourceContext.collectWithTimestamp(new SpeedEvent(key, Long.MAX_VALUE, new Double(-100)), Long.MAX_VALUE);
+//                    break;
                 }else
                     sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),ts);
 

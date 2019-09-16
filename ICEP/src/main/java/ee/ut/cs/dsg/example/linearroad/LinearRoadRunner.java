@@ -32,7 +32,7 @@ public class LinearRoadRunner {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         // I need to test the frequency of watermark generation
         env.getConfig().setAutoWatermarkInterval(200);
-     //   env.setParallelism(4);
+        env.setParallelism(16);
         ParameterTool parameters = ParameterTool.fromArgs(args);
         DataStream<SpeedEvent> rawEventStream;
         String source = parameters.getRequired("source");
@@ -48,6 +48,9 @@ public class LinearRoadRunner {
 
         String runAs;
         runAs = parameters.get("runAs");
+        String generateOutput = parameters.get("generateOutput");
+        if (generateOutput == null)
+            generateOutput="No";
         if (runAs == null)
             runAs = "CEP";
 
@@ -93,8 +96,8 @@ public class LinearRoadRunner {
     //    rawEventStream.writeAsText("C:\\Work\\Data\\lineartop"+iNumRecordsToEmit+".txt", FileSystem.WriteMode.OVERWRITE);
 
       // DataStream<String> rawEventStream = env.addSource(new LinearRoadSource("C:\\Work\\Data\\linear.csv", 100000));
-        KeyedStream<SpeedEvent, String> speedStream = rawEventStream.keyBy(RawEvent::getKey);//.setParallelism(1);
-
+        KeyedStream<SpeedEvent, String> speedStream = rawEventStream/*.filter((FilterFunction<SpeedEvent>) speedEvent -> speedEvent.getKey().equals("385"))*/.keyBy(RawEvent::getKey);//.setParallelism(1);
+       // speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2-385.txt", FileSystem.WriteMode.OVERWRITE);
    //     speedStream.writeAsText("C:\\Work\\Data\\keyedStream"+iNumRecordsToEmit, FileSystem.WriteMode.OVERWRITE);
 //                .filter((FilterFunction<SpeedEvent>) speedEvent -> speedEvent.getKey().equals("266")).setParallelism(1)
         ;
@@ -102,19 +105,19 @@ public class LinearRoadRunner {
         long start = System.currentTimeMillis();
         if (jobType.equals("ThresholdAbsolute"))
         {
-            jobGenerateThresholdInterval(env,speedStream, runAs);
+            jobGenerateThresholdInterval(env,speedStream, runAs, generateOutput);
         }
         else if (jobType.equals("ThresholdRelative"))
         {
-            jobGenerateThresholdIntervalWithRelativeCondition(env,speedStream, runAs);
+            jobGenerateThresholdIntervalWithRelativeCondition(env,speedStream, runAs, generateOutput);
         }
         else if (jobType.equals("Delta"))
         {
-            jobGenerateDeltaIntervalWithRelativeCondition(env, speedStream, runAs);
+            jobGenerateDeltaIntervalWithRelativeCondition(env, speedStream, runAs, generateOutput);
         }
         else if (jobType.equals("Aggregate"))
         {
-            jobGenerateAggregateIntervalWithRelativeCondition(env, speedStream, runAs);
+            jobGenerateAggregateIntervalWithRelativeCondition(env, speedStream, runAs, generateOutput);
         }
 
 
@@ -136,7 +139,7 @@ public class LinearRoadRunner {
         //jobGenerateThresholdIntervalWithRelativeCondition(env, speedStream, runAs);
     }
 
-    private static void jobGenerateThresholdInterval(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream, String runAs) throws Exception {
+    private static void jobGenerateThresholdInterval(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream, String runAs, String generateOutput) throws Exception {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
@@ -160,12 +163,15 @@ public class LinearRoadRunner {
         else
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
-        //thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output.txt", FileSystem.WriteMode.OVERWRITE);
+        //thresholdIntervalAbsoluteConditionDataStream.print();
+        if (generateOutput.equalsIgnoreCase("yes"))
+            thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         env.execute("Linear road threshold interval with absolute condition run as "+runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
     }
 
-    private static void jobGenerateThresholdIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream, String runAs) throws Exception {
+    private static void jobGenerateThresholdIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream,
+                                                                          String runAs,
+                                                                          String generateOutput) throws Exception {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedThresholdInterval> thresholdIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
@@ -192,12 +198,16 @@ public class LinearRoadRunner {
         else
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+//        thresholdIntervalAbsoluteConditionDataStream.print();
+        if (generateOutput.equalsIgnoreCase("yes"))
+            thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-Threshold-Relative-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         //thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output.txt");
         env.execute("Linear road threshold interval with relative condition run as "+runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
     }
 
-    private static void jobGenerateAggregateIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream, String runAs) throws Exception {
+    private static void jobGenerateAggregateIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream,
+                                                                          String runAs,
+                                                                          String generateOutput) throws Exception {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedAggregateInterval> aggregateWithRelativeCondition =
                 new HomogeneousIntervalGenerator<>();
 
@@ -221,11 +231,16 @@ public class LinearRoadRunner {
         else
             thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithGlobalWindow();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+       // thresholdIntervalAbsoluteConditionDataStream.print();
+        if (generateOutput.equalsIgnoreCase("yes"))
+            thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-Aggregate-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         env.execute("Linear road aggregate interval with relative condition run as " + runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
+
     }
 
-    private static void jobGenerateDeltaIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream, String runAs) throws Exception {
+    private static void jobGenerateDeltaIntervalWithRelativeCondition(StreamExecutionEnvironment env, DataStream<SpeedEvent> speedStream,
+                                                                      String runAs,
+                                                                      String generateOutput) throws Exception {
         HomogeneousIntervalGenerator<SpeedEvent, SpeedDeltaInterval> deltaIntervalWithAbsoluteCondition =
                 new HomogeneousIntervalGenerator<>();
 
@@ -252,8 +267,11 @@ public class LinearRoadRunner {
         else
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithGlobalWindow();
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+//        thresholdIntervalAbsoluteConditionDataStream.print();
+        if (generateOutput.equalsIgnoreCase("yes"))
+            thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-Delta-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         env.execute("Linear road delta interval with relative condition run as " +runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
+
     }
 }
 

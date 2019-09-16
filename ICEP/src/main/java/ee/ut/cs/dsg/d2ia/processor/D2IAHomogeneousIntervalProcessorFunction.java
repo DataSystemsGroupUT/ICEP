@@ -88,15 +88,15 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
 
     private void emitInterval(String s, ArrayList<E> elements, Collector<I> collector) throws Exception {
 
-        if (endOfStream)
-            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
+//        if (endOfStream)
+//            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
         if (elements.size() == 0)
             return;
         if (!itemAdded && !generateMaximalInterval && !endOfStream)
             return;
 
-        if (endOfStream)
-            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
+//        if (endOfStream)
+//            System.out.println("Flushing incomplete interval for key: "+s + " due to end of stream signal");
         double outputValue = 0;
         String rid = elements.get(0).getKey();
         String outValueDescription = outputValueCalculator.toString();
@@ -175,7 +175,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
         // then check the min/max occurrences
         // finally compute the value
         ArrayList<E> currentFrame = new ArrayList<>(sorted.size());
-        ArrayList<E> toBeEvicted = new ArrayList<>(sorted.size());
+        //ArrayList<E> toBeEvicted = new ArrayList<>(sorted.size());
         for (; i < sorted.size(); i++) {
             boolean conditionPassed = false;
             boolean withinIntervalCheckPassed = true;
@@ -246,9 +246,10 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
 
         if (context.currentWatermark() == Long.MAX_VALUE) // this is the end of the stream
         {
-            System.out.println("End of the stream");
+          //  System.out.println("End of the stream");
             endOfStream = true;
-            emitInterval(s, currentFrame, collector);
+            if (evaluateOccurrencesCondition(currentFrame.size()))
+                emitInterval(s, currentFrame, collector);
         }
         else if (currentFrame.size() > 0)
             elementsFromPreviousFire.addAll(currentFrame);

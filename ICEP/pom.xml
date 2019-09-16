@@ -217,7 +217,10 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <artifactSet>
                                 <includes>
+                                    <include>org.apache.flink:flink-java*</include>
+                                    <include>org.apache.flink:flink-streaming-java*</include>
                                     <include>org.apache.flink:flink-cep*</include>
+                                    <include>org.apache.flink:flink-table*</include>
                                 </includes>
                             </artifactSet>
                             <transformers>
