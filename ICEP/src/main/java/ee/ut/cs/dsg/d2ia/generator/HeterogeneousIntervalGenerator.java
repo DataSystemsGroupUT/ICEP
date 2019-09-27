@@ -147,7 +147,7 @@ public class HeterogeneousIntervalGenerator<S extends RawEvent, E extends RawEve
                 Types.LONG()
         );
 
-        StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
+        StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);//.getTableEnvironment(env);
         tableEnv.registerDataStream("RawEvents",
                 streamAsTuple, "ID, val, eventType, eventTime.rowtime");
 

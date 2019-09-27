@@ -12,6 +12,7 @@
         <!--<flink.version>1.6.1</flink.version>-->
         <!--<flink.version>1.7.2</flink.version>-->
         <flink.version>1.8.1</flink.version>
+        <!--<flink.version>1.9.0</flink.version>-->
     </properties>
 
     <dependencies>
@@ -244,6 +245,19 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>ee.ut.cs.dsg.example.linearroad.LinearRoadRunner</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
     <!--This is added as per the documentation of Flink version 1.8.1-->

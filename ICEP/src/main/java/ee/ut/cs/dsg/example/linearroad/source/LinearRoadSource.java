@@ -42,16 +42,16 @@ public class LinearRoadSource implements SourceFunction<SpeedEvent> {
                 reader = new BufferedReader(new FileReader(filePath));
             }
             String line;
-            line = reader.readLine();//skip the header line
+            reader.readLine();//skip the header line
             line = reader.readLine();
-            List<String> uniqueKeys = new ArrayList<>();
+//            List<String> uniqueKeys = new ArrayList<>();
             while (running && line != null && recordsEmitted <= numRecordsToEmit) {
                 String[] data = line.replace("[","").replace("]","").split(",");
 
 //                sourceContext.collect(new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim())));
                 Long ts = Long.parseLong(data[8].trim());
-                if (!uniqueKeys.contains(data[0].trim()))
-                    uniqueKeys.add(data[0].trim());
+//                if (!uniqueKeys.contains(data[0].trim()))
+//                    uniqueKeys.add(data[0].trim());
                 if (recordsEmitted==numRecordsToEmit)
                 {
 //                    sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),Long.MAX_VALUE);
@@ -67,7 +67,9 @@ public class LinearRoadSource implements SourceFunction<SpeedEvent> {
                 line=reader.readLine();
             }
             reader.close();
-          //  sourceContext.emitWatermark(new Watermark(Long.MAX_VALUE));
+//            for (String key: uniqueKeys)
+////                        sourceContext.collectWithTimestamp(new SpeedEvent(key, Long.MAX_VALUE, new Double(-100)), Long.MAX_VALUE);
+            sourceContext.emitWatermark(new Watermark(Long.MAX_VALUE));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

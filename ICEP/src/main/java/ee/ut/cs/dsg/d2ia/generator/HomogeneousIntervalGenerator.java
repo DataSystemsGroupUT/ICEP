@@ -20,6 +20,7 @@ import ee.ut.cs.dsg.d2ia.mapper.TupleToIntervalMapper;
 import ee.ut.cs.dsg.d2ia.processor.D2IAHomogeneousIntervalProcessorFunction;
 import ee.ut.cs.dsg.d2ia.trigger.GlobalWindowEventTimeTrigger;
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.api.java.tuple.Tuple5;
 import org.apache.flink.api.java.tuple.Tuple6;
@@ -29,6 +30,7 @@ import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -203,6 +205,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         runMode="SQL";
         validate();
+        TimeCharacteristic tC = env.getStreamTimeCharacteristic();
         String queryString = buildQueryString();
 
         // start registering the streams
@@ -216,20 +219,34 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
 
         // Define the type info to avoid type info vanishing during transformations
-        TupleTypeInfo<Tuple3<String, Double, Long>> inputTupleInfo = new TupleTypeInfo<>(
+        TupleTypeInfo<Tuple3<String, Double, Long>> inputTupleInfoEventTime = new TupleTypeInfo<>(
                 Types.STRING(),
                 Types.DOUBLE(),
                 Types.LONG()
         );
 
-
-
-        StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
-        tableEnv.registerDataStream("RawEvents",
-                keyedStream.map((MapFunction<S, Tuple3<String, Double, Long>>) event -> new Tuple3<>(event.getKey(), event.getValue(), event.getTimestamp())).returns(inputTupleInfo),
-                "ID, val, eventTime.rowtime"
+        TupleTypeInfo<Tuple3<String, Double, Long>> inputTupleInfoProcessingTime = new TupleTypeInfo<>(
+                Types.STRING(),
+                Types.DOUBLE()
         );
 
+
+
+        StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);//.getTableEnvironment(env);
+
+        if (env.getStreamTimeCharacteristic() == TimeCharacteristic.EventTime) {
+            tableEnv.registerDataStream("RawEvents",
+                    keyedStream.map((MapFunction<S, Tuple3<String, Double, Long>>) event -> new Tuple3<>(event.getKey(), event.getValue(), event.getTimestamp())).returns(inputTupleInfoEventTime),
+                    "ID, val, eventTime.rowtime"
+            );
+        }
+        else
+        {
+            tableEnv.registerDataStream("RawEvents",
+                    keyedStream.map((MapFunction<S, Tuple2<String, Double>>) event -> new Tuple2<>(event.getKey(), event.getValue())).returns(inputTupleInfoProcessingTime),
+                    "ID, val, eventTime.proctime"
+            );
+        }
 
 
 
@@ -479,7 +496,11 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         //   if (condition instanceof AbsoluteCondition) {
         //  if (condition != null && minOccurs == Integer.MAX_VALUE && maxOccurs == Integer.MIN_VALUE)
-        interval = interval.until(new RelativeIterativeCondition<>(condition, RelativeIterativeCondition.ConditionContainer.Until));
+        if (condition instanceof RelativeCondition)
+            interval = interval.until(new RelativeIterativeCondition<>(condition, RelativeIterativeCondition.ConditionContainer.Until));
+        else
+            interval = interval.where(new AbsoluteSimpleCondition<>((AbsoluteCondition) condition));
+
         interval = interval.followedBy("2").where(new SimpleCondition<S>() {
             @Override
             public boolean filter(S s) throws Exception {
@@ -533,21 +554,21 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
 
-    public DataStream<W> runWithGlobalWindow() throws Exception {
-
+    public DataStream<W> runwithWindow(long windowWidth) throws Exception
+    {
         runMode="Window";
         validate();
 
         // I am changing the window into an event time tumbling window as I can see a scalability issue.
         // Every time I increase the number of workers, the jobs takes longer, totally opposite to what's expected.
         if (sourceStream instanceof KeyedStream) {
-            targetStream = ((KeyedStream) sourceStream).window(TumblingEventTimeWindows.of(Time.seconds(10)))
-                  //  .trigger(new GlobalWindowEventTimeTrigger())
+            targetStream = ((KeyedStream) sourceStream).window(TumblingEventTimeWindows.of(Time.seconds(windowWidth)))
+                    //  .trigger(new GlobalWindowEventTimeTrigger())
 //                    .trigger(CountTrigger.of(1))
 //                    .evictor(CountEvictor.of(0, true))
                     .process(new D2IAHomogeneousIntervalProcessorFunction<>(minOccurs, maxOccurs, condition, within, onlyMaximalIntervals, outputValueOperand, sourceTypeClass, targetTypeClass), TypeInformation.of(targetTypeClass));
         } else {
-            targetStream = sourceStream.keyBy((KeySelector<S, String>) RawEvent::getKey).window(TumblingEventTimeWindows.of(Time.seconds(10)))
+            targetStream = sourceStream.keyBy((KeySelector<S, String>) RawEvent::getKey).window(TumblingEventTimeWindows.of(Time.seconds(windowWidth)))
                     //.trigger(new GlobalWindowEventTimeTrigger())
 //                    .trigger(CountTrigger.of(1))
 //                    .evictor(CountEvictor.of(0,true))
@@ -556,6 +577,10 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
 
         return targetStream;
 //        return applyMaximalInterval();
+    }
+    public DataStream<W> runWithWindow() throws Exception {
+
+        return runwithWindow(10L);
     }
 
 

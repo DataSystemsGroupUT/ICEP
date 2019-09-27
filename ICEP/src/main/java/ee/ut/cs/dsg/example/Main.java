@@ -45,8 +45,6 @@ import org.apache.flink.table.api.java.StreamTableEnvironment;
 //import org.uniTartu.cep.interval2.sources.CEPIntervalSource;
 
 
-import javax.annotation.Nullable;
-
 //import static java.util.regex.Pattern.union;
 
 
@@ -475,7 +473,7 @@ public class Main {
 //                .within(Time.milliseconds(5))
         ;
 
-        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
+        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithWindow();
         warningsIntervalStream.print();
         env.execute("Interval generator via global windows");
     }
@@ -610,7 +608,7 @@ public class Main {
                 .produceOnlyMaximalIntervals(true)
                 .within(Time.milliseconds(10));
 
-        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithGlobalWindow();
+        DataStream<TemperatureWarning> warningsIntervalStream = testGenerator.runWithWindow();
         warningsIntervalStream.print();
         env.execute("Interval generator via global windows");
 
@@ -620,7 +618,7 @@ public class Main {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
-        StreamTableEnvironment tableEnv = StreamTableEnvironment.getTableEnvironment(env);
+        StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);//.getTableEnvironment(env);
 
 //        DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new FixedSource());
         DataStream<TemperatureEvent> temperatureEventDataStream = env.addSource(new TemperatureSource(1, 2, 18)).assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<TemperatureEvent>() {

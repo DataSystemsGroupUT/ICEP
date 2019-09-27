@@ -9,9 +9,7 @@ import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
 import ee.ut.cs.dsg.example.linearroad.event.*;
 import ee.ut.cs.dsg.example.linearroad.mapper.SpeedMapper;
 import ee.ut.cs.dsg.example.linearroad.source.LinearRoadSource;
-import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
-import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.streaming.api.TimeCharacteristic;
@@ -22,17 +20,17 @@ import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 
-import javax.annotation.Nullable;
 import java.util.Properties;
 
 public class LinearRoadRunner {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+
         // I need to test the frequency of watermark generation
-        env.getConfig().setAutoWatermarkInterval(200);
-        env.setParallelism(16);
+
+       // env.setMaxParallelism(16);
+      //  env.setParallelism(16);
         ParameterTool parameters = ParameterTool.fromArgs(args);
         DataStream<SpeedEvent> rawEventStream;
         String source = parameters.getRequired("source");
@@ -53,6 +51,18 @@ public class LinearRoadRunner {
             generateOutput="No";
         if (runAs == null)
             runAs = "CEP";
+
+        String timeMode = parameters.get("timeMode");
+        if (timeMode == null)
+            timeMode = "event";
+
+        if (timeMode.equalsIgnoreCase("event"))
+        {
+            env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+            env.getConfig().setAutoWatermarkInterval(10000L);
+        }
+        else
+            env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
 
         numRecordsToEmit = parameters.get("numRecordsToEmit");
 
@@ -76,23 +86,26 @@ public class LinearRoadRunner {
             fileName = parameters.get("fileName");
             rawEventStream = env.addSource(new LinearRoadSource(fileName, iNumRecordsToEmit));//.setParallelism(1);
         }
-        rawEventStream = rawEventStream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<SpeedEvent>() {
-            private long maxTimestampSeen = 0;
 
-            @Override
-            public Watermark getCurrentWatermark() {
-                return new Watermark(maxTimestampSeen);
-            }
 
-            @Override
-            public long extractTimestamp(SpeedEvent temperatureEvent, long l) {
-                long ts = temperatureEvent.getTimestamp();
-                // if (temperatureEvent.getKey().equals("W"))
-                maxTimestampSeen = Long.max(maxTimestampSeen,l);
-                return ts;
-            }
-        });//.setParallelism(1);
+        if (env.getStreamTimeCharacteristic() == TimeCharacteristic.EventTime) {
+            rawEventStream = rawEventStream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<SpeedEvent>() {
+                private long maxTimestampSeen = 0;
 
+                @Override
+                public Watermark getCurrentWatermark() {
+                    return new Watermark(maxTimestampSeen);
+                }
+
+                @Override
+                public long extractTimestamp(SpeedEvent temperatureEvent, long l) {
+                    long ts = temperatureEvent.getTimestamp();
+                    // if (temperatureEvent.getKey().equals("W"))
+                    maxTimestampSeen = Long.max(maxTimestampSeen, l);
+                    return ts;
+                }
+            });//.setParallelism(1);
+        }
     //    rawEventStream.writeAsText("C:\\Work\\Data\\lineartop"+iNumRecordsToEmit+".txt", FileSystem.WriteMode.OVERWRITE);
 
       // DataStream<String> rawEventStream = env.addSource(new LinearRoadSource("C:\\Work\\Data\\linear.csv", 100000));
@@ -161,9 +174,9 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow();
 
-        //thresholdIntervalAbsoluteConditionDataStream.print();
+//        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
             thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         env.execute("Linear road threshold interval with absolute condition run as "+runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
@@ -196,7 +209,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithGlobalWindow();
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow();
 
 //        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
@@ -229,7 +242,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithGlobalWindow();
+            thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithWindow();
 
        // thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
@@ -265,7 +278,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithGlobalWindow();
+            thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithWindow();
 
 //        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
