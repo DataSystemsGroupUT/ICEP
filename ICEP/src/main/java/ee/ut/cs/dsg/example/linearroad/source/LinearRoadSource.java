@@ -25,6 +25,7 @@ public class LinearRoadSource implements SourceFunction<SpeedEvent> {
         this.numRecordsToEmit = numRecordsToEmit;
     }
 
+
     @Override
     public void run(SourceContext<SpeedEvent> sourceContext) throws Exception {
         try {
