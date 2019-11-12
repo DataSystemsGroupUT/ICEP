@@ -24,6 +24,7 @@ import java.util.Properties;
 
 public class LinearRoadRunner {
 
+    static long windowLength=1L;
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
@@ -59,10 +60,24 @@ public class LinearRoadRunner {
         if (timeMode.equalsIgnoreCase("event"))
         {
             env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-            env.getConfig().setAutoWatermarkInterval(10000L);
+            //env.getConfig().setAutoWatermarkInterval(10000L);
         }
         else
             env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
+
+        String winLen = parameters.get("windowSize");
+
+        if (winLen != null)
+        {
+            try
+            {
+                windowLength = Long.parseLong(winLen);
+            }
+            catch(Exception e)
+            {
+
+            }
+        }
 
         numRecordsToEmit = parameters.get("numRecordsToEmit");
 
@@ -174,7 +189,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow();
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow(windowLength);
 
 //        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
@@ -209,7 +224,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow();
+            thresholdIntervalAbsoluteConditionDataStream = thresholdIntervalWithAbsoluteCondition.runWithWindow(windowLength);
 
 //        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
@@ -242,7 +257,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithWindow();
+            thresholdIntervalAbsoluteConditionDataStream = aggregateWithRelativeCondition.runWithWindow(windowLength);
 
        // thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
@@ -278,7 +293,7 @@ public class LinearRoadRunner {
         else if (runAs.equals("SQL"))
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithSQL(env);
         else
-            thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithWindow();
+            thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithWindow(windowLength);
 
 //        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))

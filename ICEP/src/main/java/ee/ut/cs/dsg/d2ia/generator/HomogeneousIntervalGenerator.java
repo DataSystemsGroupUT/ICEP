@@ -273,7 +273,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     private String buildQueryString() {
         String skipStrategy = "AFTER MATCH ";
         if (onlyMaximalIntervals)
-            skipStrategy += "SKIP PAST LAST ROW";
+            skipStrategy += "SKIP TO FIRST B";
         else
             skipStrategy += "SKIP TO NEXT ROW";
 
@@ -471,7 +471,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         AfterMatchSkipStrategy skipStrategy;
 
         if (onlyMaximalIntervals)
-            skipStrategy = AfterMatchSkipStrategy.skipToLast("2");//.skipPastLastEvent();//.skipPastLastEvent();//.noSkip();//.skipToLast("1");
+            skipStrategy = AfterMatchSkipStrategy.skipToFirst("2");//.skipPastLastEvent();//.skipPastLastEvent();//.noSkip();//.skipToLast("1");
         else
             skipStrategy = AfterMatchSkipStrategy.noSkip();
 
@@ -554,7 +554,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
 
 
-    public DataStream<W> runwithWindow(long windowWidth) throws Exception
+    public DataStream<W> runWithWindow(long windowWidth) throws Exception
     {
         runMode="Window";
         validate();
@@ -580,7 +580,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
     }
     public DataStream<W> runWithWindow() throws Exception {
 
-        return runwithWindow(10L);
+        return runWithWindow(1L);
     }
 
 
