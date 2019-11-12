@@ -7,8 +7,8 @@ import com.espertech.esper.compiler.client.EPCompileException;
 import com.espertech.esper.compiler.client.EPCompiler;
 import com.espertech.esper.compiler.client.EPCompilerProvider;
 import com.espertech.esper.runtime.client.*;
+import ee.ut.cs.dsg.example.linearroad.LinearRoadRunnable;
 import ee.ut.cs.dsg.example.linearroad.event.SpeedEvent;
-
 
 
 public class Main {
@@ -78,6 +78,9 @@ public class Main {
 
         EPRuntime runtime = EPRuntimeProvider.getDefaultRuntime(configuration);
 
+        EPEventService eventService = runtime.getEventService();
+        eventService.clockExternal();
+
         EPDeployment deployment;
         try {
             deployment = runtime.getDeploymentService().deploy(epCompiled);
@@ -92,23 +95,8 @@ public class Main {
             System.out.println(newData[0].getUnderlying());
         });
 
+        new LinearRoadRunnable("", 100, eventService, "SpeedEvent");
 
-        runtime.getEventService().sendEventBean(new SpeedEvent("1", 1000, 50), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("2", 1000, 50), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("1", 1000, 54), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("2", 1000, 50), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("1", 1000, 55), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("2", 1000, 51), "SpeedEvent");
-        Thread.sleep(1000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("1", 1000, 56), "SpeedEvent");
-        Thread.sleep(2000);
-        runtime.getEventService().sendEventBean(new SpeedEvent("2", 1000, 52), "SpeedEvent");
-        Thread.sleep(1000);
     }
 
 }
