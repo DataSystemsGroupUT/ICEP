@@ -50,7 +50,7 @@ public class Main {
                 "  after match skip past last row " +
                 "  pattern (A{2,} B) \n" +
                 "  define \n" +
-                "   A as  (prev(A.value,1) is null) or (Math.abs(A.value - A.firstOf().value) >= 0)," +
+                "   A as  (prev(A.value,1) is null) or (Math.abs(A.value - A.firstOf().value) >= 2)," +
                 "   B as true " +
                 ")";
 
@@ -61,7 +61,7 @@ public class Main {
                 "  after match skip past last row " +
                 "  pattern (A{2,} B) \n" +
                 "  define \n" +
-                "   A as  (prev(A.value,1) is null) or (A.aggregate(0, (result, res) => result + res.value) / A.countOf() > 53 )," +
+                "   A as  (prev(A.value,1) is null) or (A.aggregate(0, (result, res) => result + res.value) / A.countOf() > 67 )," +
                 "   B as true " +
                 ")";
 

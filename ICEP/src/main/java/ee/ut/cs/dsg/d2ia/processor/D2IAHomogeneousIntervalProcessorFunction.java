@@ -244,14 +244,16 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
         }
 
 
-        if (context.currentWatermark() == Long.MAX_VALUE) // this is the end of the stream
-        {
-          //  System.out.println("End of the stream");
-            endOfStream = true;
-            if (evaluateOccurrencesCondition(currentFrame.size()))
-                emitInterval(s, currentFrame, collector);
-        }
-        else if (currentFrame.size() > 0)
+//        if (context.currentWatermark() == Long.MAX_VALUE) // this is the end of the stream
+//        {
+//          //  System.out.println("End of the stream");
+//            endOfStream = true;
+//            if (evaluateOccurrencesCondition(currentFrame.size()))
+//                emitInterval(s, currentFrame, collector);
+//        }
+//        else
+
+        if (currentFrame.size() > 0)
             elementsFromPreviousFire.addAll(currentFrame);
 
     }

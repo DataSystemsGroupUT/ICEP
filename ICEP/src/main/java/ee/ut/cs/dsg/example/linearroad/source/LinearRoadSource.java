@@ -63,14 +63,14 @@ public class LinearRoadSource implements SourceFunction<SpeedEvent> {
                 }else
                     sourceContext.collectWithTimestamp(new SpeedEvent(data[0].trim(),ts,Double.parseDouble(data[1].trim())),ts);
 
-        //        sourceContext.emitWatermark(new Watermark(ts));
+                sourceContext.emitWatermark(new Watermark(ts));
                 recordsEmitted++;
                 line=reader.readLine();
             }
             reader.close();
 //            for (String key: uniqueKeys)
 ////                        sourceContext.collectWithTimestamp(new SpeedEvent(key, Long.MAX_VALUE, new Double(-100)), Long.MAX_VALUE);
-            sourceContext.emitWatermark(new Watermark(Long.MAX_VALUE));
+           // sourceContext.emitWatermark(new Watermark(Long.MAX_VALUE));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

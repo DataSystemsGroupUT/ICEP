@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,29 +81,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="107" />
-          <entry key="java" value="256" />
+          <entry key="class" value="109" />
+          <entry key="java" value="261" />
           <entry key="xml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="107" />
-          <entry key="JAVA" value="256" />
+          <entry key="CLASS" value="109" />
+          <entry key="JAVA" value="261" />
           <entry key="XML" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="47" />
-          <entry key="java" value="39212" />
+          <entry key="java" value="39414" />
           <entry key="txt" value="1001" />
           <entry key="xml" value="285" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="39212" />
+          <entry key="JAVA" value="39414" />
           <entry key="PLAIN_TEXT" value="1048" />
           <entry key="XML" value="285" />
         </counts>
@@ -109,10 +114,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2788">
-              <caret line="213" selection-start-line="213" selection-end-line="213" />
+            <state relative-caret-position="442">
+              <caret line="71" column="15" lean-forward="true" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,49 +126,77 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/runtime/io/StreamInputProcessor.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            <state relative-caret-position="396">
+              <caret line="187" selection-start-line="187" selection-end-line="187" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="477" column="51" lean-forward="true" selection-start-line="477" selection-start-column="45" selection-end-line="477" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="968">
+              <caret line="250" column="35" selection-start-line="250" selection-start-column="35" selection-end-line="250" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2035">
+              <caret line="539" column="82" selection-start-line="539" selection-start-column="82" selection-end-line="539" selection-end-column="82" />
+              <folding>
+                <element signature="method#testGlobalWindow#0;class#Main#0" />
+                <element signature="method#testMatchRecognize#0;class#Main#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/PersonEvent.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" selection-start-column="20" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="425">
+              <caret line="52" column="98" selection-start-line="52" selection-start-column="98" selection-end-line="52" selection-end-column="98" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,19 +211,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/runtime/operators/windowing/WindowOperator.class">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/PersonEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5151">
-              <caret line="364" selection-start-line="364" selection-end-line="364" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/api/functions/windowing/ProcessWindowFunction.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+            <state>
+              <caret column="20" selection-start-column="20" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -275,17 +299,17 @@
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHeterogeneousIntervalProcessorFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/evictor/WatermarkEvictor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/AbsoluteSimpleCondition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/FlinkMatchRecognizeExample.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/PersonEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/PersonEvent.java" />
       </list>
     </option>
   </component>
@@ -420,6 +444,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dsg" type="462c0819:PsiDirectoryNode" />
+              <item name="d2ia" type="462c0819:PsiDirectoryNode" />
+              <item name="esper" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dsg" type="462c0819:PsiDirectoryNode" />
+              <item name="d2ia" type="462c0819:PsiDirectoryNode" />
+              <item name="generator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dsg" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -443,6 +488,17 @@
               <item name="linearroad" type="462c0819:PsiDirectoryNode" />
               <item name="event" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ICEP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ICEP" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dsg" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="linearroad" type="462c0819:PsiDirectoryNode" />
+              <item name="LinearRoadRunner" type="1a9f42e2:ClassTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -453,7 +509,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573377896991" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573545448611" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Flink-Stream-SQL-Examples" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -498,7 +554,7 @@
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
-      <option name="PROGRAM_PARAMETERS" value="--source file --jobType ThresholdRelative --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs SQL --numRecordsToEmit 100000 --generateOutput no --timeMode event" />
+      <option name="PROGRAM_PARAMETERS" value="--source file --jobType Delta --fileName &quot;C:\\Work\\Data\\FilterestedLinearRoad2-key 385.CSV&quot; --runAs Window --numRecordsToEmit 100000 --generateOutput yes" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.*" />
@@ -712,7 +768,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573377891969</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Adding esper experiments">
+      <created>1573377967253</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1573377967253</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -728,7 +791,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21065183" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21065183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -736,8 +799,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.22386895" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995005" weight="0.32917318" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.22386895" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4995005" visible="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3174727" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -853,12 +916,6 @@
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java</url>
-          <line>72</line>
-          <properties />
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
           <line>248</line>
           <properties />
@@ -890,15 +947,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>211</line>
+          <line>226</line>
           <properties />
           <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>246</line>
-          <properties />
-          <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
@@ -920,28 +971,40 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>247</line>
+          <line>262</line>
           <properties />
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>174</line>
+          <line>189</line>
           <properties />
           <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
+          <line>246</line>
+          <properties />
+          <option name="timeStamp" value="123" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="w" language="JAVA" />
+        <watch expression="context.currentWatermark()" language="JAVA" />
         <watch expression="triggerContext" />
         <watch expression="context.currentWatermark()" />
+        <watch expression="currentFrame" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>context.currentWatermark()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>w</expression-string>
         <language-id>JAVA</language-id>
@@ -997,13 +1060,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1151,13 +1207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1183,16 +1232,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="91" column="8" selection-start-line="90" selection-start-column="9" selection-end-line="91" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1255,30 +1294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9843">
-          <caret line="620" column="79" selection-start-line="620" selection-start-column="79" selection-end-line="620" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
@@ -1286,27 +1301,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/RelativeCondition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/runtime/operators/windowing/functions/InternalIterableProcessWindowFunction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -1345,16 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/SpeedEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1366,6 +1354,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/source/FixedSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2035">
+          <caret line="539" column="82" selection-start-line="539" selection-start-column="82" selection-end-line="539" selection-end-column="82" />
+          <folding>
+            <element signature="method#testGlobalWindow#0;class#Main#0" />
+            <element signature="method#testMatchRecognize#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/runtime/operators/windowing/functions/InternalIterableProcessWindowFunction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-streaming-java_2.11/1.8.1/flink-streaming-java_2.11-1.8.1.jar!/org/apache/flink/streaming/runtime/io/StreamInputProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/source/LinearRoadSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="968">
+          <caret line="250" column="35" selection-start-line="250" selection-start-column="35" selection-end-line="250" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="71" column="15" lean-forward="true" selection-start-line="71" selection-start-column="15" selection-end-line="71" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="477" column="51" lean-forward="true" selection-start-line="477" selection-start-column="45" selection-end-line="477" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/esper/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="52" column="98" selection-start-line="52" selection-start-column="98" selection-end-line="52" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
