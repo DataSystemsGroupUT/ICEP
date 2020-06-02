@@ -6,42 +6,47 @@
 
 package ee.ut.cs.dsg.d2ia.event;
 
+import org.apache.flink.api.java.tuple.Tuple3;
+
 import java.io.Serializable;
 
 /**
  *
  * @author MKamel
  */
-public abstract class RawEvent implements Serializable {
+public abstract class RawEvent extends Tuple3<String, Double, Long> {// implements Serializable {
 
-    protected long timestamp;
-    protected double value;
-    protected String key;
+//    protected long timestamp;
+//    protected double value;
+//    protected String key;
 
     public RawEvent(long ts, double v)
     {
-        timestamp = ts;
-        value = v;
-        key = "dummy";
+        super("dummy", v, ts);
+//        timestamp = ts;
+//        value = v;
+//        key = "dummy";
     }
     protected RawEvent(String k, long ts, double v)
     {
-        this.key = k;
-        timestamp = ts;
-        value = v;
+        super(k,v,ts);
+//        this.key = k;
+//        timestamp = ts;
+//        value = v;
     }
+
 
     public long getTimestamp()
     {
-        return timestamp;
+        return this.f2;
     }
 
     public double getValue()
     {
-        return value;
+        return this.f1;
     }
 
-    public String getKey(){ return key;}
+    public String getKey(){ return this.f0;}
 
     @Override
     public boolean equals(Object obj) {

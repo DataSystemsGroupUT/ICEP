@@ -11,7 +11,8 @@ public class SpeedDeltaInterval extends IntervalEvent {
     public boolean equals(Object obj) {
         if (obj instanceof SpeedDeltaInterval) {
             SpeedDeltaInterval other = (SpeedDeltaInterval) obj;
-            return value == other.getValue() && this.startTimestamp == other.getStartTimestamp() && this.endTimestamp == other.getEndTimestamp();
+            return getValue() == other.getValue() && this.getStartTimestamp() == other.getStartTimestamp()
+                    && this.getEndTimestamp() == other.getEndTimestamp();
         } else {
             return false;
         }

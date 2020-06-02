@@ -40,7 +40,8 @@ public class TemperatureWarning extends IntervalEvent implements Serializable {
     public boolean equals(Object obj) {
         if (obj instanceof TemperatureWarning) {
             TemperatureWarning other = (TemperatureWarning) obj;
-            return value == other.getValue() && this.startTimestamp == other.getStartTimestamp() && this.endTimestamp == other.getEndTimestamp() && this.key.equals(other.getKey());
+            return getValue() == other.getValue() && this.getStartTimestamp() == other.getStartTimestamp()
+                    && this.getEndTimestamp() == other.getEndTimestamp() && this.getKey().equals(other.getKey());
         } else {
             return false;
         }
@@ -48,7 +49,7 @@ public class TemperatureWarning extends IntervalEvent implements Serializable {
 
     @Override
     public int hashCode() {
-        return Double.hashCode(value);
+        return Double.hashCode(getValue());
     }
 
     @Override

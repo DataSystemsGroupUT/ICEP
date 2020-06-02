@@ -23,7 +23,7 @@ public class TemperatureEvent extends RawEvent {
     public boolean equals(Object obj) {
         if (obj instanceof TemperatureEvent) {
             TemperatureEvent other = (TemperatureEvent) obj;
-            return other.canEquals(this) && super.equals(other) && value == other.value;
+            return other.canEquals(this) && super.equals(other) && getValue() == other.getValue();
         } else {
             return false;
         }
@@ -31,7 +31,7 @@ public class TemperatureEvent extends RawEvent {
     
     @Override
     public int hashCode() {
-        return 41 * super.hashCode() + Double.hashCode(value);
+        return 41 * super.hashCode() + Double.hashCode(getValue());
     }
 
     private boolean canEquals(Object obj){
@@ -40,6 +40,6 @@ public class TemperatureEvent extends RawEvent {
 
     @Override
     public String toString() {
-        return "TemperatureEvent("  + value + " , " + timestamp + ")";
+        return "TemperatureEvent("  + getValue() + " , " + getTimestamp() + ")";
     }
 }

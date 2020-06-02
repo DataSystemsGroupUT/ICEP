@@ -11,7 +11,8 @@ public class SpeedEvent extends RawEvent {
     public boolean equals(Object obj) {
         if (obj instanceof SpeedEvent) {
             SpeedEvent other = (SpeedEvent) obj;
-            return other.getKey().equals(this.key) && other.getValue() == this.value && other.getTimestamp() == this.timestamp;
+            return other.getKey().equals(this.getKey())
+                    && other.getValue() == this.getValue() && other.getTimestamp() == this.getTimestamp();
         } else {
             return false;
         }
@@ -19,13 +20,13 @@ public class SpeedEvent extends RawEvent {
 
     @Override
     public int hashCode() {
-        return 41 * super.hashCode() + Double.hashCode(value);
+        return 41 * super.hashCode() + Double.hashCode(getValue());
     }
 
 
 
     @Override
     public String toString() {
-        return "SpeedEvent(value:"+ value + ", timestamp:" + timestamp + ", key:"+key+")";
+        return "SpeedEvent(value:"+ getValue() + ", timestamp:" + getTimestamp() + ", key:"+getKey()+")";
     }
 }

@@ -144,6 +144,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
         ListState<E> elementsFromPreviousFire = context.globalState().getListState(windowState);
         ArrayList<E> sorted = new ArrayList();
 
+
         for (E e : iterable) {
             //Enforce watermark rule
 //                    if (e.getTimestamp() <= context.currentWatermark())

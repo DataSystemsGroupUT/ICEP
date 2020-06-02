@@ -24,6 +24,7 @@ C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\evictor\Watermar
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\Operator.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\ThresholdInterval.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\Condition.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\esper\Main.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\TemperatureEvent.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\exception\NotSupportedYetException.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\datagenerator\LinearRoadKafkaDataProducer.java
@@ -40,6 +41,7 @@ C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\ev
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\generator\Match.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\condition\AbsoluteCondition.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\event\TemperatureWarning.java
+C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\esper\PersonEvent.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\d2ia\trigger\GlobalWindowEventTimeTrigger.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\linearroad\event\SpeedDeltaInterval.java
 C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java\ee\ut\cs\dsg\example\source\FixedSource.java

@@ -23,7 +23,7 @@ public class PowerEvent extends RawEvent {
     public boolean equals(Object obj) {
         if (obj instanceof PowerEvent) {
             PowerEvent powerEvent = (PowerEvent) obj;
-            return powerEvent.canEquals(this) && super.equals(powerEvent) && value == powerEvent.value; // && id == powerEvent.id;
+            return powerEvent.canEquals(this) && super.equals(powerEvent) && getValue() == powerEvent.getValue(); // && id == powerEvent.id;
         } else {
             return false;
         }
@@ -31,7 +31,7 @@ public class PowerEvent extends RawEvent {
 
     @Override
     public int hashCode() {
-        return (41 * super.hashCode() + Double.hashCode(value));
+        return (41 * super.hashCode() + Double.hashCode(getValue()));
 
     }
 
@@ -43,7 +43,7 @@ public class PowerEvent extends RawEvent {
 
     @Override
     public String toString() {
-        return "PowerEvent(" + value + " , " + timestamp + ")";
+        return "PowerEvent(" + getValue() + " , " + getTimestamp() + ")";
     }
 }
 
