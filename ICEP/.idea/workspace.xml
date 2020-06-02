@@ -3,20 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/DeltaInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureWarning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -94,14 +80,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="111" />
-          <entry key="java" value="280" />
+          <entry key="java" value="281" />
           <entry key="xml" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="111" />
-          <entry key="JAVA" value="280" />
+          <entry key="JAVA" value="281" />
           <entry key="XML" value="12" />
         </counts>
       </usages-collector>
@@ -109,14 +95,14 @@
         <counts>
           <entry key="dummy" value="47" />
           <entry key="java" value="40078" />
-          <entry key="txt" value="1012" />
+          <entry key="txt" value="1168" />
           <entry key="xml" value="285" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="40078" />
-          <entry key="PLAIN_TEXT" value="1059" />
+          <entry key="PLAIN_TEXT" value="1215" />
           <entry key="XML" value="285" />
         </counts>
       </usages-collector>
@@ -125,15 +111,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/TemperatureEvent.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -206,11 +183,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+            <state relative-caret-position="170">
+              <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -514,10 +503,10 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591131973762" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591131976913" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Flink-Stream-SQL-Examples" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.508046" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -787,7 +776,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573545689039</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Changing RawEvent and IntervalEvent to inherit Tuple3 and Tuple5 respectively based on optimization recommendation from Flink community">
+      <created>1591132084210</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1591132084211</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -818,7 +814,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917318" />
       <window_info anchor="bottom" id="CheckStyle" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32930514" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.32930514" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32907802" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004995" side_tool="true" weight="0.3816717" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.16846362" />
@@ -881,7 +877,8 @@
     <MESSAGE value="Changes to the linear road source" />
     <MESSAGE value="Adding esper experiments" />
     <MESSAGE value="Updating esper experiments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating esper experiments" />
+    <MESSAGE value="Changing RawEvent and IntervalEvent to inherit Tuple3 and Tuple5 respectively based on optimization recommendation from Flink community" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing RawEvent and IntervalEvent to inherit Tuple3 and Tuple5 respectively based on optimization recommendation from Flink community" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1357,22 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1211#1212#0" expanded="true" />
-            <element signature="e#1246#1247#0" expanded="true" />
-            <element signature="e#1274#1275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/PowerWarning.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -1445,8 +1426,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+        <state relative-caret-position="170">
+          <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
