@@ -16,41 +16,41 @@ import java.io.Serializable;
  * @author MKamel
  */
 
-public class IntervalEvent  extends Tuple5<String, Double, Long, Long, String> { //implements Serializable {
+public class IntervalEvent  implements Serializable {
 
-//    protected long startTimestamp;
-//    protected long endTimestamp;
-//    protected double value;
-//    protected String valueDescriptor;
+    protected long startTimestamp;
+    protected long endTimestamp;
+    protected double value;
+    protected String valueDescriptor;
 
-//    protected String key;
+    protected String key;
     public IntervalEvent(long sts, long ets, double value, String valueDescriptor, String k)
     {
-        super(k, value, sts, ets, valueDescriptor);
-//        this.startTimestamp = sts;
-//        this.endTimestamp = ets;
-//        this.value = value;
-//        this.valueDescriptor = valueDescriptor;
-//        this.key=k;
+
+        this.startTimestamp = sts;
+        this.endTimestamp = ets;
+        this.value = value;
+        this.valueDescriptor = valueDescriptor;
+        this.key=k;
     }
 
 
     public long getStartTimestamp()
     {
-        return f2;
+        return this.startTimestamp;
     }
     public long getEndTimestamp()
     {
-        return f3;
+        return this.endTimestamp;
     }
     public double getValue()
     {
-        return f1;
+        return this.value;
     }
 
-    public String getValueDescriptor(){return f4;}
+    public String getValueDescriptor(){return this.valueDescriptor;}
 
-    public String getKey(){return f0;}
+    public String getKey(){return this.key;}
 
     @Override
     public String toString()

@@ -13,6 +13,7 @@ import ee.ut.cs.dsg.d2ia.condition.Operand;
 import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
+import ee.ut.cs.dsg.example.linearroad.event.SpeedEvent;
 import ee.ut.cs.dsg.example.mapper.ThroughputRecorder;
 import ee.ut.cs.dsg.example.source.FixedSource;
 import ee.ut.cs.dsg.example.source.TemperatureSource;
@@ -64,8 +65,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
 //        testHomogeneousIntervals();
+
+        SpeedEvent sp = new SpeedEvent("10", 10,10);
+
+        System.out.println(sp);
 //
-        testGlobalWindowWithFixedDataSet();
+//        testGlobalWindowWithFixedDataSet();
 //
 //        testMatchRecognize();
         //testSQLWithFixedDataSet();

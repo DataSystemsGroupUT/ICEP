@@ -14,39 +14,39 @@ import java.io.Serializable;
  *
  * @author MKamel
  */
-public abstract class RawEvent extends Tuple3<String, Double, Long> {// implements Serializable {
+public abstract class RawEvent  implements Serializable {
 
-//    protected long timestamp;
-//    protected double value;
-//    protected String key;
+    protected long timestamp;
+    protected double value;
+    protected String key;
 
     public RawEvent(long ts, double v)
     {
-        super("dummy", v, ts);
-//        timestamp = ts;
-//        value = v;
-//        key = "dummy";
+
+        timestamp = ts;
+        value = v;
+        key = "dummy";
     }
     protected RawEvent(String k, long ts, double v)
     {
-        super(k,v,ts);
-//        this.key = k;
-//        timestamp = ts;
-//        value = v;
+
+        this.key = k;
+        timestamp = ts;
+        value = v;
     }
 
 
     public long getTimestamp()
     {
-        return this.f2;
+        return timestamp;
     }
 
     public double getValue()
     {
-        return this.f1;
+        return value;
     }
 
-    public String getKey(){ return this.f0;}
+    public String getKey(){ return key;}
 
     @Override
     public boolean equals(Object obj) {
