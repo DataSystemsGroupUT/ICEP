@@ -6,9 +6,14 @@ import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
-import ee.ut.cs.dsg.example.linearroad.event.*;
+import ee.ut.cs.dsg.example.linearroad.event.SpeedAggregateInterval;
+import ee.ut.cs.dsg.example.linearroad.event.SpeedDeltaInterval;
+import ee.ut.cs.dsg.example.linearroad.event.SpeedEvent;
+import ee.ut.cs.dsg.example.linearroad.event.SpeedThresholdInterval;
 import ee.ut.cs.dsg.example.linearroad.mapper.SpeedMapper;
 import ee.ut.cs.dsg.example.linearroad.source.LinearRoadSource;
+import org.apache.flink.api.common.io.ratelimiting.FlinkConnectorRateLimiter;
+import org.apache.flink.api.common.io.ratelimiting.GuavaFlinkConnectorRateLimiter;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.core.fs.FileSystem;
@@ -94,13 +99,43 @@ public class LinearRoadRunner {
 //            // only required for Kafka 0.8
 //            properties.setProperty("zookeeper.connect", "localhost:2181");
 //            properties.setProperty("group.id", "test");
-            FlinkKafkaConsumer011<String> consumer = new FlinkKafkaConsumer011<>(topic, new SimpleStringSchema(),properties);
+            FlinkKafkaConsumer011<String> consumer = new FlinkKafkaConsumer011<>(topic, new SimpleStringSchema(), properties);
             consumer.setStartFromEarliest();
-            rawEventStream = env.addSource(consumer).setParallelism(1).map(new SpeedMapper());
+
+            if(parameters.get("rate")!=null){
+                FlinkConnectorRateLimiter rateLimiter = new GuavaFlinkConnectorRateLimiter();
+                rateLimiter.setRate(Long.parseLong(parameters.get("rate")));
+                consumer.setRateLimiter(rateLimiter);
+            }
+
+
+            consumer.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
+                long maxTimestampSeen = 0L;
+
+                @Override
+                public Watermark getCurrentWatermark() {
+                    return new Watermark(maxTimestampSeen);
+                }
+
+                @Override
+                public long extractTimestamp(String element, long l) {
+                    String[] data = element.replace("[","").replace("]","").split(",");
+                    long ts = Long.parseLong(data[8].trim());
+                    // if (temperatureEvent.getKey().equals("W"))
+                    maxTimestampSeen = Long.max(maxTimestampSeen, l);
+                    return ts;
+                }
+            });
+
+
+            rawEventStream = env.addSource(consumer).map(new SpeedMapper(jobType, parameters.get("exp", "exp")));
+
+
         } else {
             fileName = parameters.get("fileName");
+            Long rate = parameters.getLong("rate");
             rawEventStream = env.addSource(new LinearRoadSource(fileName, iNumRecordsToEmit));//.setParallelism(1);
-        }
+
 
 
         if (env.getStreamTimeCharacteristic() == TimeCharacteristic.EventTime) {
@@ -120,7 +155,7 @@ public class LinearRoadRunner {
                     return ts;
                 }
             });//.setParallelism(1);
-        }
+        }}
     //    rawEventStream.writeAsText("C:\\Work\\Data\\lineartop"+iNumRecordsToEmit+".txt", FileSystem.WriteMode.OVERWRITE);
 
       // DataStream<String> rawEventStream = env.addSource(new LinearRoadSource("C:\\Work\\Data\\linear.csv", 100000));
@@ -128,7 +163,7 @@ public class LinearRoadRunner {
        // speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2-385.txt", FileSystem.WriteMode.OVERWRITE);
    //     speedStream.writeAsText("C:\\Work\\Data\\keyedStream"+iNumRecordsToEmit, FileSystem.WriteMode.OVERWRITE);
 //                .filter((FilterFunction<SpeedEvent>) speedEvent -> speedEvent.getKey().equals("266")).setParallelism(1)
-        ;
+
         //speedStream.writeAsText("c:\\Work\\Data\\FilterestedLinearRoad2", FileSystem.WriteMode.OVERWRITE).setParallelism(1);
         long start = System.currentTimeMillis();
         if (jobType.equals("ThresholdAbsolute"))
