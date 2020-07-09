@@ -2,38 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/result/Missing-rows-reverse.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/Missing-rows.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Esper-Aggregate-exp1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Esper-Aggregate-exp5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Esper-Delta-exp1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Esper-ThresholdAbsolute-exp1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Esper-ThresholdRelative-exp1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/outputs/Output-Flink-Delta-exp1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result/results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-0.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-1.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-3.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-4.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-5.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-6.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-7.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/configs/server-8.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/kafka-node-start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/kafka-node-stop.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/kafka-start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/load.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-esper.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/stop.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/zookeeper-start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/zookeeper-stop.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/PerformanceFileBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/kafka-node-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/kafka-node-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/kafka-node-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/kafka-node-stop.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/kafka-start.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/load.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/load.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start-esper.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/stop.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/zookeeper-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/zookeeper-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/zookeeper-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/zookeeper-stop.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +185,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539008695836</updated>
-      <workItem from="1594222638993" duration="346000" />
+      <workItem from="1594222638993" duration="623000" />
+      <workItem from="1594292775940" duration="710000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -393,6 +371,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594222856946" />
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom" timestamp="1594242735627">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
+    <state width="1878" height="421" key="GridCell.Tab.0.center" timestamp="1594242735624">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
+    <state width="1878" height="421" key="GridCell.Tab.0.left" timestamp="1594242735623">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
+    <state width="1878" height="421" key="GridCell.Tab.0.right" timestamp="1594242735626">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

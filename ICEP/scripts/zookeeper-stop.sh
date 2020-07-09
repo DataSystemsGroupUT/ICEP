@@ -2,7 +2,7 @@
 
 if [ -z "$KAFKA_HOME" ]
 then
-      KAFKA_HOME="/Users/samuelelanghi/Documents/polimi/master/anno_5/tesi/confluent-5.3.1"
+      KAFKA_HOME="/root/platforms/confluent-5.3.1"
 else
       echo "KAFKA_HOME is $KAFKA_HOME"
 fi
