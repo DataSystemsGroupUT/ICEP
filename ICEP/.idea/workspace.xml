@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/kafka-node-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/kafka-node-start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/kafka-node-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/kafka-node-stop.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/kafka-start.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/load.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/load.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start-esper.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/stop.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/zookeeper-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/zookeeper-start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/zookeeper-stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/zookeeper-stop.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +74,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591553129783" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.508046" />
@@ -186,7 +181,7 @@
       <option name="presentableId" value="Default" />
       <updated>1539008695836</updated>
       <workItem from="1594222638993" duration="623000" />
-      <workItem from="1594292775940" duration="710000" />
+      <workItem from="1594292775940" duration="4874000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -363,29 +358,33 @@
     <option name="LAST_COMMIT_MESSAGE" value="Changing RawEvent and IntervalEvent to inherit Tuple3 and Tuple5 respectively based on optimization recommendation from Flink community" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594222984870">
+    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594295946520">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594222984870" />
+    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594295946520" />
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594222856946">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594222856946" />
-    <state width="1878" height="421" key="GridCell.Tab.0.bottom" timestamp="1594242735627">
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom" timestamp="1594329063869">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063869" />
     <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
-    <state width="1878" height="421" key="GridCell.Tab.0.center" timestamp="1594242735624">
+    <state width="1878" height="421" key="GridCell.Tab.0.center" timestamp="1594329063866">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063866" />
     <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
-    <state width="1878" height="421" key="GridCell.Tab.0.left" timestamp="1594242735623">
+    <state width="1878" height="421" key="GridCell.Tab.0.left" timestamp="1594329063864">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063864" />
     <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
-    <state width="1878" height="421" key="GridCell.Tab.0.right" timestamp="1594242735626">
+    <state width="1878" height="421" key="GridCell.Tab.0.right" timestamp="1594329063868">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063868" />
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
   </component>
   <component name="XDebuggerManager">

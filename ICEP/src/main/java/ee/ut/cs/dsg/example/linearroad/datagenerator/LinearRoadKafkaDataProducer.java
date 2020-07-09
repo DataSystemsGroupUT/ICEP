@@ -29,10 +29,10 @@ public class LinearRoadKafkaDataProducer {
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
         props.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,4713360);
-        //props.put(ProducerConfig.LINGER_MS_CONFIG,100);
-        //props.put(ProducerConfig.RETRIES_CONFIG,5);
+        props.put(ProducerConfig.LINGER_MS_CONFIG,100);
+        props.put(ProducerConfig.RETRIES_CONFIG,5);
         props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, DefaultPartitioner.class.getName());
-        //props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,90000);
+        props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,90000);
         return new KafkaProducer<>(props);
     }
 
