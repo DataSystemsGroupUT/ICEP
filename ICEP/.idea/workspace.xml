@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1539008695836</updated>
       <workItem from="1594222638993" duration="623000" />
-      <workItem from="1594292775940" duration="4874000" />
+      <workItem from="1594292775940" duration="7323000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -386,6 +385,10 @@
     </state>
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063868" />
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1594395540773">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594395540773" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

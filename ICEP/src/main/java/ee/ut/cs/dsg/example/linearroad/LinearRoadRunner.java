@@ -22,8 +22,10 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
+import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
 import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
+import org.apache.flink.table.sources.wmstrategies.WatermarkStrategy;
 
 import java.util.Properties;
 
@@ -109,7 +111,16 @@ public class LinearRoadRunner {
             }
 
 
-            consumer.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks<String>() {
+
+            consumer.assignTimestampsAndWatermarks(new AscendingTimestampExtractor<String>() {
+                @Override
+                public long extractAscendingTimestamp(String element) {
+                    String[] data = element.replace("[","").replace("]","").split(",");
+                    return Long.parseLong(data[8].trim());
+                    // if (temperatureEvent.getKey().equals("W"))
+
+                }
+            });/*new AssignerWithPeriodicWatermarks<String>() {
                 long maxTimestampSeen = 0L;
 
                 @Override
@@ -125,7 +136,7 @@ public class LinearRoadRunner {
                     maxTimestampSeen = Long.max(maxTimestampSeen, l);
                     return ts;
                 }
-            });
+            });*/
 
 
             rawEventStream = env.addSource(consumer).map(new SpeedMapper(jobType, parameters.get("exp", "exp")));
