@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TerminalProjectOptionsProvider">
+    <envs>
+      <env key="KAFKA_HOME" value="$KAFKA_HOME$" />
+      <env key="PROJECT_DIR" value="$PROJECT_DIR$" />
+    </envs>
+  </component>
+</project>

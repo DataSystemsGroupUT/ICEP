@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/terminal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/kafka-node-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/kafka-node-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/load.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/load.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/LinearRoadKafkaDataProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,39 +31,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>key</find>
-      <find>plugins</find>
-      <find>URI</find>
-      <find>env.ex</find>
-      <find>TypeInformation</find>
-      <find>out</find>
-      <find>TypeInform</find>
-      <find>UNIX_TIMESTAMP</find>
-      <find>$$$</find>
-      <find>Tuple3</find>
-      <find>116</find>
-      <find>101</find>
-      <find>key: 106</find>
-      <find>106)</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>TIMESTAMPDIFF(MILLISECOND,</replace>
-      <replace>Tuple2</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Work\Big Data Lab\ICEP2\ICEP\src\main\java</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="2577" />
-    <option name="height" value="1417" />
   </component>
   <component name="ProjectId" id="1ePUHlWMnjMNSCiQhF3r2Tfyz9w" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -68,6 +44,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591553129783" />
@@ -78,7 +55,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.508046" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -93,6 +70,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Maven.D2IA [package]">
+    <configuration name="LinearRoadKafkaDataConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataConsumer" />
+      <module name="ICEP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.datagenerator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
@@ -160,14 +150,19 @@
       <item itemvalue="Application.LinearRoadRunner" />
       <item itemvalue="Maven.D2IA [install]" />
       <item itemvalue="Maven.D2IA [package]" />
+      <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Maven.D2IA [package]" />
+        <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
         <item itemvalue="Application.LinearRoadRunner" />
         <item itemvalue="Maven.D2IA [install]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_NON_PUBLIC" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -180,7 +175,7 @@
       <option name="presentableId" value="Default" />
       <updated>1539008695836</updated>
       <workItem from="1594222638993" duration="623000" />
-      <workItem from="1594292775940" duration="7323000" />
+      <workItem from="1594292775940" duration="23509000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -361,34 +356,46 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594295946520" />
+    <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1594480590545">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594480590545" />
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594222856946">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594222856946" />
-    <state width="1878" height="421" key="GridCell.Tab.0.bottom" timestamp="1594329063869">
+    <state x="825" y="272" key="EnvironmentVariablesDialog" timestamp="1594471035417">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063869" />
+    <state x="825" y="272" key="EnvironmentVariablesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471035417" />
+    <state width="1878" height="221" key="GridCell.Tab.0.bottom" timestamp="1594586088115">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="221" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088115" />
     <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
-    <state width="1878" height="421" key="GridCell.Tab.0.center" timestamp="1594329063866">
+    <state width="1878" height="221" key="GridCell.Tab.0.center" timestamp="1594586088113">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063866" />
+    <state width="1878" height="221" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088113" />
     <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
-    <state width="1878" height="421" key="GridCell.Tab.0.left" timestamp="1594329063864">
+    <state width="1878" height="221" key="GridCell.Tab.0.left" timestamp="1594586088112">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063864" />
+    <state width="1878" height="221" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088112" />
     <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
-    <state width="1878" height="421" key="GridCell.Tab.0.right" timestamp="1594329063868">
+    <state width="1878" height="221" key="GridCell.Tab.0.right" timestamp="1594586088114">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594329063868" />
+    <state width="1878" height="221" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088114" />
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
-    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1594395540773">
+    <state x="469" y="179" key="SettingsEditor" timestamp="1594471037514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594395540773" />
+    <state x="469" y="179" key="SettingsEditor/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471037514" />
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1594472162531">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594472162531" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

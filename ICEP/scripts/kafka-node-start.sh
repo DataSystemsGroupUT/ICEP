@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export _JAVA_OPTIONS="-Xmx10g"
+export KAFKA_HEAP_OPTS="-Xmx5G -Xms1G"
 broker_count=$1
 
 if [ -z "$KAFKA_HOME" ]

@@ -1,12 +1,14 @@
 ee/ut/cs/dsg/d2ia/condition/Operand.class
 ee/ut/cs/dsg/example/event/PowerEvent.class
 ee/ut/cs/dsg/d2ia/evictor/WatermarkEvictor.class
+ee/ut/cs/dsg/example/linearroad/event/FlinkKafkaCustomConsumer.class
 ee/ut/cs/dsg/d2ia/esper/Main.class
 ee/ut/cs/dsg/example/Main$1.class
 ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.class
 ee/ut/cs/dsg/d2ia/generator/HeterogeneousIntervalGenerator.class
 ee/ut/cs/dsg/d2ia/condition/RelativeCondition.class
 ee/ut/cs/dsg/example/event/DeltaInterval.class
+ee/ut/cs/dsg/example/linearroad/event/CustomStringSchema.class
 ee/ut/cs/dsg/example/event/ThresholdInterval.class
 ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.class
 ee/ut/cs/dsg/d2ia/trigger/GlobalWindowEventTimeTrigger.class

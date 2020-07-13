@@ -6,10 +6,7 @@ import ee.ut.cs.dsg.d2ia.condition.Operator;
 import ee.ut.cs.dsg.d2ia.condition.RelativeCondition;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 import ee.ut.cs.dsg.d2ia.generator.HomogeneousIntervalGenerator;
-import ee.ut.cs.dsg.example.linearroad.event.SpeedAggregateInterval;
-import ee.ut.cs.dsg.example.linearroad.event.SpeedDeltaInterval;
-import ee.ut.cs.dsg.example.linearroad.event.SpeedEvent;
-import ee.ut.cs.dsg.example.linearroad.event.SpeedThresholdInterval;
+import ee.ut.cs.dsg.example.linearroad.event.*;
 import ee.ut.cs.dsg.example.linearroad.mapper.SpeedMapper;
 import ee.ut.cs.dsg.example.linearroad.source.LinearRoadSource;
 import org.apache.flink.api.common.io.ratelimiting.FlinkConnectorRateLimiter;
@@ -101,7 +98,7 @@ public class LinearRoadRunner {
 //            // only required for Kafka 0.8
 //            properties.setProperty("zookeeper.connect", "localhost:2181");
 //            properties.setProperty("group.id", "test");
-            FlinkKafkaConsumer011<String> consumer = new FlinkKafkaConsumer011<>(topic, new SimpleStringSchema(), properties);
+            FlinkKafkaCustomConsumer<String> consumer = new FlinkKafkaCustomConsumer<>(topic, new CustomStringSchema(new SimpleStringSchema(),parameters.getInt("endPerTask")), properties);
             consumer.setStartFromEarliest();
 
             if(parameters.get("rate")!=null){

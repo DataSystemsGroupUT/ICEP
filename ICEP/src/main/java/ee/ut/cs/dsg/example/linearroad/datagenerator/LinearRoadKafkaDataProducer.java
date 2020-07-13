@@ -28,11 +28,11 @@ public class LinearRoadKafkaDataProducer {
                 IntegerSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 StringSerializer.class.getName());
-        props.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,4713360);
-        props.put(ProducerConfig.LINGER_MS_CONFIG,100);
-        props.put(ProducerConfig.RETRIES_CONFIG,5);
+        //props.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,4713360);
+        //props.put(ProducerConfig.LINGER_MS_CONFIG,100);
+        //props.put(ProducerConfig.RETRIES_CONFIG,5);
         props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, DefaultPartitioner.class.getName());
-        props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,90000);
+        //props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,90000);
         return new KafkaProducer<>(props);
     }
 
@@ -52,22 +52,30 @@ public class LinearRoadKafkaDataProducer {
             line = reader.readLine();
             long nRecords = Long.parseLong(args[3]);
             long count = 0L;
-            while (line != null && count<nRecords) {
+            long actualTime = 0;
+            while (line != null && (count<nRecords || nRecords==-1)) {
                 count++;
                 logger.info("Sending "+count+"th record "+line +" to Kafka");
-
+                String[] lineDiv = line.replace("[","").replace("]","").split(", ");
                 final ProducerRecord<Integer, String> record =
-                        new ProducerRecord<>(args[1], Integer.parseInt(line.split(",")[0].substring(1)), line);
+                        new ProducerRecord<>(args[1], Integer.parseInt(lineDiv[0].trim()), line);
                 RecordMetadata metadata = producer.send(record).get();
+                actualTime = Long.parseLong(lineDiv[8]);
 
                 line = reader.readLine();
             }
+            count++;
 
-//
-//                final ProducerRecord<Integer, String> record =
-//                        new ProducerRecord<>(args[1], -1,"[-1, -1, 0.0, 0, 0, 0, 0, 0, 0, -1]");
-//            producer.send(record);
+            for (int i = 0; i < 9; i++) {
+                actualTime+=1000;
+                line = "[-1, 0, 0.0, 0, 0, 0, 0, 0, "+actualTime+", "+(actualTime+1)+"]";
+                final ProducerRecord<Integer, String> record =
+                        new ProducerRecord<>(args[1], i, -1, line);
+                logger.info("Sending "+count+"th record "+line +" to Kafka");
+                producer.send(record);
+                count++;
 
+            }
 
             reader.close();
         } catch (IOException | InterruptedException | ExecutionException ioe) {

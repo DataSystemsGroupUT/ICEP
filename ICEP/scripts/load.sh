@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export _JAVA_OPTIONS="-Xmx10g"
+#export _JAVA_OPTIONS="-Xmx10g"
 
 bootstrap=$1
 topic=$2
@@ -29,5 +29,5 @@ sleep 10
 
 # Execute producer
 echo "Start loading:"
-java -cp $PROJECT_DIR/target/D2IA-0.1-SNAPSHOT-launcher.jar ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataProducer ${bootstrap} ${topic} ${input} ${maxevents} &
+java -Xmx2g -cp $PROJECT_DIR/target/D2IA-0.1-SNAPSHOT-launcher.jar ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataProducer ${bootstrap} ${topic} ${input} ${maxevents} &
 echo "Producer finished"
