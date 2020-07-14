@@ -26,6 +26,8 @@ import org.apache.flink.table.sources.wmstrategies.WatermarkStrategy;
 
 import java.util.Properties;
 
+import static org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09.KEY_POLL_TIMEOUT;
+
 public class LinearRoadRunner {
 
     static long windowLength=1L;
@@ -95,6 +97,8 @@ public class LinearRoadRunner {
 //            zooKeeper = parameters.get("zookeeper");
             Properties properties = new Properties();
             properties.setProperty("bootstrap.servers", kafka);
+            properties.setProperty(KEY_POLL_TIMEOUT, "0");
+
 //            // only required for Kafka 0.8
 //            properties.setProperty("zookeeper.connect", "localhost:2181");
 //            properties.setProperty("group.id", "test");
