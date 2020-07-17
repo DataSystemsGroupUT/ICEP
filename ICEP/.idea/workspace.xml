@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
-      <option name="PROGRAM_PARAMETERS" value="--source file --jobType Delta --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs Window --numRecordsToEmit 100000 --generateOutput no --windowSize 1000" />
+      <option name="PROGRAM_PARAMETERS" value="--source file --jobType Delta --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs CEP --numRecordsToEmit 100000 --generateOutput no --windowSize 1000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.*" />
@@ -358,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595001105433</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator">
+      <created>1595001618841</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1595001618841</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -392,46 +399,46 @@
     <option name="LAST_COMMIT_MESSAGE" value="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595000985727">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595001645762">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595000985727" />
-    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2" timestamp="1595001104294">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595001645762" />
+    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2" timestamp="1595001617812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595001104294" />
+    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595001617812" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1594995529220">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1594995529220" />
-    <state width="1493" height="292" key="GridCell.Tab.0.bottom" timestamp="1595000989952">
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom" timestamp="1595001652110">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595000989952" />
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595001652110" />
     <state width="1557" height="310" key="GridCell.Tab.0.bottom/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.center" timestamp="1595000989952">
+    <state width="1493" height="292" key="GridCell.Tab.0.center" timestamp="1595001652109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595000989952" />
+    <state width="1493" height="292" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595001652109" />
     <state width="1557" height="310" key="GridCell.Tab.0.center/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.left" timestamp="1595000989952">
+    <state width="1493" height="292" key="GridCell.Tab.0.left" timestamp="1595001652109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595000989952" />
+    <state width="1493" height="292" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595001652109" />
     <state width="1557" height="310" key="GridCell.Tab.0.left/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.right" timestamp="1595000989952">
+    <state width="1493" height="292" key="GridCell.Tab.0.right" timestamp="1595001652109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595000989952" />
+    <state width="1493" height="292" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595001652109" />
     <state width="1557" height="310" key="GridCell.Tab.0.right/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
     <state x="487" y="115" key="RollbackChangesDialog" timestamp="1594995141451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="487" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594995141451" />
-    <state x="376" y="156" key="Vcs.Push.Dialog.v2" timestamp="1595001113640">
+    <state x="376" y="156" key="Vcs.Push.Dialog.v2" timestamp="1595001620857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="376" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595001113640" />
+    <state x="376" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595001620857" />
     <state x="392" y="163" key="Vcs.Push.Dialog.v2/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406795547" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594995529221">
       <screen x="0" y="0" width="1536" height="824" />

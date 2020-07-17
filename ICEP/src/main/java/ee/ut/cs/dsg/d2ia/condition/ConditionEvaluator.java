@@ -25,10 +25,9 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
     private static ScriptEngine engine;
     public ConditionEvaluator()
     {
-        System.out.println("Initializing condition evaluator");
         mgr = new ScriptEngineManager();
         engine = mgr.getEngineByName("JavaScript");
-        System.out.println(engine.toString());
+
     }
 
     public boolean evaluateCondition(AbsoluteCondition condition, S s) throws Exception {
