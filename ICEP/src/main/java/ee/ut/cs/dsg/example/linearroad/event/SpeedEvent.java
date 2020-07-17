@@ -3,6 +3,7 @@ package ee.ut.cs.dsg.example.linearroad.event;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 
 public class SpeedEvent extends RawEvent {
+    public SpeedEvent(){}
     public SpeedEvent(String k, long ts, double v) {
         super(k, ts, v);
     }
