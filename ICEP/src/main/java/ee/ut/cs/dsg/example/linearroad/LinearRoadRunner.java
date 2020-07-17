@@ -295,7 +295,7 @@ public class LinearRoadRunner {
         else
             thresholdIntervalAbsoluteConditionDataStream = deltaIntervalWithAbsoluteCondition.runWithWindow(windowLength);
 
-        thresholdIntervalAbsoluteConditionDataStream.print();
+//        thresholdIntervalAbsoluteConditionDataStream.print();
         if (generateOutput.equalsIgnoreCase("yes"))
             thresholdIntervalAbsoluteConditionDataStream.writeAsText("./output-Delta-"+runAs+" parallelism "+env.getParallelism(), FileSystem.WriteMode.OVERWRITE);
         env.execute("Linear road delta interval with relative condition run as " +runAs + " parallelism "+env.getParallelism() +" out of "+env.getMaxParallelism());
