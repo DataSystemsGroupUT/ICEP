@@ -21,10 +21,19 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
     private double max;
     private double first;
     private double last;
+    private static ScriptEngineManager mgr;
+    private static ScriptEngine engine;
+    public ConditionEvaluator()
+    {
+        System.out.println("Initializing condition evaluator");
+        mgr = new ScriptEngineManager();
+        engine = mgr.getEngineByName("JavaScript");
+        System.out.println(engine.toString());
+    }
 
     public boolean evaluateCondition(AbsoluteCondition condition, S s) throws Exception {
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine engine = mgr.getEngineByName("JavaScript");
+//        ScriptEngineManager mgr = new ScriptEngineManager();
+//        ScriptEngine engine = mgr.getEngineByName("JavaScript");
         String conditionString = condition.parse(0,0,0,0,0,0,s.getValue());
 
 
@@ -73,8 +82,8 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         count++;
 
 
-        ScriptEngineManager mgr = new ScriptEngineManager();
-        ScriptEngine engine = mgr.getEngineByName("JavaScript");
+
+
         String conditionString;// = condition.toString().split("Relative")[1].trim();
 
         Object relativeLHS = condition.getRelativeLHS();
@@ -162,6 +171,9 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         } else
             conditionString += rhsConditionString;
         conditionString+=")";
+
+//        ScriptEngineManager mgr = new ScriptEngineManager();
+//        ScriptEngine engine = mgr.getEngineByName("JavaScript");
         boolean result = (boolean) engine.eval(conditionString);
 
         min = Math.min(min, s.getValue());

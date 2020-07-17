@@ -27,9 +27,12 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
     private boolean itemAdded = false;
     private boolean endOfStream = false;
     private ListStateDescriptor<E> windowState;
+    private ArrayList<E> sorted = new ArrayList();
+    private ListState<E> elementsFromPreviousFire;
+    ArrayList<E> currentFrame = new ArrayList<>();
 //    private int count;
 //    private double sum;
-    //TODO: Let's check working with states later on to handle incomplete windows (frames)
+
     //private ListStateDescriptor<E> elementsRemainingFromPreviousFiring
 
     public D2IAHomogeneousIntervalProcessorFunction(int minOccurs, int maxOccurs, Condition cnd, Time within, Operand outputValue) {
@@ -141,9 +144,9 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
 
     //    System.out.println("Processing elemtnts with key: "+s +" for window:"+ context.window().toString());
 
-        ListState<E> elementsFromPreviousFire = context.globalState().getListState(windowState);
-        ArrayList<E> sorted = new ArrayList();
+        elementsFromPreviousFire = context.globalState().getListState(windowState);
 
+        sorted.clear();
 
         for (E e : iterable) {
             //Enforce watermark rule
@@ -175,7 +178,7 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
         // then check the time lapse (within)
         // then check the min/max occurrences
         // finally compute the value
-        ArrayList<E> currentFrame = new ArrayList<>(sorted.size());
+        currentFrame.clear();
         //ArrayList<E> toBeEvicted = new ArrayList<>(sorted.size());
         for (; i < sorted.size(); i++) {
             boolean conditionPassed = false;
@@ -184,16 +187,11 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
             event = sorted.get(i);
             itemAdded = false;
 
-//            if (event.getTimestamp() > context.currentWatermark()) {
-////                brokenFromLoop=true;
-//                break; // no need to process the rest of the elements but we can emit the current complete window, if any
-//            }
+
 
             if (condition instanceof AbsoluteCondition) {
                 conditionPassed = conditionEvaluator.evaluateCondition((AbsoluteCondition) condition, event);
-
-
-            } else if (condition instanceof RelativeCondition) {
+            } else /*if (condition instanceof RelativeCondition)*/ {
                 if (currentFrame.size() == 0) // we have to evaluate just the start condition
                 {
                     conditionPassed = conditionEvaluator.evaluateCondition(((RelativeCondition) condition).getStartCondition(), event);
@@ -241,18 +239,10 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
             }
 
 
-            previousEvent = sorted.get(i);
+            previousEvent = event;
         }
 
 
-//        if (context.currentWatermark() == Long.MAX_VALUE) // this is the end of the stream
-//        {
-//          //  System.out.println("End of the stream");
-//            endOfStream = true;
-//            if (evaluateOccurrencesCondition(currentFrame.size()))
-//                emitInterval(s, currentFrame, collector);
-//        }
-//        else
 
         if (currentFrame.size() > 0)
             elementsFromPreviousFire.addAll(currentFrame);
