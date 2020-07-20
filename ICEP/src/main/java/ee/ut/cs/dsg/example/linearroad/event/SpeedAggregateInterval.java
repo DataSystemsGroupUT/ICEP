@@ -3,6 +3,7 @@ package ee.ut.cs.dsg.example.linearroad.event;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 
 public class SpeedAggregateInterval extends IntervalEvent {
+    public SpeedAggregateInterval() {}
     public SpeedAggregateInterval(long sts, long ets, double value, String valueDescriptor, String k) {
         super(sts, ets, value, valueDescriptor, k);
     }

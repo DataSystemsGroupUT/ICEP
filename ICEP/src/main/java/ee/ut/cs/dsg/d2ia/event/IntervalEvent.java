@@ -6,8 +6,11 @@
 
 package ee.ut.cs.dsg.d2ia.event;
 
-import org.apache.flink.api.java.tuple.Tuple4;
+
 import org.apache.flink.api.java.tuple.Tuple5;
+import org.apache.flink.types.DoubleValue;
+import org.apache.flink.types.LongValue;
+import org.apache.flink.types.StringValue;
 
 import java.io.Serializable;
 
@@ -16,41 +19,55 @@ import java.io.Serializable;
  * @author MKamel
  */
 
-public class IntervalEvent  implements Serializable {
+public class IntervalEvent  extends Tuple5<LongValue, LongValue, DoubleValue, StringValue, StringValue> {//implements Serializable {
 
-    protected long startTimestamp;
-    protected long endTimestamp;
-    protected double value;
-    protected String valueDescriptor;
+//    protected long startTimestamp;
+//    protected long endTimestamp;
+//    protected double value;
+//    protected String valueDescriptor;
 
-    protected String key;
+//    protected String key;
+
+    public IntervalEvent()
+    {
+        this(Long.MIN_VALUE, Long.MAX_VALUE, -1, "NONE", "dummy");
+    }
     public IntervalEvent(long sts, long ets, double value, String valueDescriptor, String k)
     {
 
-        this.startTimestamp = sts;
-        this.endTimestamp = ets;
-        this.value = value;
-        this.valueDescriptor = valueDescriptor;
-        this.key=k;
+        this.f0 = new LongValue(sts);
+        this.f1 = new LongValue(ets);
+        this.f2 = new DoubleValue(value);
+        this.f3 = new StringValue(valueDescriptor);
+        this.f4 = new StringValue(k);
     }
 
+    public long getStartTimestamp(){return f0.getValue();}
 
-    public long getStartTimestamp()
-    {
-        return this.startTimestamp;
-    }
-    public long getEndTimestamp()
-    {
-        return this.endTimestamp;
-    }
-    public double getValue()
-    {
-        return this.value;
-    }
+    public long getEndTimestamp(){return f1.getValue();}
 
-    public String getValueDescriptor(){return this.valueDescriptor;}
+    public double getValue(){ return f2.getValue();}
 
-    public String getKey(){return this.key;}
+    public String getKey(){ return f4.getValue(); }
+
+    public String getValueDescriptor(){return f3.getValue();}
+
+//    public long getStartTimestamp()
+//    {
+//        return this.startTimestamp;
+//    }
+//    public long getEndTimestamp()
+//    {
+//        return this.endTimestamp;
+//    }
+//    public double getValue()
+//    {
+//        return this.value;
+//    }
+//
+//    public String getValueDescriptor(){return this.valueDescriptor;}
+//
+//    public String getKey(){return this.key;}
 
     @Override
     public String toString()

@@ -3,6 +3,7 @@ package ee.ut.cs.dsg.example.linearroad.event;
 import ee.ut.cs.dsg.d2ia.event.IntervalEvent;
 
 public class SpeedThresholdInterval extends IntervalEvent {
+    public SpeedThresholdInterval(){}
     public SpeedThresholdInterval(long sts, long ets, double value, String valueDescriptor, String k) {
         super(sts, ets, value, valueDescriptor, k);
     }

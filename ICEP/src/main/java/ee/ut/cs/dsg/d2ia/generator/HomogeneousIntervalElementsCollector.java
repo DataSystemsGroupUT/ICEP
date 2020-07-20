@@ -13,7 +13,7 @@ class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends Interva
 
     private Class<W> out;
     private Operand outValueOperand;
-
+    private List<S> matchingEvents;
     public HomogeneousIntervalElementsCollector(Class<W> out, Operand outputValueOperand) {
         this.out = out;
         this.outValueOperand = outputValueOperand;
@@ -21,7 +21,7 @@ class HomogeneousIntervalElementsCollector<S extends RawEvent, W extends Interva
 
     @Override
     public W select(Map<String, List<S>> map) throws Exception {
-        List<S> matchingEvents = map.get("1");
+        matchingEvents = map.get("1");
         double outputValue = 0;
         String rid = matchingEvents.get(0).getKey();
         String outValueDescription = outValueOperand.toString();
