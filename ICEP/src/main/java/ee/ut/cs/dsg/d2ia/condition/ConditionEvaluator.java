@@ -1,9 +1,11 @@
 package ee.ut.cs.dsg.d2ia.condition;
 
+import ee.ut.cs.dsg.d2ia.event.IntervalStatistics;
 import ee.ut.cs.dsg.d2ia.event.RawEvent;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.io.Serializable;
 
 public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
@@ -27,6 +29,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
     {
         mgr = new ScriptEngineManager();
         engine = mgr.getEngineByName("JavaScript");
+        System.out.println(engine.toString());
 
     }
 
@@ -35,7 +38,13 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
 //        ScriptEngine engine = mgr.getEngineByName("JavaScript");
         String conditionString = condition.parse(0,0,0,0,0,0,s.getValue());
 
+        if (engine == null)
+        {
+            System.out.println("Initializing Javascript engine");
+            mgr = new ScriptEngineManager();
+            engine = mgr.getEngineByName("JavaScript");
 
+        }
         return (boolean) engine.eval(conditionString);
     }
     private void resetStats()
@@ -46,6 +55,17 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         max = Double.MIN_VALUE;
         first = Double.MIN_VALUE;
         last = -1d;
+    }
+    public boolean evaluateRelativeCondition(RelativeCondition condition, IntervalStatistics stats, S s) throws Exception{
+        first = stats.first;
+        last = stats.last;
+        min = stats.min;
+        max = stats.max;
+        sum = stats.sum;
+        count = stats.count;
+
+        return evaluateRelativeConditionInternal(condition, s);
+
     }
     public boolean evaluateRelativeCondition(RelativeCondition condition, Iterable<S> prevMatches, S s) throws Exception {
 
@@ -81,8 +101,10 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         count++;
 
 
+        return evaluateRelativeConditionInternal(condition, s);
+    }
 
-
+    private boolean evaluateRelativeConditionInternal(RelativeCondition condition, S s) throws ScriptException {
         String conditionString;// = condition.toString().split("Relative")[1].trim();
 
         Object relativeLHS = condition.getRelativeLHS();
