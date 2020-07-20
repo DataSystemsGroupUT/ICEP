@@ -59,7 +59,7 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-table-api-java-bridge_2.11:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-table-api-java:1.8.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.flink:flink-table-planner_2.11:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.flink:flink-table-planner_2.11:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-table-common:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-streaming-scala_2.11:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flink:flink-scala_2.11:1.8.1" level="project" />

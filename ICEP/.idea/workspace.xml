@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ICEP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ICEP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -141,9 +142,9 @@
     </configuration>
     <list>
       <item itemvalue="Application.LinearRoadRunner" />
+      <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
       <item itemvalue="Maven.D2IA [install]" />
       <item itemvalue="Maven.D2IA [package]" />
-      <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
     </list>
     <recent_temporary>
       <list>
@@ -168,7 +169,8 @@
       <option name="presentableId" value="Default" />
       <updated>1539008695836</updated>
       <workItem from="1594222638993" duration="623000" />
-      <workItem from="1594292775940" duration="25506000" />
+      <workItem from="1594292775940" duration="28483000" />
+      <workItem from="1595249598949" duration="261000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -361,25 +363,25 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="825" y="272" key="EnvironmentVariablesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471035417" />
-    <state width="1878" height="221" key="GridCell.Tab.0.bottom" timestamp="1594586088115">
+    <state width="1878" height="221" key="GridCell.Tab.0.bottom" timestamp="1594827884265">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088115" />
+    <state width="1878" height="221" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884265" />
     <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
-    <state width="1878" height="221" key="GridCell.Tab.0.center" timestamp="1594586088113">
+    <state width="1878" height="221" key="GridCell.Tab.0.center" timestamp="1594827884262">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088113" />
+    <state width="1878" height="221" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884262" />
     <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
-    <state width="1878" height="221" key="GridCell.Tab.0.left" timestamp="1594586088112">
+    <state width="1878" height="221" key="GridCell.Tab.0.left" timestamp="1594827884260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088112" />
+    <state width="1878" height="221" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884260" />
     <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
-    <state width="1878" height="221" key="GridCell.Tab.0.right" timestamp="1594586088114">
+    <state width="1878" height="221" key="GridCell.Tab.0.right" timestamp="1594827884263">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594586088114" />
+    <state width="1878" height="221" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884263" />
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
     <state x="469" y="179" key="SettingsEditor" timestamp="1594471037514">
       <screen x="0" y="0" width="1920" height="1080" />
