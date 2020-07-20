@@ -195,6 +195,14 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
 
 //        ScriptEngineManager mgr = new ScriptEngineManager();
 //        ScriptEngine engine = mgr.getEngineByName("JavaScript");
+
+        if (engine == null)
+        {
+            System.out.println("Initializing Javascript engine");
+            mgr = new ScriptEngineManager();
+            engine = mgr.getEngineByName("JavaScript");
+
+        }
         boolean result = (boolean) engine.eval(conditionString);
 
         min = Math.min(min, s.getValue());
