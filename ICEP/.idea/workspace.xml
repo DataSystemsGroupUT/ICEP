@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/condition/ConditionEvaluator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +81,7 @@
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
-      <option name="PROGRAM_PARAMETERS" value="--source file --jobType ThresholdAbsolute --fileName $USER_HOME$/Desktop/linear2.csv --runAs Window --numRecordsToEmit 4000000 --generateOutput yes --windowSize 1" />
+      <option name="PROGRAM_PARAMETERS" value="--source file --jobType ThresholdRelative --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs Window --numRecordsToEmit 10000 --generateOutput no --windowSize 1000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.*" />
@@ -154,6 +152,8 @@
       <list>
         <item itemvalue="Application.LinearRoadRunner" />
         <item itemvalue="Maven.D2IA [package]" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.FlinkMatchRecognizeExample" />
         <item itemvalue="Maven.D2IA [install]" />
       </list>
     </recent_temporary>
@@ -343,7 +343,21 @@
       <option name="project" value="LOCAL" />
       <updated>1595001687528</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Changing all POJO objects to extend proper tuple type of Flink and using Flink mutable types.">
+      <created>1595012192276</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1595012192276</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fixing a bug with static properties of the ConditionEvaluator class.">
+      <created>1595267077643</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1595267077643</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -377,68 +391,54 @@
     <MESSAGE value="Changing RawEvent and IntervalEvent to inherit Tuple3 and Tuple5 respectively based on optimization recommendation from Flink community" />
     <MESSAGE value="Reverting to POJO for Event classes" />
     <MESSAGE value="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator" />
+    <MESSAGE value="Changing all POJO objects to extend proper tuple type of Flink and using Flink mutable types." />
+    <MESSAGE value="Fixing a bug with static properties of the ConditionEvaluator class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing a bug with static properties of the ConditionEvaluator class." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595262966955">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595266816980">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594295946520" />
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262966955" />
-    <state x="747" y="252" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1595262900435">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595266816980" />
+    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2" timestamp="1595267076806">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="747" y="252" key="#com.intellij.ide.macro.MacrosDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262900435" />
-    <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1594480590545">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595267076806" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1595002877585">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594480590545" />
-    <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594222856946">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595002877585" />
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom" timestamp="1595266862263">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594222856946" />
-    <state x="825" y="272" key="EnvironmentVariablesDialog" timestamp="1594471035417">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="292" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595266862263" />
+    <state width="1557" height="310" key="GridCell.Tab.0.bottom/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
+    <state width="1493" height="292" key="GridCell.Tab.0.center" timestamp="1595266862263">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="825" y="272" key="EnvironmentVariablesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471035417" />
-    <state width="1878" height="305" key="GridCell.Tab.0.bottom" timestamp="1595264406691">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="292" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595266862263" />
+    <state width="1557" height="310" key="GridCell.Tab.0.center/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
+    <state width="1493" height="292" key="GridCell.Tab.0.left" timestamp="1595266862262">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884265" />
-    <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
-    <state width="1878" height="305" key="GridCell.Tab.0.bottom/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406691" />
-    <state width="1878" height="305" key="GridCell.Tab.0.center" timestamp="1595264406689">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="292" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595266862262" />
+    <state width="1557" height="310" key="GridCell.Tab.0.left/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
+    <state width="1493" height="292" key="GridCell.Tab.0.right" timestamp="1595266862263">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884262" />
-    <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
-    <state width="1878" height="305" key="GridCell.Tab.0.center/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406689" />
-    <state width="1878" height="305" key="GridCell.Tab.0.left" timestamp="1595264406688">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1493" height="292" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595266862263" />
+    <state width="1557" height="310" key="GridCell.Tab.0.right/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
+    <state x="487" y="115" key="RollbackChangesDialog" timestamp="1595002653655">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884260" />
-    <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
-    <state width="1878" height="305" key="GridCell.Tab.0.left/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406688" />
-    <state width="1878" height="305" key="GridCell.Tab.0.right" timestamp="1595264406690">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="487" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595002653655" />
+    <state x="376" y="156" key="Vcs.Push.Dialog.v2" timestamp="1595267081340">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1878" height="221" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884263" />
-    <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
-    <state width="1878" height="305" key="GridCell.Tab.0.right/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406690" />
-    <state width="1878" height="376" key="GridCell.Tab.1.bottom" timestamp="1595263414033">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="376" key="GridCell.Tab.1.bottom/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414033" />
-    <state width="1878" height="376" key="GridCell.Tab.1.center" timestamp="1595263414032">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="376" key="GridCell.Tab.1.center/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414032" />
-    <state width="1878" height="376" key="GridCell.Tab.1.left" timestamp="1595263414031">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="376" key="GridCell.Tab.1.left/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414031" />
-    <state width="1878" height="376" key="GridCell.Tab.1.right" timestamp="1595263414032">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="376" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595267081340" />
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406795547" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594995529221">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1878" height="376" key="GridCell.Tab.1.right/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414032" />
     <state x="469" y="179" key="SettingsEditor" timestamp="1594471037514">
@@ -448,15 +448,18 @@
     <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1595262985895">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594472162531" />
-    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262985895" />
+    <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1594994808210" />
+    <state x="499" y="177" key="extract.method.dialog" timestamp="1595015746407">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="177" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1595015746407" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java</url>
-          <line>64</line>
+          <line>92</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -481,7 +484,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/RelativeIterativeCondition.java</url>
-          <line>62</line>
+          <line>90</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
