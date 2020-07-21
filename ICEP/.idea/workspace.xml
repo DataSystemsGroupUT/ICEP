@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ICEP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ICEP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-=======
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/AccelerationEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/AccelerationEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedDeltaInterval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedThresholdInterval.java" afterDir="false" />
->>>>>>> f62e99340e1fe873e4174ccbdb7bae0cde7d1221
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +18,9 @@
       </map>
     </option>
   </component>
-<<<<<<< HEAD
-=======
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
->>>>>>> f62e99340e1fe873e4174ccbdb7bae0cde7d1221
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -99,7 +83,7 @@
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
-      <option name="PROGRAM_PARAMETERS" value="--source file --jobType Delta --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs CEP --numRecordsToEmit 100000 --generateOutput no --windowSize 1000" />
+      <option name="PROGRAM_PARAMETERS" value="--source file --jobType ThresholdAbsolute --fileName $USER_HOME$/Desktop/linear2.csv --runAs Window --numRecordsToEmit 4000000 --generateOutput yes --windowSize 1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.*" />
@@ -161,16 +145,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.FlinkMatchRecognizeExample" />
       <item itemvalue="Application.LinearRoadRunner" />
-      <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
       <item itemvalue="Maven.D2IA [install]" />
       <item itemvalue="Maven.D2IA [package]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Maven.D2IA [package]" />
-        <item itemvalue="Application.LinearRoadKafkaDataConsumer" />
         <item itemvalue="Application.LinearRoadRunner" />
+        <item itemvalue="Maven.D2IA [package]" />
         <item itemvalue="Maven.D2IA [install]" />
       </list>
     </recent_temporary>
@@ -372,6 +355,9 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames." />
     <MESSAGE value="Adding linear road example." />
@@ -394,65 +380,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Optimization of the CEP and Window implementation of the HomogeneousIntervalGenerator" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595011893553">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595011893553" />
-    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2" timestamp="1595002875722">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="380" y="0" width="1044" height="824" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1595002875722" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1595002877585">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1595002877585" />
-    <state width="1493" height="292" key="GridCell.Tab.0.bottom" timestamp="1595011897135">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595011897135" />
-    <state width="1557" height="310" key="GridCell.Tab.0.bottom/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.center" timestamp="1595011897135">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595011897135" />
-    <state width="1557" height="310" key="GridCell.Tab.0.center/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.left" timestamp="1595011897135">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595011897135" />
-    <state width="1557" height="310" key="GridCell.Tab.0.left/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state width="1493" height="292" key="GridCell.Tab.0.right" timestamp="1595011897135">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="292" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595011897135" />
-    <state width="1557" height="310" key="GridCell.Tab.0.right/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406471939" />
-    <state x="487" y="115" key="RollbackChangesDialog" timestamp="1595002653655">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="487" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1595002653655" />
-    <state x="376" y="156" key="Vcs.Push.Dialog.v2" timestamp="1595001688791">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="376" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595001688791" />
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2/1600.0.1536.832/0.0.1600.860@0.0.1600.860" timestamp="1592406795547" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594995529221">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1594995529221" />
-    <state x="378" y="101" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595009196531">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="378" y="101" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1595009196531" />
-    <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594994808210">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1594994808210" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594295946520">
+    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595262966955">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594295946520" />
+    <state x="424" y="202" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262966955" />
+    <state x="747" y="252" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1595262900435">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="747" y="252" key="#com.intellij.ide.macro.MacrosDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262900435" />
     <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser" timestamp="1594480590545">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -465,34 +401,55 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="825" y="272" key="EnvironmentVariablesDialog/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471035417" />
-    <state width="1878" height="221" key="GridCell.Tab.0.bottom" timestamp="1594827884265">
+    <state width="1878" height="305" key="GridCell.Tab.0.bottom" timestamp="1595264406691">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="221" key="GridCell.Tab.0.bottom/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884265" />
     <state width="1878" height="421" key="GridCell.Tab.0.bottom/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735627" />
-    <state width="1878" height="221" key="GridCell.Tab.0.center" timestamp="1594827884262">
+    <state width="1878" height="305" key="GridCell.Tab.0.bottom/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406691" />
+    <state width="1878" height="305" key="GridCell.Tab.0.center" timestamp="1595264406689">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="221" key="GridCell.Tab.0.center/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884262" />
     <state width="1878" height="421" key="GridCell.Tab.0.center/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735624" />
-    <state width="1878" height="221" key="GridCell.Tab.0.left" timestamp="1594827884260">
+    <state width="1878" height="305" key="GridCell.Tab.0.center/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406689" />
+    <state width="1878" height="305" key="GridCell.Tab.0.left" timestamp="1595264406688">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="221" key="GridCell.Tab.0.left/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884260" />
     <state width="1878" height="421" key="GridCell.Tab.0.left/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735623" />
-    <state width="1878" height="221" key="GridCell.Tab.0.right" timestamp="1594827884263">
+    <state width="1878" height="305" key="GridCell.Tab.0.left/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406688" />
+    <state width="1878" height="305" key="GridCell.Tab.0.right" timestamp="1595264406690">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="221" key="GridCell.Tab.0.right/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594827884263" />
     <state width="1878" height="421" key="GridCell.Tab.0.right/-1440.355.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1594242735626" />
+    <state width="1878" height="305" key="GridCell.Tab.0.right/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595264406690" />
+    <state width="1878" height="376" key="GridCell.Tab.1.bottom" timestamp="1595263414033">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.bottom/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414033" />
+    <state width="1878" height="376" key="GridCell.Tab.1.center" timestamp="1595263414032">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.center/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414032" />
+    <state width="1878" height="376" key="GridCell.Tab.1.left" timestamp="1595263414031">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.left/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414031" />
+    <state width="1878" height="376" key="GridCell.Tab.1.right" timestamp="1595263414032">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="376" key="GridCell.Tab.1.right/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595263414032" />
     <state x="469" y="179" key="SettingsEditor" timestamp="1594471037514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="469" y="179" key="SettingsEditor/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594471037514" />
-    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1594472162531">
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup" timestamp="1595262985895">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.332.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1594472162531" />
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595262985895" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -533,11 +490,6 @@
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalGenerator.java</url>
           <line>208</line>
           <option name="timeStamp" value="113" />
@@ -554,43 +506,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>212</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>216</line>
-          <option name="timeStamp" value="119" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>262</line>
+          <line>261</line>
           <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java</url>
-          <line>189</line>
+          <line>188</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>236</line>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>228</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/d2ia/processor/D2IAHomogeneousIntervalProcessorFunction.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="128" />
+          <line>191</line>
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

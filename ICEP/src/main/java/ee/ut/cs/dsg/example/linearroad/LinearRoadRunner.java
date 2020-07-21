@@ -145,9 +145,7 @@ public class LinearRoadRunner {
 
         } else {
             fileName = parameters.get("fileName");
-            Long rate = parameters.getLong("rate");
             rawEventStream = env.addSource(new LinearRoadSource(fileName, iNumRecordsToEmit));//.setParallelism(1);
-
 
 
         if (env.getStreamTimeCharacteristic() == TimeCharacteristic.EventTime) {
