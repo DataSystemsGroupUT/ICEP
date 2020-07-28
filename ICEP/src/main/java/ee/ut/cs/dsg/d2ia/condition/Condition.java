@@ -8,6 +8,18 @@ public abstract class Condition implements Serializable {
     protected Object rhs;
 
     protected Operator operator;
+    private Expression internalExpression;
+
+    public Condition() {
+    }
+
+    protected Condition(Expression internalExpression) {
+        this.internalExpression = internalExpression;
+    }
+
+    public Expression getInternalExpression() {
+        return internalExpression;
+    }
 
     public abstract Condition LHS(Object operand);
 

@@ -19,7 +19,8 @@ public class RelativeIterativeCondition<S extends RawEvent> extends IterativeCon
     private ConditionEvaluator<S> conditionEvaluator;
     private IntervalStatistics stats = new IntervalStatistics();
     public RelativeIterativeCondition(Condition cond, ConditionContainer container) {
-        conditionEvaluator = new ConditionEvaluator<>();
+        //conditionEvaluator = new JaninoConditionEvaluator<>();
+        conditionEvaluator = new CustomConditionEvaluator<>();
         condition = cond;
         this.container = container;
     }

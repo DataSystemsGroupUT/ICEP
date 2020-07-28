@@ -11,6 +11,13 @@ public class RelativeCondition extends Condition {
         return this;
     }
 
+    public RelativeCondition() {
+    }
+
+    public RelativeCondition(Expression internalExpression) {
+        super(internalExpression);
+    }
+
     @Override
     public RelativeCondition RHS(Object operand) {
         this.rhs = operand;

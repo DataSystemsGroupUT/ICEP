@@ -19,8 +19,10 @@
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/example/linearroad/event/FlinkKafkaCustomConsumer.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/example/event/ThresholdInterval.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/exception/NotSupportedYetException.java
+/Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/event/IntervalStatistics.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/generator/Match.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/example/linearroad/event/SpeedAggregateInterval.java
+/Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/condition/JaninoConditionEvaluator.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/example/event/AggregateInterval.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/event/RawEvent.java
 /Users/samuelelanghi/Documents/projects/ICEP2/ICEP/ICEP/src/main/java/ee/ut/cs/dsg/d2ia/generator/HomogeneousIntervalElementsCollector.java

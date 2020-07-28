@@ -2,6 +2,12 @@ package ee.ut.cs.dsg.d2ia.condition;
 
 public class AbsoluteCondition extends Condition {
 
+    public AbsoluteCondition() {
+    }
+
+    public AbsoluteCondition(Expression internalExpression) {
+        super(internalExpression);
+    }
 
     @Override
     public Condition LHS(Object operand) {
@@ -93,4 +99,64 @@ public class AbsoluteCondition extends Condition {
             return conditionStringLHS+ " "+conditionStringOperator + conditionStringRHS;
     }
 
+    public String parse(String first, String last, String min, String max, String sum, String count, String currentValue, String avg)
+    {
+        String conditionStringLHS = "";
+        String conditionStringOperator = "";
+        String conditionStringRHS = "";
+        if (lhs == null)
+            conditionStringLHS="";
+        else if (lhs instanceof Operand)
+        {
+            conditionStringLHS = getOperandString(first, last, min, max, sum, currentValue, avg, conditionStringLHS, (Operand) lhs);
+        }
+        else if (lhs instanceof Boolean)
+            conditionStringLHS += "true";
+        else if (lhs instanceof Double)
+            conditionStringLHS += lhs.toString();
+        else if (lhs instanceof  Integer || lhs instanceof Long)
+            conditionStringLHS += lhs.toString();
+        else if (lhs instanceof AbsoluteCondition)
+            conditionStringLHS += "("+((AbsoluteCondition) lhs).parse(first, last, min, max, sum, count, currentValue, avg)+")";
+
+        if (operator != null)
+            conditionStringOperator+=" "+operator.toString();
+
+        if (rhs instanceof Operand)
+        {
+            conditionStringRHS = getOperandString(first, last, min, max, sum, currentValue, avg, conditionStringRHS, (Operand) rhs);
+        }
+        else if (rhs instanceof Boolean)
+            conditionStringRHS += "true";
+        else if (rhs instanceof Double)
+            conditionStringRHS += rhs.toString();
+        else if (rhs instanceof  Long || rhs instanceof Integer)
+            conditionStringRHS += rhs.toString();
+        else if (rhs instanceof AbsoluteCondition)
+            conditionStringRHS += "("+((AbsoluteCondition) rhs).parse(first, last, min, max, sum, count, currentValue, avg)+")";
+
+        if (conditionStringOperator.contains("$$$"))
+            return conditionStringOperator.replace("$$$", conditionStringRHS);
+        else
+            return conditionStringLHS+ " "+conditionStringOperator + conditionStringRHS;
+    }
+
+    private String getOperandString(String first, String last, String min, String max, String sum, String currentValue, String avg, String conditionStringRHS, Operand operand) {
+        if (operand == Operand.Average) {
+            conditionStringRHS += avg;
+        } else if (operand == Operand.Sum) {
+            conditionStringRHS += sum;
+        } else if (operand == Operand.First) {
+            conditionStringRHS += first;
+        } else if (operand == Operand.Last) {
+            conditionStringRHS += last;
+        } else if (operand == Operand.Max) {
+            conditionStringRHS += max;
+        } else if (operand == Operand.Min) {
+            conditionStringRHS += min;
+        } else if (operand == Operand.Value) {
+            conditionStringRHS += currentValue;
+        }
+        return conditionStringRHS;
+    }
 }

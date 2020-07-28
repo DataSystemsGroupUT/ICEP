@@ -17,12 +17,12 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
 //        this.condition = condition;
 //    }
     //This method can be changed to static
-    private int count;
-    private double sum;
-    private double min;
-    private double max;
-    private double first;
-    private double last;
+    protected int count;
+    protected double sum;
+    protected double min;
+    protected double max;
+    protected double first;
+    protected double last;
     private static ScriptEngineManager mgr;
     private static ScriptEngine engine;
     public ConditionEvaluator()
@@ -47,7 +47,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         }
         return (boolean) engine.eval(conditionString);
     }
-    private void resetStats()
+    protected void resetStats()
     {
         count=0;
         sum = 0d;
@@ -104,7 +104,7 @@ public class ConditionEvaluator<S extends RawEvent>  implements Serializable {
         return evaluateRelativeConditionInternal(condition, s);
     }
 
-    private boolean evaluateRelativeConditionInternal(RelativeCondition condition, S s) throws ScriptException {
+    protected boolean evaluateRelativeConditionInternal(RelativeCondition condition, S s) throws ScriptException {
         String conditionString;// = condition.toString().split("Relative")[1].trim();
 
         Object relativeLHS = condition.getRelativeLHS();

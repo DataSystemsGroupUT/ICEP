@@ -38,7 +38,7 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
     @Override
     public SpeedEvent map(String s) throws Exception {
         //Schema of S is VID,SPEED,ACCEL,XWay,Lane,Dir,Seg,Pos,T1,T2
-        String[] data = s.split(",");
+        String[] data = s.replace("[","").replace("]","").split(", ");
         counter++;
         if(counter%100==0)
             registerThroughput();
