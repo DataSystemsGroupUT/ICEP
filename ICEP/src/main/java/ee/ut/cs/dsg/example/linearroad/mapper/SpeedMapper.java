@@ -2,6 +2,7 @@ package ee.ut.cs.dsg.example.linearroad.mapper;
 
 import ee.ut.cs.dsg.example.linearroad.datagenerator.PerformanceFileBuilder;
 import ee.ut.cs.dsg.example.linearroad.event.SpeedEvent;
+import org.apache.flink.api.common.accumulators.LongCounter;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.configuration.Configuration;
 
@@ -27,7 +28,7 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
         double ddiff = (double) diff;
         throughput = throughput/diff;
         throughput = throughput *1000;
-        performanceFileBuilder.register(type, throughput, expId, true, counter, diff);
+        performanceFileBuilder.register(type, throughput, expId, true, counter, diff, startTime, endTime);
     }
 
     public SpeedMapper(String type, String expId) {

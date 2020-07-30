@@ -17,7 +17,7 @@ public class PerformanceFileBuilder {
             File file = new File(fileName);
             if(!file.exists()){
                 this.writer = new CSVWriter(new FileWriter(file, true));
-                String[] firstRow = new String[]{"Type", "Experiment-Name","Parallelism", "Platform", "Throughput", "OnCluster"};
+                String[] firstRow = new String[]{"Type", "Experiment-Name","Parallelism", "Platform", "Throughput", "OnCluster", "inputSize", "duration", "startTime", "endTime"};
                 this.writer.writeNext(firstRow);
             }
             this.writer = new CSVWriter(new FileWriter(file, true));
@@ -39,7 +39,17 @@ public class PerformanceFileBuilder {
     }
 
     public void register(String expType, double throughput, String expName, boolean cluster, long inputSize, long duration){
-        String[] row = new String[]{expType, expName, String.valueOf(parallelism), platform, String.valueOf(throughput), String.valueOf(cluster), String.valueOf(inputSize)};
+        String[] row = new String[]{expType, expName, String.valueOf(parallelism), platform, String.valueOf(throughput), String.valueOf(cluster), String.valueOf(inputSize), String.valueOf(duration)};
+        writer.writeNext(row);
+        try {
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void register(String expType, double throughput, String expName, boolean cluster, long inputSize, long duration, long startTime, long endTime){
+        String[] row = new String[]{expType, expName, String.valueOf(parallelism), platform, String.valueOf(throughput), String.valueOf(cluster), String.valueOf(inputSize), String.valueOf(duration), String.valueOf(startTime), String.valueOf(endTime)};
         writer.writeNext(row);
         try {
             writer.flush();
