@@ -29,5 +29,5 @@ sleep 10
 
 # Execute producer
 echo "Start loading:"
-java -Xmx2g -cp $PROJECT_DIR/target/D2IA-0.1-SNAPSHOT-launcher.jar ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataProducer ${bootstrap} ${topic} ${input} ${maxevents} &
+java -Xmx2g -cp $PROJECT_DIR/target/D2IA-0.1-SNAPSHOT-launcher.jar ee.ut.cs.dsg.example.linearroad.datagenerator.LinearRoadKafkaDataProducer ${bootstrap} ${topic} ${input} ${maxevents} &> loading.out
 echo "Producer finished"

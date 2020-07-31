@@ -15,4 +15,4 @@ rm -rf /tmp/zookeeper;
 
 #start zookeeper
 echo "Starting zookeeper"
-$KAFKA_HOME/bin/zookeeper-server-start $KAFKA_HOME/etc/kafka/zookeeper.properties &
+$KAFKA_HOME/bin/zookeeper-server-start $KAFKA_HOME/etc/kafka/zookeeper.properties &> zookeeper.out
