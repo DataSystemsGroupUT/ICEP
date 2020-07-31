@@ -55,7 +55,8 @@ public class LinearRoadKafkaDataProducer {
             long actualTime = 0;
             while (line != null && (count<nRecords || nRecords==-1)) {
                 count++;
-                logger.info("Sending "+count+"th record "+line +" to Kafka");
+                if(count%1000000==0)
+                    logger.info("Sending "+count+"th record to Kafka");
                 String[] lineDiv = line.replace("[","").replace("]","").split(", ");
                 final ProducerRecord<Integer, String> record =
                         new ProducerRecord<>(args[1], Integer.parseInt(lineDiv[0].trim()), line);
