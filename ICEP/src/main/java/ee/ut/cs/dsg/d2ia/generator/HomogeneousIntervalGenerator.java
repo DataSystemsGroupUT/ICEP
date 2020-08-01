@@ -471,7 +471,7 @@ public class HomogeneousIntervalGenerator<S extends RawEvent, W extends Interval
         AfterMatchSkipStrategy skipStrategy;
 
         if (onlyMaximalIntervals)
-            skipStrategy = AfterMatchSkipStrategy.skipToFirst("2");//.skipPastLastEvent();//.skipPastLastEvent();//.noSkip();//.skipToLast("1");
+            skipStrategy = AfterMatchSkipStrategy.skipPastLastEvent();//.skipToFirst("2");//.skipPastLastEvent();//.skipPastLastEvent();//.noSkip();//.skipToLast("1");
         else
             skipStrategy = AfterMatchSkipStrategy.noSkip();
 
