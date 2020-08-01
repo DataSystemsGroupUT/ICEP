@@ -209,7 +209,7 @@ public class LinearRoadRunner {
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(speedStream)
                 .targetType(SpeedThresholdInterval.class)
-                .produceOnlyMaximalIntervals(true)
+                .produceOnlyMaximalIntervals(false)
                 .within(Time.milliseconds(10000))
                 .minOccurrences(2)
              //   .maxOccurrences(5)
