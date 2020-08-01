@@ -18,6 +18,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
 import org.apache.flink.streaming.api.watermark.Watermark;
+import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 import org.apache.flink.table.sources.wmstrategies.WatermarkStrategy;
 
@@ -209,7 +210,7 @@ public class LinearRoadRunner {
                 .source(speedStream)
                 .targetType(SpeedThresholdInterval.class)
                 .produceOnlyMaximalIntervals(true)
-            //    .within(Time.milliseconds(100))
+                .within(Time.milliseconds(40000))
                 .minOccurrences(2)
              //   .maxOccurrences(5)
                 .condition(new AbsoluteCondition(expression).LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(50))
