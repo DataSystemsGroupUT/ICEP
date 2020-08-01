@@ -210,7 +210,7 @@ public class LinearRoadRunner {
                 .source(speedStream)
                 .targetType(SpeedThresholdInterval.class)
                 .produceOnlyMaximalIntervals(true)
-                .within(Time.milliseconds(40000))
+                .within(Time.milliseconds(10000))
                 .minOccurrences(2)
              //   .maxOccurrences(5)
                 .condition(new AbsoluteCondition(expression).LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(50))
