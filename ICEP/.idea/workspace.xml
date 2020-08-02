@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +188,7 @@
       <workItem from="1596023231770" duration="432000" />
       <workItem from="1596110932059" duration="1662000" />
       <workItem from="1596186475792" duration="1219000" />
-      <workItem from="1596201794146" duration="9723000" />
+      <workItem from="1596201794146" duration="10039000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
