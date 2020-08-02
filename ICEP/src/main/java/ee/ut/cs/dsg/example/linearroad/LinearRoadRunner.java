@@ -205,8 +205,6 @@ public class LinearRoadRunner {
         Operation operation2 = new SingleValue(50);
         Expression expression = new ConditionNew(operation1,Operator.GreaterThanEqual,operation2);
 
-        Expression trueExpression = new SingleBoolean(true);
-
         thresholdIntervalWithAbsoluteCondition.sourceType(SpeedEvent.class)
                 .source(speedStream)
                 .targetType(SpeedThresholdInterval.class)
@@ -214,8 +212,7 @@ public class LinearRoadRunner {
             //    .within(Time.milliseconds(100))
                 .minOccurrences(2)
              //   .maxOccurrences(5)
-                .condition(new RelativeConditionNew(expression,expression).LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(50)
-                        .relativeLHS(Operand.Value).relativeOperator(Operator.GreaterThanEqual).relativeRHS(50))
+                .condition(new AbsoluteCondition(expression).LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(50))
                 .outputValue(Operand.Max);
 
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream;
