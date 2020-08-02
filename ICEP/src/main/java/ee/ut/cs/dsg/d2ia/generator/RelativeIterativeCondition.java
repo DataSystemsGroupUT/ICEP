@@ -76,7 +76,7 @@ public class RelativeIterativeCondition<S extends RawEvent> extends IterativeCon
                 stats.first = stats.last = stats.min = stats.max = s.getValue();
                 stats.sum = s.getValue();
                 stats.count = 1;
-                return evaluateCondition(((RelativeCondition) condition).getStartCondition(), s);
+                return evaluateCondition(((RelativeConditionNew) condition).getStartCondition(), s);
             } else // there are previous items
             {
                 Boolean result = evaluateRelativeCondition((RelativeCondition) condition, items, s);

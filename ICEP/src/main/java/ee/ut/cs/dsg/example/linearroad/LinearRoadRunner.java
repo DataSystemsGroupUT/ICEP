@@ -215,7 +215,7 @@ public class LinearRoadRunner {
                 .minOccurrences(2)
              //   .maxOccurrences(5)
                 .condition(new RelativeConditionNew(expression,expression).LHS(Operand.Value).operator(Operator.GreaterThanEqual).RHS(50)
-                        .relativeLHS(Operand.Value).operator(Operator.GreaterThanEqual).relativeRHS(50))
+                        .relativeLHS(Operand.Value).relativeOperator(Operator.GreaterThanEqual).relativeRHS(50))
                 .outputValue(Operand.Max);
 
         DataStream<SpeedThresholdInterval> thresholdIntervalAbsoluteConditionDataStream;
