@@ -100,7 +100,7 @@ public class LinearRoadRunner {
 //            // only required for Kafka 0.8
 //            properties.setProperty("zookeeper.connect", "localhost:2181");
 //            properties.setProperty("group.id", "test");
-            FlinkKafkaCustomConsumer<String> consumer = new FlinkKafkaCustomConsumer<>(topic, new CustomStringSchema(new SimpleStringSchema(),parameters.getInt("endPerTask"), parameters.getLong("maxMinutes", -1), parameters.get("exp", "exp"), jobType, env.getParallelism() ,(runAs.equalsIgnoreCase("Window")) ? runAs+""+windowLength : runAs ), properties);
+            FlinkKafkaCustomConsumer<String> consumer = new FlinkKafkaCustomConsumer<>(topic, new CustomStringSchema(new SimpleStringSchema(), parameters.getLong("maxMinutes", -1)), properties);
             consumer.setStartFromEarliest();
 
             if(parameters.get("rate")!=null){
@@ -119,7 +119,7 @@ public class LinearRoadRunner {
                 }
             });
 
-            rawEventStream = env.addSource(consumer).map(new SpeedMapper(jobType, parameters.get("exp", "exp")));
+            rawEventStream = env.addSource(consumer).map(new SpeedMapper(parameters.get("exp", "exp"),(runAs.equalsIgnoreCase("Window")) ? runAs+""+windowLength : runAs ,jobType,  env.getParallelism() ));
 
 
         } else {

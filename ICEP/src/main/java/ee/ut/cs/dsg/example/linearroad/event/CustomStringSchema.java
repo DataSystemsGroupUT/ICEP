@@ -18,7 +18,7 @@ public class CustomStringSchema extends KafkaDeserializationSchemaWrapper<String
     private long maxTime;
     private long startTime;
     private long actualCounterRegistrationRate;
-    private PerformanceFileBuilder performanceFileBuilder;
+    //private PerformanceFileBuilder performanceFileBuilder;
     private String experimentId;
     private String query;
     private long parallelism;
@@ -39,6 +39,7 @@ public class CustomStringSchema extends KafkaDeserializationSchemaWrapper<String
         this.maxTime = maxTimeMinutes*60*1000;
         this.startTime = System.currentTimeMillis();
         this.actualCounterRegistrationRate = COUNTER_REGISTRATION_RATE_MINUTES*60*1000;
+        this.nEndEvents=-1;
     }
 
     public CustomStringSchema(DeserializationSchema<String> deserializationSchema, int nEndEvents, long maxTimeMinutes, String experimentId, String query, long parallelism, String implementation) {
@@ -51,30 +52,19 @@ public class CustomStringSchema extends KafkaDeserializationSchemaWrapper<String
         this.parallelism = parallelism;
         this.implementation = implementation;
         this.actualCounterRegistrationRate = COUNTER_REGISTRATION_RATE_MINUTES*60*1000;
-        this.performanceFileBuilder = new PerformanceFileBuilder(ExperimentConfiguration.DEFAULT_PERFORMANCE_FILE_PATH+
-                "performance-results", "Flink");
+        //this.performanceFileBuilder = new PerformanceFileBuilder(ExperimentConfiguration.DEFAULT_PERFORMANCE_FILE_PATH+
+                //"performance-results", "Flink");
     }
 
-    private long currentTime=System.currentTimeMillis();
-    private long eventsCounter=0;
     @Override
     public boolean isEndOfStream(String nextElement) {
         String[] data = nextElement.replace("[","").replace("]","").split(", ");
-        eventsCounter++;
+
         if(Integer.parseInt(data[0])==-1)
             counter++;
-        currentTime = System.currentTimeMillis();
-        if(registerCounter<(currentTime-this.startTime)/actualCounterRegistrationRate){
-            registerCounter++;
-            performanceFileBuilder.register(query, experimentId, startTime, currentTime, eventsCounter, implementation, parallelism);
-        }
-        if(counter == nEndEvents || ((System.currentTimeMillis() - this.startTime > this.maxTime) && maxTime!=-1)){
-            performanceFileBuilder.register(query, experimentId, startTime, currentTime, eventsCounter, implementation, parallelism);
+        if(counter == nEndEvents || ((System.currentTimeMillis() - this.startTime > this.maxTime) && maxTime!=-1))
             return true;
-        }
         return false;
-
-
     }
 
     public void setnEndEvents(int nEndEvents) {

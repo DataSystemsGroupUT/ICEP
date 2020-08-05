@@ -4,7 +4,6 @@
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/PerformanceFileBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/PerformanceFileBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/CustomStringSchema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/CustomStringSchema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" afterDir="false" />
     </list>
@@ -192,7 +191,7 @@
       <workItem from="1596023231770" duration="432000" />
       <workItem from="1596110932059" duration="1662000" />
       <workItem from="1596186475792" duration="1219000" />
-      <workItem from="1596201794146" duration="20885000" />
+      <workItem from="1596201794146" duration="23269000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -419,15 +418,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595266816980" />
-    <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser" timestamp="1596550153712">
+    <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser" timestamp="1596627427348">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="773" y="253" key="#com.intellij.ide.util.MemberChooser/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595519791981" />
-    <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596550153712" />
-    <state x="77" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595516365319">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596627427348" />
+    <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser/-1920.23.1920.1177/0.0.1920.1200@0.0.1920.1200" timestamp="1596620908893" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596627896317">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="77" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595516365319" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596627896317" />
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595423429089">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -514,16 +515,17 @@
     </state>
     <state x="624" y="232" key="extract.method.dialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595426242185" />
     <state x="499" y="177" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1595015746407" />
-    <state x="669" y="308" key="refactoring.ChangeSignatureDialog" timestamp="1595516136497">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="669" y="342" key="refactoring.ChangeSignatureDialog" timestamp="1596627936875">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="669" y="308" key="refactoring.ChangeSignatureDialog/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595516136497" />
-    <state x="625" y="268" width="670" height="752" key="search.everywhere.popup" timestamp="1596547843828">
+    <state x="669" y="342" key="refactoring.ChangeSignatureDialog/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596627936875" />
+    <state x="625" y="268" width="670" height="752" key="search.everywhere.popup" timestamp="1596627183606">
       <screen x="0" y="0" width="1920" height="1200" />
     </state>
     <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.671.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1595518344807" />
     <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/-1440.694.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1595522664532" />
-    <state x="625" y="268" width="670" height="752" key="search.everywhere.popup/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596547843828" />
+    <state x="625" y="268" width="670" height="752" key="search.everywhere.popup/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596627183606" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
