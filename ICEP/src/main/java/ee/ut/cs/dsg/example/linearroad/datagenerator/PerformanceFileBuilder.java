@@ -36,6 +36,7 @@ public class PerformanceFileBuilder {
                 this.writer = new CSVWriter(new FileWriter(file, false));
                 String[] firstRow = new String[]{"Type", "Experiment-Name", "Platform", "OnCluster", "startTime", "currentTime", "eventsCount", "implementation", "parallelism"};
                 this.writer.writeNext(firstRow);
+                this.writer.flush();
             }
             this.writer = new CSVWriter(new FileWriter(file, true));
         } catch (IOException e) {
