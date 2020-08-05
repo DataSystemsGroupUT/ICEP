@@ -42,7 +42,6 @@ public class PerformanceFileBuilder {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.writer = writer;
         this.platform = platform;
     }
 

@@ -24,7 +24,6 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
         super.open(parameters);
         this.performanceFileBuilder = new PerformanceFileBuilder(ExperimentConfiguration.DEFAULT_PERFORMANCE_FILE_PATH+
                 "performance-results-"+implementation+"-"+experimentId+"-"+query+"-parallelism_"+parallelism, "Flink");
-        // this.performanceFileBuilder = new PerformanceFileBuilder("results-"+type+"-"+expId+"-"+this.getRuntimeContext().getTaskName()+"-"+this.getRuntimeContext().getIndexOfThisSubtask()+".csv","flink", this.getRuntimeContext().getExecutionConfig().getParallelism());
     }
 
     private void registerThroughput(){
@@ -52,7 +51,6 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
 
     @Override
     public SpeedEvent map(String s) throws Exception {
-        //Schema of S is VID,SPEED,ACCEL,XWay,Lane,Dir,Seg,Pos,T1,T2
         String[] data = s.replace("[","").replace("]","").split(", ");
         eventsCounter++;
         long currentTime = System.currentTimeMillis();
@@ -60,7 +58,6 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
             registerCounter++;
             performanceFileBuilder.register(query, experimentId, startTime, currentTime, eventsCounter, implementation, parallelism);
         }
-        //Iterative throughput register, removed since it produced too many output files
         return new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim()));
 
     }
