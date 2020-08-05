@@ -32,14 +32,14 @@ public class PerformanceFileBuilder {
     public PerformanceFileBuilder(String fileName, String platform) {
         try {
             File file = new File(fileName);
-            if(!file.exists()){
-                file.createNewFile();
-                this.writer = new CSVWriter(new FileWriter(file, false));
+
+
+                this.writer = new CSVWriter(new FileWriter(file, true));
                 String[] firstRow = new String[]{"Type", "Experiment-Name", "Platform", "OnCluster", "startTime", "currentTime", "eventsCount", "implementation", "parallelism"};
                 this.writer.writeNext(firstRow);
                 this.writer.flush();
-            }
-            this.writer = new CSVWriter(new FileWriter(file, true));
+
+           
         } catch (IOException e) {
             e.printStackTrace();
         }

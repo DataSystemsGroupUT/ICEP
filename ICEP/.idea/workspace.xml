@@ -186,7 +186,7 @@
       <workItem from="1596023231770" duration="432000" />
       <workItem from="1596110932059" duration="1662000" />
       <workItem from="1596186475792" duration="1219000" />
-      <workItem from="1596201794146" duration="27003000" />
+      <workItem from="1596201794146" duration="27410000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
