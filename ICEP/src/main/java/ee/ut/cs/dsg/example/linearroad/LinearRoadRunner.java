@@ -119,7 +119,7 @@ public class LinearRoadRunner {
                 }
             });
 
-            rawEventStream = env.addSource(consumer).map(new SpeedMapper(parameters.get("exp", "exp"),(runAs.equalsIgnoreCase("Window")) ? runAs+""+windowLength : runAs ,jobType,  env.getParallelism() ));
+            rawEventStream = env.addSource(consumer).map(new SpeedMapper(parameters.get("exp", "exp"), jobType,(runAs.equalsIgnoreCase("Window")) ? runAs+""+windowLength : runAs ,  env.getParallelism() ));
 
 
         } else {
