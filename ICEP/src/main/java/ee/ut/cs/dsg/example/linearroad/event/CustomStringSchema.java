@@ -62,7 +62,7 @@ public class CustomStringSchema extends KafkaDeserializationSchemaWrapper<String
 
         if(Integer.parseInt(data[0])==-1)
             counter++;
-        if(counter == nEndEvents || ((System.currentTimeMillis() - this.startTime > this.maxTime) && maxTime!=-1))
+        if(counter == nEndEvents || ((System.currentTimeMillis() - this.startTime > this.maxTime) && maxTime!=0))
             return true;
         return false;
     }

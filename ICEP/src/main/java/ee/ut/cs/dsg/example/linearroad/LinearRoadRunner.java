@@ -100,7 +100,7 @@ public class LinearRoadRunner {
 //            // only required for Kafka 0.8
 //            properties.setProperty("zookeeper.connect", "localhost:2181");
 //            properties.setProperty("group.id", "test");
-            FlinkKafkaCustomConsumer<String> consumer = new FlinkKafkaCustomConsumer<>(topic, new CustomStringSchema(new SimpleStringSchema(), parameters.getLong("maxMinutes", -1)), properties);
+            FlinkKafkaCustomConsumer<String> consumer = new FlinkKafkaCustomConsumer<>(topic, new CustomStringSchema(new SimpleStringSchema(), parameters.getLong("maxMinutes", 0)), properties);
             consumer.setStartFromEarliest();
 
             if(parameters.get("rate")!=null){

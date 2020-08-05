@@ -15,7 +15,7 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
     private final String experimentId;
     private long eventsCounter=0;
     private long registerCounter=0;
-    private long actualCounterRegistrationRate=0;
+    private long actualCounterRegistrationRate;
     private PerformanceFileBuilder performanceFileBuilder;
 
     @Override
@@ -47,6 +47,7 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
         this.query = query;
         this.implementation = implementation;
         this.parallelism = parallelism;
+        actualCounterRegistrationRate = ExperimentConfiguration.COUNTER_REGISTRATION_RATE_MINUTES*60*1000;
     }
 
     @Override
