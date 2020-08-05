@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/LinearRoadRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/CustomStringSchema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/event/CustomStringSchema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/PerformanceFileBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/datagenerator/PerformanceFileBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +188,7 @@
       <workItem from="1596023231770" duration="432000" />
       <workItem from="1596110932059" duration="1662000" />
       <workItem from="1596186475792" duration="1219000" />
-      <workItem from="1596201794146" duration="23589000" />
+      <workItem from="1596201794146" duration="23764000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
