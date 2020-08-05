@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad/mapper/SpeedMapper.java" afterDir="false" />
-    </list>
+    <list default="true" id="60f0ac10-24c2-4492-aa2f-22b7b3375224" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +68,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/ee/ut/cs/dsg/example/linearroad" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.D2IA [package]">
+  <component name="RunManager" selected="Application.LinearRoadRunner">
     <configuration name="FlinkMatchRecognizeExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.FlinkMatchRecognizeExample" />
       <module name="ICEP" />
@@ -88,7 +85,7 @@
     <configuration name="LinearRoadRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ee.ut.cs.dsg.example.linearroad.LinearRoadRunner" />
       <module name="ICEP" />
-      <option name="PROGRAM_PARAMETERS" value="--source file --jobType ThresholdRelative --fileName &quot;C:\\Work\\Data\\linear2.csv&quot; --runAs Window --numRecordsToEmit 10000 --generateOutput no --windowSize 1000" />
+      <option name="PROGRAM_PARAMETERS" value="./bin/flink run -d -p 1 /home/hadoop/Samuele/ICEP/ICEP/target/D2IA-0.1-SNAPSHOT-launcher.jar --source kafka --jobType ThresholdAbsolute --kafka 172.17.77.39:9092 --topic linear-road-data --runAs Window --numRecordsToEmit 4000000 --generateOutput yes --windowSize 1000 --endPerTask 3 --maxMinutes 1 --exp exp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ee.ut.cs.dsg.example.linearroad.*" />
@@ -189,7 +186,7 @@
       <workItem from="1596023231770" duration="432000" />
       <workItem from="1596110932059" duration="1662000" />
       <workItem from="1596186475792" duration="1219000" />
-      <workItem from="1596201794146" duration="26806000" />
+      <workItem from="1596201794146" duration="27003000" />
     </task>
     <task id="LOCAL-00001" summary="Adding features to absolute condition to allow modeling delta frames. Adding auxiliary classes for the different examples on data frames.">
       <created>1542373637394</created>
@@ -412,9 +409,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixing a bug with static properties of the ConditionEvaluator class." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595266816980">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="279" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596644110783">
+      <screen x="0" y="0" width="1920" height="1200" />
     </state>
+    <state x="279" y="98" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1920.1200/0.0.1920.1200@0.0.1920.1200" timestamp="1596644110783" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1595266816980" />
     <state x="773" y="281" key="#com.intellij.ide.util.MemberChooser" timestamp="1596627427348">
       <screen x="0" y="0" width="1920" height="1200" />

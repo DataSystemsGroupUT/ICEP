@@ -5,6 +5,7 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class PerformanceFileBuilder {
 
@@ -77,6 +78,7 @@ public class PerformanceFileBuilder {
 
     public void register(String expType, String expName, long startTime, long currentTime, long eventsCount, String implementation, long parallelism){
         String[] row = new String[]{expType, expName, platform, String.valueOf(true), String.valueOf(startTime), String.valueOf(currentTime), String.valueOf(eventsCount), implementation, String.valueOf(parallelism)};
+        System.out.println(Arrays.toString(row));
         writer.writeNext(row);
         try {
             writer.flush();
