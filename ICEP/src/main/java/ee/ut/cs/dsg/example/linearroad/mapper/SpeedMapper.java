@@ -22,7 +22,7 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
     public void open(Configuration parameters) throws Exception {
         this.startTime = System.currentTimeMillis();
         super.open(parameters);
-        this.performanceFileBuilder = new PerformanceFileBuilder(ExperimentConfiguration.DEFAULT_PERFORMANCE_FILE_PATH+
+        this.performanceFileBuilder = new PerformanceFileBuilder(
                 "performance-results-"+implementation+"-"+experimentId+"-"+query+"-parallelism_"+parallelism, "Flink");
     }
 

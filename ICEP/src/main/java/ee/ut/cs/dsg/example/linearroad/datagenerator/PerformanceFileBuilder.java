@@ -39,7 +39,7 @@ public class PerformanceFileBuilder {
                 this.writer.writeNext(firstRow);
                 this.writer.flush();
 
-           
+
         } catch (IOException e) {
             e.printStackTrace();
         }
