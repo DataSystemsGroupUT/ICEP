@@ -40,9 +40,8 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
     public SpeedEvent map(String s) throws Exception {
         //Schema of S is VID,SPEED,ACCEL,XWay,Lane,Dir,Seg,Pos,T1,T2
         String[] data = s.replace("[","").replace("]","").split(", ");
-        counter++;
-        if(counter%100==0)
-            registerThroughput();
+
+        //Iterative throughput register, removed since it produced too many output files
 
         return new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim()));
 

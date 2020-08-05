@@ -16,7 +16,7 @@ public class PerformanceFileBuilder {
         try {
             File file = new File(fileName);
             if(!file.exists()){
-                this.writer = new CSVWriter(new FileWriter(file, true));
+                this.writer = new CSVWriter(new FileWriter(file, false));
                 String[] firstRow = new String[]{"Type", "Experiment-Name","Parallelism", "Platform", "Throughput", "OnCluster", "inputSize", "duration", "startTime", "endTime"};
                 this.writer.writeNext(firstRow);
             }
@@ -26,6 +26,22 @@ public class PerformanceFileBuilder {
         }
         this.platform = platform;
         this.parallelism = parallelism;
+    }
+
+    public PerformanceFileBuilder(String fileName, String platform) {
+        try {
+            File file = new File(fileName);
+            if(!file.exists()){
+                this.writer = new CSVWriter(new FileWriter(file, false));
+                String[] firstRow = new String[]{"Type", "Experiment-Name", "Platform", "OnCluster", "startTime", "currentTime", "eventsCount", "implementation", "parallelism"};
+                this.writer.writeNext(firstRow);
+            }
+            this.writer = new CSVWriter(new FileWriter(file, true));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.writer = writer;
+        this.platform = platform;
     }
 
     public void register(String expType, double throughput, String expName, boolean cluster, long inputSize){
@@ -50,6 +66,16 @@ public class PerformanceFileBuilder {
 
     public void register(String expType, double throughput, String expName, boolean cluster, long inputSize, long duration, long startTime, long endTime){
         String[] row = new String[]{expType, expName, String.valueOf(parallelism), platform, String.valueOf(throughput), String.valueOf(cluster), String.valueOf(inputSize), String.valueOf(duration), String.valueOf(startTime), String.valueOf(endTime)};
+        writer.writeNext(row);
+        try {
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void register(String expType, String expName, long startTime, long currentTime, long eventsCount, String implementation, long parallelism){
+        String[] row = new String[]{expType, expName, platform, String.valueOf(true), String.valueOf(startTime), String.valueOf(currentTime), String.valueOf(eventsCount), implementation, String.valueOf(parallelism)};
         writer.writeNext(row);
         try {
             writer.flush();
