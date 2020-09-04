@@ -42,6 +42,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table</artifactId>
             <version>${flink.version}</version>
@@ -62,7 +68,7 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-table-planner_2.11</artifactId>
             <version>${flink.version}</version>
-            <!--<scope>provided</scope>-->
+
         </dependency>
 
         <dependency>
@@ -120,12 +126,12 @@
         </dependency>
         <dependency>
             <groupId>com.espertech</groupId>
-            <artifactId>esper-common</artifactId>
+            <artifactId>esper-runtime</artifactId>
             <version>8.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.espertech</groupId>
-            <artifactId>esper-runtime</artifactId>
+            <artifactId>esper-common</artifactId>
             <version>8.3.0</version>
         </dependency>
         <dependency>
@@ -238,6 +244,14 @@
                                     <include>org.apache.flink:flink-streaming-java*</include>
                                     <include>org.apache.flink:flink-cep*</include>
                                     <include>org.apache.flink:flink-table*</include>
+                                    <include>org.apache.flink:flink-connector-kafka-*</include>
+                                    <include>org.apache.kafka:*</include>
+                                    <include>org.apache.flink:flink-connector-kafka_2.11</include>
+                                    <include>org.apache.flink:flink-connector-kafka-base_2.11</include>
+                                    <include>org.apache.flink:flink-shaded-guava:18.0-6.0</include>
+                                    <include>org.slf4j:*</include>
+                                    <include>com.opencsv:*</include>
+                                    <include>log4j:*</include>
                                 </includes>
                             </artifactSet>
                             <transformers>

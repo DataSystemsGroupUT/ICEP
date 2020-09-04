@@ -8,7 +8,6 @@ import org.apache.flink.api.common.state.ListStateDescriptor;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 
@@ -39,7 +38,8 @@ public class D2IAHomogeneousIntervalProcessorFunction<E extends RawEvent, I exte
         this.minOccurs = minOccurs <= 0 ? Integer.MIN_VALUE : minOccurs;
         this.maxOccurs = maxOccurs <= 0 ? Integer.MAX_VALUE : maxOccurs;
         this.condition = cnd;
-        this.conditionEvaluator = new ConditionEvaluator<>();
+        this.conditionEvaluator = new CustomConditionEvaluator<>();
+        //this.conditionEvaluator = new JaninoConditionEvaluator<>();
         this.within = within == null ? 0 : within.toMilliseconds();
         this.outputValueCalculator = outputValue == null ? Operand.Average : outputValue;
 
