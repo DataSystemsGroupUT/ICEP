@@ -31,14 +31,10 @@ public class PerformanceFileBuilder {
 
     public PerformanceFileBuilder(String fileName, String platform) {
         try {
-            File file = new File(fileName);
-
-
-                this.writer = new CSVWriter(new FileWriter(file, true));
-                String[] firstRow = new String[]{"Type", "Experiment-Name", "Platform", "OnCluster", "startTime", "currentTime", "eventsCount", "implementation", "parallelism"};
-                this.writer.writeNext(firstRow);
-                this.writer.flush();
-
+            this.writer = new CSVWriter(new FileWriter(fileName, true));
+            String[] firstRow = new String[]{"Type", "Experiment-Name", "Platform", "OnCluster", "startTime", "currentTime", "eventsCount", "implementation", "parallelism"};
+            this.writer.writeNext(firstRow);
+            this.writer.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,7 +74,6 @@ public class PerformanceFileBuilder {
 
     public void register(String expType, String expName, long startTime, long currentTime, long eventsCount, String implementation, long parallelism){
         String[] row = new String[]{expType, expName, platform, String.valueOf(true), String.valueOf(startTime), String.valueOf(currentTime), String.valueOf(eventsCount), implementation, String.valueOf(parallelism)};
-        System.out.println(Arrays.toString(row));
         writer.writeNext(row);
         try {
             writer.flush();

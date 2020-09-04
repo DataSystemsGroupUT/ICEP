@@ -58,9 +58,6 @@ public class SpeedMapper extends RichMapFunction<String, SpeedEvent> {
             registerCounter++;
             performanceFileBuilder.register(query, experimentId, startTime, currentTime, eventsCounter, implementation, parallelism);
         }
-       // if(System.currentTimeMillis()-startTime>30000)
-       //     performanceFileBuilder.register(query, experimentId, startTime, System.currentTimeMillis(), eventsCounter, implementation, parallelism);
-
         return new SpeedEvent(data[0].trim(),Long.parseLong(data[8].trim()),Double.parseDouble(data[1].trim()));
 
     }
